@@ -3,12 +3,19 @@
 
 <head>
   <meta charset="utf-8">
+
+  <title>D3.js y React, trabajando juntos</title>
+
+  <meta name="description" content="Presentación para la charla 'D3.js y React, trabajando juntos'">
+  <meta name="author" content="Javier Calzado">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-  <title>reveal.js</title>
-
   <link rel="stylesheet" href="css/reveal.css">
-  <link rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -21,16 +28,32 @@
     link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
     document.getElementsByTagName('head')[0].appendChild(link);
   </script>
+
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
 </head>
 
 <body>
+
   <div class="reveal">
     <div class="slides">
+
+      <!-- Slide de Apertura -->
       <section>Slide 1</section>
+      
+
       <section>Slide 2</section>
-      <section>Slide 3</section>
-      <section>Slide 4</section>
-      <section>Slide 5</section>
+      <section>
+          <p>Probando un link externo en iframe</p>
+          <a data-preview-link="true" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Link</a>
+      </section>
+      <section>
+          <iframe style="background-color: white" src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%" height="600"></iframe>
+      </section>
+      <section data-background="https://media.giphy.com/media/lueaDWxOz0LNS/giphy.gif">
+        <h2>... pelea asegurada!</h2>
+      </section>
       <section>Slide 6</section>
       <section>Slide 7</section>
     </div>
@@ -46,12 +69,12 @@
 
     Reveal.initialize({
       controls: true,
-      controlsTutorial: false,
+      controlsTutorial: true,
       progress: true,
       history: false,
       center: true,
       maxScale: 4.0,
-      viewDistance: 40,
+      viewDistance: 3,
 
       transition: 'slide', // none/fade/slide/convex/concave/zoom
       
