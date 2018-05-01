@@ -268,6 +268,18 @@ body {
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
+@keyframes pulse-size-animation {
+  0% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1.2); } }
+
+@keyframes pulse-glow-animation {
+  from {
+    text-shadow: 0 0 20px rgba(0, 236, 204, 0); }
+  to {
+    text-shadow: 0 0 50px #00eccc; } }
+
 .reveal h1.space-up-down,
 .reveal h2.space-up-down,
 .reveal h3.space-up-down,
@@ -276,18 +288,19 @@ body {
 .reveal h6.space-up-down {
   margin: 70px 0; }
 
-.reveal .pulse-animation {
-  animation-name: pulse;
+.reveal .pulse-size {
+  animation-name: pulse-size-animation;
   animation-duration: 0.6s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0.8); }
-  100% {
-    transform: scale(1.2); } }
+.reveal .pulse-glow {
+  animation-name: pulse-glow-animation;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; }
 
 .reveal .react-color {
   color: #61dafb; }

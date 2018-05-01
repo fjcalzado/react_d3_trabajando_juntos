@@ -62,6 +62,25 @@ section.has-light-background {
 // ---------------------------------------------
 
 // Custom Classes
+
+@keyframes pulse-size-animation {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse-glow-animation {
+  from {
+    text-shadow: 0 0 20px transparentize(#00eccc, 1);
+  }
+  to {
+    text-shadow: 0 0 50px #00eccc;
+  }
+}
+
 .reveal{
   h1,
   h2,
@@ -72,24 +91,22 @@ section.has-light-background {
     &.space-up-down {
       margin: 70px 0;
     }
-}
+  }
 
-  .pulse-animation {
-    animation-name: pulse;
+  .pulse-size {
+    animation-name: pulse-size-animation;
     animation-duration: 0.6s;
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-
   }
 
-  @keyframes pulse {
-    0% {
-      transform: scale(0.8);
-    }
-    100% {
-      transform: scale(1.2);
-    }
+  .pulse-glow {
+    animation-name: pulse-glow-animation;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
   }
 
   .react-color {
