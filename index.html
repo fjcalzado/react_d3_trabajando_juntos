@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <link rel="stylesheet" href="css/reveal.css">
-  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+  <link rel="stylesheet" href="css/theme/fjcalzado.css" id="theme">
 
   <!-- Theme used for syntax highlighting of code -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
@@ -40,21 +40,86 @@
     <div class="slides">
 
       <!-- Slide de Apertura -->
-      <section>Slide 1</section>
-      
+      <section>
 
-      <section>Slide 2</section>
-      <section>
-          <p>Probando un link externo en iframe</p>
-          <a data-preview-link="true" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Link</a>
+        <object type="image/svg+xml" data="media/osc_logo.svg" height="120">Open South Code Logo</object>
+        <h1 class="space-up-down">
+          React y D3.js, trabajando juntos
+        </h1>
+        <a class="bottom" href="https://fjcalzado.surge.sh">fjcalzado.surge.sh</a>
+
+        <!-- Notas -->
+        <aside class="notes">
+          Notas de presentador Aqui:
+        </aside>
+
       </section>
+
+      <!-- Grupo Resumen Contenido -->
       <section>
-          <iframe style="background-color: white" src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%" height="600"></iframe>
+
+        <!-- Slide de Introducción -->
+        <section>
+          <object class="fragment" data-fragment-index="1" data-autoslide="2000"
+            type="image/svg+xml" data="media/react_logo.svg" height="180">React Logo</object>
+          <svg class="fragment pulse-animation" data-fragment-index="3" style="margin: 0 50px"
+            height="160" viewbox="0 0 16 16">
+            <path d="m417.59 527.35c-.653-.644-1.555-.965-2.707-.965-.319 0-.644.056-.976.167-.332.112-.64.262-.926.452-.285.189-.531.367-.737.533-.206.166-.401.343-.586.529-.185-.187-.381-.363-.586-.529-.206-.166-.451-.344-.737-.533-.285-.189-.594-.34-.926-.452-.332-.112-.657-.167-.976-.167-1.152 0-2.054.322-2.707.965-.653.644-.98 1.536-.98 2.678 0 .348.06.706.181 1.074.121.369.258.683.413.942.154.259.329.513.524.759.195.247.338.416.428.51.09.093.161.161.212.202l4.813 4.687c.093.094.206.14.339.14.134 0 .247-.047.339-.14l4.805-4.672c1.178-1.189 1.766-2.356 1.766-3.504 0-1.142-.327-2.035-.98-2.678" fill="#f11" transform="translate(-403.7-524.37)"/>
+          </svg>
+          <object class="fragment" data-fragment-index="2" data-autoslide="2000"
+            type="image/svg+xml" data="media/d3_logo.svg" height="180">React Logo</object>
+
+          <!-- Notas -->
+          <aside class="notes">
+              Notas de presentador Aqui:
+          </aside>
+        </section>
+
+        <section>
+          <h2>Contenido</h2>
+          <ul>
+            <li class="fragment">React</li>
+            <li class="fragment">D3.js</li>
+            <li class="fragment">Problemática React + D3.js</li>
+            <li class="fragment">Soluciones</li>
+          </ul>
+        </section>
+
       </section>
-      <section data-background="https://media.giphy.com/media/lueaDWxOz0LNS/giphy.gif">
+
+      <section>
+        <h2>Dynamic Child Components</h2>
+        <ul>
+          <li class="fragment visible" data-fragment-index="0">Unique 'key' to each child component rendered</li>
+          <li class="fragment visible" data-fragment-index="1">More efficient rendering</li>
+          <li class="fragment visible" data-fragment-index="2">Similar to D3's data joins</li>
+        </ul>
+        <small class="fragment visible current-fragment" data-fragment-index="3">
+          <a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a>
+        </small>
+      </section>
+
+      <section>
+        <p>Probando un link externo en iframe</p>
+        <a data-preview-link="true" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Link</a>
+      </section>
+
+      <section>
+        <h4>Embedded iFrame</h4>
+        <iframe style="background-color: white" data-src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%"
+          height="600"></iframe>
+      </section>
+
+      <section data-background-iframe="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">
+        <h4>iFrame en background</h4>
+      </section>
+
+      <section data-background-color="#fff" data-background="https://media.giphy.com/media/lueaDWxOz0LNS/giphy.gif">
         <h2>... pelea asegurada!</h2>
       </section>
+
       <section>Slide 6</section>
+
       <section>Slide 7</section>
     </div>
   </div>
@@ -68,16 +133,17 @@
     const masterKey = master ? Reveal.getQueryHash().k : null;
 
     Reveal.initialize({
+
       controls: true,
       controlsTutorial: true,
       progress: true,
-      history: false,
+      history: true, // Interesting while develop. Keeps url history.
       center: true,
       maxScale: 4.0,
-      viewDistance: 3,
+      viewDistance: 3,  // Lazy loading distance in slides. Number of slides ahead to load content and media.
 
       transition: 'slide', // none/fade/slide/convex/concave/zoom
-      
+
       multiplex: {
         secret: masterKey, // null or key, depending if client or master is connected.
         id: 'a45de79095c017f5', // id, obtained from socket.io server

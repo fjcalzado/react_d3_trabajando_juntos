@@ -1,0 +1,88 @@
+/**
+ * Custom theme mod by fjcalzado . Based on dark theme.
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+
+// Override theme settings (see ../template/settings.scss)
+
+// Background of the presentation
+$backgroundColor: #222;
+
+// Primary/body text
+$mainFont: "Montserrat", Helvetica, sans-serif;
+$mainFontSize: 38px;
+$mainColor: #eee;
+
+// Headings
+$headingFont: "Archivo Black", Helvetica, sans-serif;
+$headingColor: #fff;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 400;
+
+// Links and actions
+$linkColor: #00eccd;
+$linkColorHover: #00d0ec;
+
+// Text selection
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1em;
+
+section.has-light-background {
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #222;
+  }
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+// Custom Classes
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  &.space-up-down {
+    margin: 70px 0;
+  }
+}
+
+.pulse-animation {
+  animation-name: pulse;
+  animation-duration: 0.6s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1.2);
+  }
+}
