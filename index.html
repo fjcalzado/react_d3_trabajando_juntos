@@ -50,15 +50,15 @@
 
         <!-- Notas -->
         <aside class="notes">
-          Notas de presentador Aqui:
+          Notas Aqui:
         </aside>
 
       </section>
 
-      <!-- Grupo Resumen Contenido -->
+      <!-- GRUPO Resumen Contenido -->
       <section>
 
-        <!-- Slide de Introducción -->
+        <!-- SLIDE de Introducción -->
         <section>
           <object class="fragment" data-fragment-index="1" data-autoslide="2000"
             type="image/svg+xml" data="media/react_logo.svg" height="180">React Logo</object>
@@ -71,20 +71,194 @@
 
           <!-- Notas -->
           <aside class="notes">
-              Notas de presentador Aqui:
+              Notas Aqui:
           </aside>
         </section>
 
+        <!-- SLIDE de Contenido -->
         <section>
           <h2>Contenido</h2>
           <ul>
-            <li class="fragment">React</li>
-            <li class="fragment">D3.js</li>
+            <li class="fragment"><a href="https://reactjs.org/">React</a></li>
+            <li class="fragment"><a href="https://d3js.org/">D3.js</a></li>
             <li class="fragment">Problemática React + D3.js</li>
-            <li class="fragment">Soluciones</li>
+            <li class="fragment">Soluciones y ejemplos</li>
           </ul>
+
+          <!-- Notas -->
+          <aside class="notes">
+              Notas Aqui:
+          </aside>
         </section>
 
+      </section>
+
+      <!-- GRUPO React -->
+      <section>
+
+        <!-- SLIDE React -->
+        <section>
+          <div class="flex-row center">
+            <object type="image/svg+xml" data="media/react_logo.svg" height="75">React Logo</object>
+            <h2 class="header-in-row">React</h2>
+          </div>
+          <ul>
+            <li class="fragment">Construcción de Interfaces de Usuario</li>
+            <li class="fragment">Componentes reusables</li>
+            <li class="fragment">Declarativo, nos abstrae de modificar el DOM</li>
+            <li class="fragment"><i>DOM Virtual</i></li>
+          </ul>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>Librería tremendamente popular que nos permite construir interfaces de usuario.</li>
+              <li>Basado en componentes: pequeños elementos funcionales (un botón, un input, etc) que gracias a la composición forman componentes más complejos.</li>
+              <li>Declarativo, le decimos QUE queremos representar pero no COMO hacerlo, no hay que especificar cómo cambiar el DOM, React se encarga de eso por nosotros, nos abstrae de esa tarea.</li>
+              <li>Una de sus claves de éxito (inmutabilidad, one way, etc), la que nos interesa, es el manejo eficiente del DOM que realiza gracias al DOM VIRTUAL. Mutaciones eficientes en el DOM Real.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE DOM Real vs DOM Virtual -->
+        <section>
+          <div class="flex-row spaced">
+            <div>
+              <h3>DOM Real</h3>
+              <ul>
+                <li class="fragment">Navegador</li>
+                <li class="fragment">Pesado</li>
+                <li class="fragment">Cambios Costosos</li>
+              </ul>
+            </div>
+            <div>
+              <h3>DOM Virtual</h3>
+              <ul>
+                <li class="fragment">En Memoria</li>
+                <li class="fragment">Ligero</li>
+                <li class="fragment">Cambios Baratos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>El DOM real esta ligado al navegador</li>
+              <li>Es una entidad pesada, con una API grande a su alrededor</li>
+              <li>Las actualizaciones del DOM son operaciones costosas para el navegador. Mutar el DOM cada vez que el usuario interactúa con la UI puede ser ineficiente.</li>
+              <li>En cambio el DOM virtual es una representación en memoria del DOM real.</li>
+              <li>Es una entidad ligera y rápida</li>
+              <li>Y los cambio son por tanto mucho más baratos</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE Reconciliación -->
+        <section>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 960 560.5" style="enable-background:new 0 0 960 560.5;" xml:space="preserve">
+            <style type="text/css">
+              .st0{display:none;}
+              .st1{display:inline;fill:#20232A;}
+              .st2{fill:#FCFCFD;}
+              .st3{fill:#4F5565;}
+              .st4{fill:#FFFFFF;}
+              .st5{fill:#333842;}
+              .st6{fill:#00D4EC;}
+              .st7{fill:none;stroke:#FF55F7;stroke-width:5;stroke-miterlimit:10;}
+              .st8{fill:none;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+              .st9{fill:#FF55F7;stroke:#FF55F7;stroke-width:3;stroke-miterlimit:10;}
+              .st10{fill:#00D4EC;stroke:#00D4EC;stroke-width:3;stroke-miterlimit:10;}
+              .st11{font-family:'Montserrat';}
+              .st12{font-size:32px;}
+              .st13{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:3;stroke-miterlimit:10;}
+              .st14{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+              .st15{font-size:38px;}
+              .st16{fill:#00ECCC;}
+              .st17{opacity:0.4;}
+              .st18{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+              .st19{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:11.8286,11.8286;}
+            </style>
+            <g id="UI">
+              <g>
+                <path class="st2" d="M17.8,211.2v174.7c0,4.7,3.8,8.5,8.5,8.5h237.1c4.7,0,8.5-3.8,8.5-8.5V211.2H17.8z"/>
+                <path class="st3" d="M271.8,181.7c0-4.7-3.8-8.5-8.5-8.5H26.4c-4.7,0-8.5,3.8-8.5,8.5v29.2h254L271.8,181.7L271.8,181.7z"/>
+                <circle class="st4" cx="43" cy="192.2" r="6.2"/>
+                <circle class="st4" cx="63.6" cy="192.2" r="6.2"/>
+                <circle class="st4" cx="84.1" cy="192.2" r="6.2"/>
+                <path class="st5" d="M227.9,186h-113c-3.3,0-6.2,2.8-6.2,6.2c0,3.3,2.8,6.2,6.2,6.2h113.2c3.3,0,6.2-2.8,6.2-6.2
+                  C234.1,188.8,231.2,186,227.9,186z"/>
+                <rect x="44.7" y="234.7" class="st6" width="65.5" height="135.8"/>
+                <rect x="127.5" y="291.4" class="st6" width="117.5" height="79.3"/>
+                <rect x="127.5" y="234.7" class="st6" width="117.5" height="37"/>
+              </g>
+            </g>
+            <g id="DOM_Virtual">
+              <g class="fragment" data-fragment-index="1">
+                <line class="st7" x1="528.4" y1="280.3" x2="577.2" y2="352"/>
+                <circle class="st9" cx="575.9" cy="353.6" r="23.9"/>
+              </g>
+              <text transform="matrix(1 0 0 1 384.8565 108.3565)" class="st4 st11 st12">DOM Virtual</text>
+              <line class="st8" x1="480.5" y1="205.6" x2="430.7" y2="278.9"/>
+              <line class="st8" x1="430.7" y1="278.9" x2="372.7" y2="353.8"/>
+              <line class="st8" x1="430.7" y1="278.9" x2="478.5" y2="353.8"/>
+              <line class="st8" x1="480.5" y1="205.6" x2="529.4" y2="277.4"/>
+              <circle class="st10" cx="480.5" cy="205.6" r="23.9"/>
+              <circle class="st10" cx="528" cy="278.9" r="23.9"/>
+              <circle class="st10" cx="430.7" cy="278.9" r="23.9"/>
+              <circle class="st10" cx="478.5" cy="353.8" r="23.9"/>
+              <circle class="st10" cx="372.7" cy="353.8" r="23.9"/>
+            </g>
+            <g id="DOM_Real">
+              <g class="fragment" data-fragment-index="3">
+                <circle class="st9" cx="906.4" cy="352.8" r="23.9"/>
+                <line class="st7" x1="858.9" y1="279.5" x2="907.7" y2="351.3"/>
+              </g>
+              <text transform="matrix(1 0 0 1 728.8565 108.3565)" class="st4 st11 st12">DOM Real</text>
+              <circle class="st13" cx="811" cy="204.8" r="23.9"/>
+              <circle class="st13" cx="858.5" cy="278.2" r="23.9"/>
+              <circle class="st13" cx="761.2" cy="278.2" r="23.9"/>
+              <circle class="st13" cx="809" cy="353" r="23.9"/>
+              <circle class="st13" cx="703.2" cy="353" r="23.9"/>
+              <line class="st14" x1="811" y1="204.8" x2="761.2" y2="278.2"/>
+              <line class="st14" x1="761.2" y1="278.2" x2="703.2" y2="353"/>
+              <line class="st14" x1="761.2" y1="278.2" x2="809" y2="353"/>
+              <line class="st14" x1="811" y1="204.8" x2="859.9" y2="276.6"/>
+            </g>
+            <g id="Reconciliación">
+              <text class="fragment st4 st11 st15" data-fragment-index="2" transform="matrix(1 0 0 1 476.0545 538.8836)">RECONCILIACIÓN</text>
+              <g class="fragment" data-fragment-index="4">
+                <path class="st16" d="M695.5,481.4l-0.1-17.2c-0.1-7.6-6.3-13.8-13.8-13.9l-19-0.2c-7.6-0.1-13.7,6-13.7,13.6l10.8,0.2
+                  c1.1-2.2,3.7-3.5,6.4-3.4l12.1,0.2c3.8,0.1,6.9,3.2,6.9,7l0.1,10.3c0,3.8-3,6.8-6.8,6.8l-12.1-0.1c-2.6,0-5.4-1.5-6.6-3.6
+                  l-10.6-0.1c0,7.6,6.2,13.8,13.8,13.9l18.9,0.2C689.4,495.1,695.5,489,695.5,481.4z"/>
+                <path class="st16" d="M626.1,480.5c-1.2,2.1-4,3.5-6.6,3.5l-11.3-0.1c-3.9,0-7-3.2-7-7.1l-0.1-10.5c0-3.9,3.1-7,7-6.9l11.3,0.1
+                  c2.7,0,5.4,1.4,6.6,3.7l11,0.1c-0.1-7.7-6.4-14.1-14.1-14.2l-18.3-0.2c-7.7-0.1-14,6.1-13.9,13.9l0.1,17.5
+                  c0.1,7.7,6.4,14.1,14.1,14.2l18.3,0.2c7.7,0.1,14-6.1,13.9-13.8L626.1,480.5z"/>
+                <path class="st16" d="M622.5,472c0,2.6,2.1,4.7,4.7,4.8l31.5,0.1c2.6,0,4.8-2.1,4.8-4.7c0-2.6-2.1-4.7-4.7-4.7l-31.5-0.1
+                  C624.7,467.3,622.5,469.4,622.5,472z"/>
+              </g>
+              <g>
+                <g class="st17">
+                  <line class="st18" x1="643" y1="439.9" x2="643" y2="433.9"/>
+                  <line class="st19" x1="643" y1="422" x2="643" y2="25.8"/>
+                  <line class="st18" x1="643" y1="19.9" x2="643" y2="13.9"/>
+                </g>
+              </g>
+            </g>
+          </svg>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>Todos los cambios que generan nuestros componentes react, ya sea por interacción del usuario o cambios de estado, van a parar al DOM Virtual</li>
+              <li>Se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato.</li>
+              <li>En un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre ambos árboles y determina cuando y qué debe modificarse</li>
+              <li>Gracias a la reconciliación, los cambios se propagan al DOM real de manera eficiente, con el mínimo número posible.</li>
+              <li>Este proceso, por tanto, mantiene la sincronización entre ambos mundos.</li>
+            </ul>
+          </aside>
+        </section>
       </section>
 
       <section>
