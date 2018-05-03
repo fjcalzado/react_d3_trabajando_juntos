@@ -98,7 +98,7 @@
       <!-- GRUPO React -->
       <section>
 
-        <!-- SLIDE React -->
+        <!-- SLIDE React Intro -->
         <section>
           <div class="flex-row center">
             <object type="image/svg+xml" data="media/react_logo.svg" height="75">React Logo</object>
@@ -146,9 +146,9 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>El DOM real esta ligado al navegador</li>
+              <li>El DOM real esta ligado al navegador, es el documento que representa la página o aplicación que vemos en nuestro navegador.</li>
               <li>Es una entidad pesada, con una API grande a su alrededor</li>
-              <li>Las actualizaciones del DOM son operaciones costosas para el navegador. Mutar el DOM cada vez que el usuario interactúa con la UI puede ser ineficiente.</li>
+              <li>Las actualizaciones del DOM son operaciones costosas para el navegador. Por tanto, mutar el DOM cada vez que el usuario interactúa con la UI puede ser ineficiente.</li>
               <li>En cambio el DOM virtual es una representación en memoria del DOM real.</li>
               <li>Es una entidad ligera y rápida</li>
               <li>Y los cambio son por tanto mucho más baratos</li>
@@ -254,14 +254,122 @@
           <aside class="notes">
             <ul>
               <li>Todos los cambios que generan nuestros componentes react, ya sea por interacción del usuario o cambios de estado, van a parar al DOM Virtual</li>
-              <li>Se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato.</li>
-              <li>En un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre ambos árboles y determina cuando y qué debe modificarse</li>
-              <li>Gracias a la reconciliación, los cambios se propagan al DOM real de manera eficiente, con el mínimo número posible.</li>
-              <li>Este proceso, por tanto, mantiene la sincronización entre ambos mundos.</li>
+              <li>Los cambios se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato. Pero no promocionan diréctamente al DOM real.</li>
+              <li>Es React quien determina cuando se debe actualizar el DOM Real y en un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre ambos árboles y determina cuando y qué debe modificarse</li>
+              <li>Gracias a la reconciliación, los cambios se propagan al DOM real de manera eficiente, ya que se hacen en 'batch', con el mínimo número de operaciones posible.</li>
+              <li>Este proceso de reconciliación, por tanto, sirve como mecanismo de sincronización entre ambos mundos.</li>
+              <li>En RESUMEN: <b>React gestiona los cambios en el DOM y lo mantiene actualizado por nosotros de forma eficiente</b></li>
             </ul>
           </aside>
         </section>
       </section>
+
+      <!-- GRUPO D3.js -->
+      <section>
+
+        <!-- SLIDE D3.js Intro -->
+        <section>
+          <div class="flex-row center">
+            <object type="image/svg+xml" data="media/d3_logo.svg" height="75">D3.js Logo</object>
+            <h2 class="header-in-row">D3.js</h2>
+          </div>
+          <ul>
+            <li class="fragment">Visualización de datos</li>
+            <li class="fragment">API de bajo nivel. Potencia. Flexibilidad.</li>
+            <li class="fragment">Declarativo, nos abstrae de modificar el DOM</li>
+            <li class="fragment"><i>Data Joins</i>, uniones entre datos y elementos</li>
+            <li class="fragment">Tiempo real, animaciones, interactividad</li>
+          </ul>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>D3.js es un framework, o librería, para la visualización interactiva de datos. Data-Drive-Documents. Al igual que React, es tremendamente popular y se ha convertido en la referencia de facto en este terreno.</li>
+              <li>Está conformado por una API de bajo nivel lo que lo hace tremendamente potente y flexible. Es el secreto de su éxito. No es una librería de gráficos pre-hechos, enlatados. Aqui hay que picar, en cambio el límite es la creatividad de cada uno.</li>
+              <li>También es declarativo, nos abstrae del DOM. El se encargará de los cambios pertinentes, nosotros le indicamos QUE queremos representar. ¿Nos suena, verdad?</li>
+              <li>El mecanismo principal de D3, su core, son las uniones de datos o DATA JOINS. Nos permite establecer literalmente vinculos entre los datos que queremos representar y los elementos gráficos que van a representarlos.</li>
+              <li>Al estar datos y elementos vinculado, la visualización no tiene porque ser estática sino que puede responder a los cambios en los datos. Además, admite animaciones, interactividad, etc.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE Data Joins -->
+        <section>
+          <h2><i>Data Joins</i></h2>
+          <div class="flex-row spaced">
+            Primer Gráfico. Tabla con fila resaltada en verde (nueva). Flecha. Circulo en color.
+          </div>
+          <div class="flex-row spaced">
+            Segundo Gráfico. Tabla con fila resaltad en rojo (dato eliminado). Flecha. Cirulo sin relleno solo trazo punteado (eliminado, ausente).
+          </div>
+          <div class="flex-row spaced">
+            Tercer Gráfico. Tabla con fila resaltada en azul (datos actualizados). Flecha. Circulo en color cambiado y más grande (tamaño cambia).
+          </div>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>Vamos a hacer un ejercicio mental muy sencillo para entender rápidamente las uniones de datos.</li>
+              <li>Imaginemos que tenemos una tabla de paises con datos como por ejemplo, número de habitantes, renta per cápita, esperanza de vida, etc.</li>
+              <li>Si quisieramos representar estos datos gráficamente, lo primero que pensaríamos sería: por cada fila, es decir por cada pais, voy a pintar un círculo por ejemplo.</li>
+              <li>El tamaño de ese círculo vendrá dado por el número de habitantes. El color, por el continente al que pertenece.</li>
+              <li>Finalmente su posición vendrá dada por su riqueza, los paises más ricos hacia la derecha, los más saludables (esperanza de vida) hacia arriba.</li>
+              <li>COROLARIO: Hemos asociado cada fila de la tabla, cada pais, a un círculo (que es el elemento que va a representarlo en el gráfico). Y hemos dado forma, color y posición a ese círculo según los datos.</li>
+              <li>Esta es la forma en la que se trabaja en D3.js.</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE Selecciones -->
+        <section>
+          <h2>Selecciones</h2>
+            <pre><code class="code-area js" data-trim data-noescape>
+              const paises = [...];
+              const circulos = chart.selectAll("circle")
+                  .data(paises)
+                  .enter()
+                  .append("circle")
+                    .attr("cx", pais => xScale(pais.poderAdquisitivo))
+                    .attr("cy", pais => yScale(pais.esperanzaVida))
+                    .attr("r", pais => areaScale(pais.habitantes))
+                    .attr("fill", pais => color(pais.continente));
+            </code></pre>
+            <div>
+              AQUI PODRIAMOS PONER GRAFICO BOSTOCK DATA JOIN
+            </div>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>¿Cómo se expresan o aplican las uniones de datos en código? Mediantes las selecciones. El core de D3.js incorpora funcionalidad para seleccionar elementos del DOM, muy al estilo de JQuery.</li>
+              <li>En primer lugar, seleccionamos todos los elementos de tipo círculo. D3 es compatible con los selectores de css que conocemos.</li>
+              <li>A continuación establecemos el data join, vinculamos los datos a nuestros elementos seleccionados. Se hace con el método data(). Los datos siempre serán un array, cada item del array se vincula a un elemento mediante una función de mapeo que por defecto es el índice.</li>
+              <li>Por último operamos sobre el sub-grupo que nos interesa, enter, exit o update. En nuestro caso, añadimos (append) un elemento círculo por cada pais.</li>
+              <li>A la selección establecida vamos aplicando las propiedades para darle una posición, tamaño y color en función de los datos del pais.</li>
+              <li>COROLARIO: (gráfico bostock) D3 cuenta con un potente mecanismo, los data joins, que en el fondo sirven como algoritmo diff mediante el cual mutar el DOM de forma más eficiente, ¿nos suena verdad?</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE Sample -->
+        <section>
+          <h4>Riqueza por Paises</h4>
+          <iframe style="background-color: white" data-src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%" height="600"></iframe>
+          <a href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Github</a>
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>¿Cómo se expresan o aplican las uniones de datos en código? Mediantes las selecciones. El core de D3.js incorpora funcionalidad para seleccionar elementos del DOM, muy al estilo de JQuery.</li>
+            </ul>
+          </aside>
+        </section>
+
+      </section>
+
+
+
+
+
 
       <section>
         <h2>Dynamic Child Components</h2>
@@ -278,12 +386,6 @@
       <section>
         <p>Probando un link externo en iframe</p>
         <a data-preview-link="true" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Link</a>
-      </section>
-
-      <section>
-        <h4>Embedded iFrame</h4>
-        <iframe style="background-color: white" data-src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%"
-          height="600"></iframe>
       </section>
 
       <section data-background-iframe="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">

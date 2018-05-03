@@ -278,7 +278,7 @@ body {
   from {
     text-shadow: 0 0 20px rgba(0, 236, 204, 0); }
   to {
-    text-shadow: 0 0 50px #00eccc; } }
+    text-shadow: 0 0 50px #00eccc, 0 0 60px white; } }
 
 .reveal h1.space-up-down,
 .reveal h2.space-up-down,
@@ -319,3 +319,8 @@ body {
     justify-content: space-around; }
   .reveal .flex-row .header-in-row {
     margin: 0 20px; }
+
+.reveal .code-area {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(98, 107, 129, 0.5); }

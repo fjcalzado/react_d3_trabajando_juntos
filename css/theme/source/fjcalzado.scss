@@ -53,7 +53,7 @@ section.has-light-background {
   h4,
   h5,
   h6 {
-    color: #20232a;
+    color: $backgroundColor;
   }
 }
 
@@ -74,10 +74,10 @@ section.has-light-background {
 
 @keyframes pulse-glow-animation {
   from {
-    text-shadow: 0 0 20px transparentize(#00eccc, 1);
+    text-shadow: 0 0 20px transparentize($linkColor, 1);
   }
   to {
-    text-shadow: 0 0 50px #00eccc;
+    text-shadow: 0 0 50px transparentize($linkColor, 0), 0 0 60px white;
   }
 }
 
@@ -134,6 +134,12 @@ section.has-light-background {
     .header-in-row {
       margin: 0 $blockMargin;
     }
+  }
+
+  .code-area {
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: transparentize(lighten($backgroundColor, 30%), 0.5);
   }
 }
 
