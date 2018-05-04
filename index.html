@@ -47,7 +47,7 @@
           React y D3.js, trabajando juntos
         </h1>
         <div class="pulse-glow">
-            <a class="bottom" href="https://fjcalzado.surge.sh">fjcalzado.surge.sh</a>
+          <a target="_blank" class="bottom" href="https://fjcalzado.surge.sh">fjcalzado.surge.sh</a>
         </div>
 
         <!-- Notas -->
@@ -81,8 +81,8 @@
         <section>
           <h2>Contenido</h2>
           <ul>
-            <li class="fragment"><a href="https://reactjs.org/">React</a></li>
-            <li class="fragment"><a href="https://d3js.org/">D3.js</a></li>
+            <li class="fragment"><a target="_blank" href="https://reactjs.org/">React</a></li>
+            <li class="fragment"><a target="_blank" href="https://d3js.org/">D3.js</a></li>
             <li class="fragment">Problemática React + D3.js</li>
             <li class="fragment">Soluciones y ejemplos</li>
           </ul>
@@ -159,29 +159,31 @@
         <!-- SLIDE Reconciliación -->
         <section>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            viewBox="0 0 960 560.5" style="enable-background:new 0 0 960 560.5;" xml:space="preserve">
-            <style type="text/css">
-              .st0{display:none;}
-              .st1{display:inline;fill:#20232A;}
-              .st2{fill:#FCFCFD;}
-              .st3{fill:#4F5565;}
-              .st4{fill:#FFFFFF;}
-              .st5{fill:#333842;}
-              .st6{fill:#00D4EC;}
-              .st7{fill:none;stroke:#FF55F7;stroke-width:5;stroke-miterlimit:10;}
-              .st8{fill:none;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
-              .st9{fill:#FF55F7;stroke:#FF55F7;stroke-width:3;stroke-miterlimit:10;}
-              .st10{fill:#00D4EC;stroke:#00D4EC;stroke-width:3;stroke-miterlimit:10;}
-              .st11{font-family:'Montserrat';}
-              .st12{font-size:32px;}
-              .st13{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:3;stroke-miterlimit:10;}
-              .st14{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
-              .st15{font-size:38px;}
-              .st16{fill:#00ECCC;}
-              .st17{opacity:0.4;}
-              .st18{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
-              .st19{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:11.8286,11.8286;}
-            </style>
+            viewbox="0 0 960 560.5" style="enable-background:new 0 0 960 560.5;" xml:space="preserve">
+            <defs>
+              <style type="text/css">
+                .st0{display:none;}
+                .st1{display:inline;fill:#20232A;}
+                .st2{fill:#FCFCFD;}
+                .st3{fill:#4F5565;}
+                .st4{fill:#FFFFFF;}
+                .st5{fill:#333842;}
+                .st6{fill:#00D4EC;}
+                .st7{fill:none;stroke:#FF55F7;stroke-width:5;stroke-miterlimit:10;}
+                .st8{fill:none;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+                .st9{fill:#FF55F7;stroke:#FF55F7;stroke-width:3;stroke-miterlimit:10;}
+                .st10{fill:#00D4EC;stroke:#00D4EC;stroke-width:3;stroke-miterlimit:10;}
+                .st11{font-family:'Montserrat';}
+                .st12{font-size:32px;}
+                .st13{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:3;stroke-miterlimit:10;}
+                .st14{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+                .st15{font-size:38px;}
+                .st16{fill:#00ECCC;}
+                .st17{opacity:0.4;}
+                .st18{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+                .st19{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:11.8286,11.8286;}
+              </style>
+            </defs>
             <g id="UI">
               <g>
                 <path class="st2" d="M17.8,211.2v174.7c0,4.7,3.8,8.5,8.5,8.5h237.1c4.7,0,8.5-3.8,8.5-8.5V211.2H17.8z"/>
@@ -278,7 +280,7 @@
             <li class="fragment">API de bajo nivel. Potencia. Flexibilidad.</li>
             <li class="fragment">Declarativo, nos abstrae de modificar el DOM</li>
             <li class="fragment"><i>Data Joins</i>, uniones entre datos y elementos</li>
-            <li class="fragment">Tiempo real, animaciones, interactividad</li>
+            <li class="fragment">Tiempo real | Animaciones | Interactividad</li>
           </ul>
 
           <!-- Notas -->
@@ -296,15 +298,125 @@
         <!-- SLIDE Data Joins -->
         <section>
           <h2><i>Data Joins</i></h2>
-          <div class="flex-row spaced">
-            Primer Gráfico. Tabla con fila resaltada en verde (nueva). Flecha. Circulo en color.
-          </div>
-          <div class="flex-row spaced">
-            Segundo Gráfico. Tabla con fila resaltad en rojo (dato eliminado). Flecha. Cirulo sin relleno solo trazo punteado (eliminado, ausente).
-          </div>
-          <div class="flex-row spaced">
-            Tercer Gráfico. Tabla con fila resaltada en azul (datos actualizados). Flecha. Circulo en color cambiado y más grande (tamaño cambia).
-          </div>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           height="600" viewbox="0 0 960 700" style="enable-background:new 0 0 960 700;" xml:space="preserve">
+          <defs>
+            <style type="text/css">
+              .stb2{fill:#20232A;}
+              .stb3{fill:#4F5565;}
+              .stb4{fill:#FFFFFF;}
+              .stb5{fill:#22B573;}
+              .stb6{fill:#006837;}
+              .stb7{fill:none;stroke:#006837;stroke-width:8;stroke-miterlimit:10;}
+              .stb8{fill:none;stroke:#B7B7B7;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
+              .stb9{fill:#00D4EC;stroke:#007E84;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
+              .stb10{font-family:'Montserrat';}
+              .stb11{font-size:38px;}
+              .stb12{fill:#F7D9B0;}
+              .stb13{fill:#FBB03B;}
+              .stb14{fill:none;stroke:#F7931E;stroke-width:5;stroke-miterlimit:10;}
+              .stb15{fill:#FF55F7;stroke:#913391;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;}
+              .stb16{fill:#EA6A73;}
+              .stb17{fill:#C1272D;}
+              .stb18{fill:none;stroke:#C1272D;stroke-width:8;stroke-miterlimit:10;}
+              .stb19{fill:none;stroke:#9BAAC9;stroke-width:4;stroke-linecap:round;stroke-miterlimit:10;stroke-dasharray:12.1659,12.1659;}
+            </style>
+          </defs>
+          <g id="Enter" class="fragment" data-fragment-index="1">
+            <g id="Tabla_1">
+              <path class="stb3" d="M281.7,67.3c0-3.3-2.7-5.9-6-5.9H109.9c-3.3,0-5.9,2.7-5.9,5.9v20.4h177.8L281.7,67.3L281.7,67.3z"/>
+              <g>
+                <rect x="104.4" y="88.4" class="stb4" width="176.9" height="28.3"/>
+                <path class="stb3" d="M280.8,88.9v27.3H104.9V88.9H280.8 M281.8,87.9H103.9v29.3h177.9V87.9L281.8,87.9z"/>
+              </g>
+              <g>
+                <path class="stb4" d="M109.9,171.6c-3,0-5.5-2.5-5.5-5.5v-22.8h176.9v22.8c0,3-2.5,5.5-5.5,5.5H109.9z"/>
+                <path class="stb3" d="M280.8,143.9v22.3c0,2.8-2.2,5-5,5H109.9c-2.8,0-5-2.2-5-5v-22.3H280.8 M281.8,142.9H103.9v23.3
+                  c0,3.3,2.7,6,6,6h165.9c3.3,0,6-2.7,6-6V142.9L281.8,142.9z"/>
+              </g>
+              <g>
+                <rect x="118.6" y="112.6" class="stb5" width="173.9" height="34"/>
+                <path class="stb6" d="M290.5,114.6v30H120.6v-30H290.5 M294.5,110.6H116.6v38h177.9V110.6L294.5,110.6z"/>
+              </g>
+              <g>
+                <g>
+                  <line class="stb7" x1="89.7" y1="118.5" x2="89.7" y2="142.3"/>
+                </g>
+                <line class="stb7" x1="77.7" y1="130.4" x2="101.7" y2="130.4"/>
+              </g>
+            </g>
+            <g id="Flecha_1">
+              <line class="stb8" x1="384.7" y1="118.5" x2="632.7" y2="118.5"/>
+              <line class="stb8" x1="632.7" y1="118.5" x2="614.9" y2="100.7"/>
+              <line class="stb8" x1="614.9" y1="136.3" x2="632.7" y2="118.5"/>
+            </g>
+            <circle id="Circulo_1" class="stb9" cx="786.3" cy="118.5" r="42.5"/>
+          </g>
+          <g id="Update" class="fragment" data-fragment-index="2">
+            <g id="Tabla_2">
+              <path class="stb3" d="M281.7,289.8c0-3.3-2.7-5.9-6-5.9H109.9c-3.3,0-5.9,2.7-5.9,5.9v20.4h177.8L281.7,289.8L281.7,289.8z"/>
+              <g>
+                <rect x="104.4" y="310.9" class="stb4" width="176.9" height="28.3"/>
+                <path class="stb3" d="M280.8,311.4v27.3H104.9v-27.3H280.8 M281.8,310.4H103.9v29.3h177.9V310.4L281.8,310.4z"/>
+              </g>
+              <g>
+                <path class="stb4" d="M109.9,394.1c-3,0-5.5-2.5-5.5-5.5v-22.8h176.9v22.8c0,3-2.5,5.5-5.5,5.5H109.9z"/>
+                <path class="stb3" d="M280.8,366.4v22.3c0,2.8-2.2,5-5,5H109.9c-2.8,0-5-2.2-5-5v-22.3H280.8 M281.8,365.4H103.9v23.3
+                  c0,3.3,2.7,6,6,6h165.9c3.3,0,6-2.7,6-6V365.4L281.8,365.4z"/>
+              </g>
+              <g>
+                <rect x="96.5" y="335.1" class="stb12" width="190" height="34"/>
+                <path class="stb13" d="M284.5,337.1v30h-186v-30H284.5 M288.5,333.1h-194v38h194V333.1L288.5,333.1z"/>
+              </g>
+              <g>
+                <line class="stb14" x1="110.7" y1="351.9" x2="134.7" y2="351.9"/>
+                <line class="stb14" x1="114" y1="360.5" x2="131" y2="343.5"/>
+                <line class="stb14" x1="122.8" y1="364.1" x2="122.8" y2="340.1"/>
+                <line class="stb14" x1="131.2" y1="360.5" x2="114.3" y2="343.6"/>
+              </g>
+            </g>
+            <g id="Flecha_2">
+              <line class="stb8" x1="384.7" y1="341" x2="632.7" y2="341"/>
+              <line class="stb8" x1="632.7" y1="341" x2="614.9" y2="323.2"/>
+              <line class="stb8" x1="614.9" y1="358.8" x2="632.7" y2="341"/>
+            </g>
+            <circle id="Circulo_2" class="stb15" cx="786.3" cy="341" r="65.8"/>
+          </g>
+          <g id="Exit" class="fragment" data-fragment-index="3">
+            <g id="Tabla_3">
+              <path class="stb3" d="M281.7,510.8c0-3.3-2.7-5.9-6-5.9H109.9c-3.3,0-5.9,2.7-5.9,5.9v20.4h177.8L281.7,510.8L281.7,510.8z"/>
+              <g>
+                <rect x="104.4" y="531.9" class="stb4" width="176.9" height="28.3"/>
+                <path class="stb3" d="M280.8,532.4v27.3H104.9v-27.3H280.8 M281.8,531.4H103.9v29.3h177.9V531.4L281.8,531.4z"/>
+              </g>
+              <g>
+                <path class="stb4" d="M109.9,615.1c-3,0-5.5-2.5-5.5-5.5v-22.8h176.9v22.8c0,3-2.5,5.5-5.5,5.5H109.9z"/>
+                <path class="stb3" d="M280.8,587.4v22.3c0,2.8-2.2,5-5,5H109.9c-2.8,0-5-2.2-5-5v-22.3H280.8 M281.8,586.4H103.9v23.3
+                  c0,3.3,2.7,6,6,6h165.9c3.3,0,6-2.7,6-6V586.4L281.8,586.4z"/>
+              </g>
+              <g>
+                <rect x="90.6" y="556.1" class="stb16" width="173.9" height="34"/>
+                <path class="stb17" d="M262.5,558.1v30H92.6v-30H262.5 M266.5,554.1H88.6v38h177.9V554.1L266.5,554.1z"/>
+              </g>
+              <g>
+                <line class="stb18" x1="279.7" y1="573.9" x2="303.7" y2="573.9"/>
+              </g>
+            </g>
+            <g id="Flecha_3">
+              <line class="stb8" x1="384.7" y1="562" x2="632.7" y2="562"/>
+              <line class="stb8" x1="632.7" y1="562" x2="614.9" y2="544.2"/>
+              <line class="stb8" x1="614.9" y1="579.8" x2="632.7" y2="562"/>
+            </g>
+            <g id="Circulo_3">
+                <ellipse transform="matrix(0.7071 -0.7071 0.7071 0.7071 -167.0898 720.6096)" class="stb19" cx="786.3" cy="562" rx="65.8" ry="65.8"/>
+            </g>
+          </g>
+          <g id="Textos" class="fragment" data-fragment-index="4">
+            <text transform="matrix(1 0 0 1 458.5232 198.0232)" class="stb4 stb10 stb11">Enter</text>
+            <text transform="matrix(1 0 0 1 436.8565 422.6898)" class="stb4 stb10 stb11">Update</text>
+            <text transform="matrix(1 0 0 1 465.5233 641.3565)" class="stb4 stb10 stb11">Exit</text>
+          </g>
+          </svg>
 
           <!-- Notas -->
           <aside class="notes">
@@ -315,7 +427,16 @@
               <li>El tamaño de ese círculo vendrá dado por el número de habitantes. El color, por el continente al que pertenece.</li>
               <li>Finalmente su posición vendrá dada por su riqueza, los paises más ricos hacia la derecha, los más saludables (esperanza de vida) hacia arriba.</li>
               <li>COROLARIO: Hemos asociado cada fila de la tabla, cada pais, a un círculo (que es el elemento que va a representarlo en el gráfico). Y hemos dado forma, color y posición a ese círculo según los datos.</li>
-              <li>Esta es la forma en la que se trabaja en D3.js.</li>
+              <li>
+                Esta es la forma en la que se trabaja en D3.js, y los 3 escenarios representados son intencionados ya que D3 distingue entre estas 3 circunstancias entro de un data join:
+                <ul>
+                  <li>Nuevos datos se vinculan a nuevos elementos. Se le conoce como sub-grupo ENTER.</li>
+                  <li>Cuando un dato se modifica, también lo hará el elemento asociado. Sub-grupo UPDATE.</li>
+                  <li>Datos eliminados generan elementos huérfanos, que por lo general acaban siendo borrados del gráfico. Sub-grupo EXIT.</li>
+                </ul>
+              </li>
+              <li>A esto se le conoce como patrón ENTER-UPDATE-EXIT.</li>
+
             </ul>
           </aside>
         </section>
@@ -334,8 +455,158 @@
                     .attr("r", pais => areaScale(pais.habitantes))
                     .attr("fill", pais => color(pais.continente));
             </code></pre>
-            <div>
-              AQUI PODRIAMOS PONER GRAFICO BOSTOCK DATA JOIN
+
+            <div class="fragment" style="margin-top:3rem">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="120"
+                style="margin: 1em 0px 1em -40px;">
+                <defs>
+                  <style>
+                    svg {font: 10px sans-serif;}
+                    .join,.link,.node rect {fill: none;stroke-width: 1.5px;}
+                    .link {stroke: #969696;}
+                    .node rect {fill: white;}
+                    .node .element rect {fill: #bdbdbd;stroke: none;}
+                    .node .datum rect {fill: #d9d9d9;stroke: none;}
+                    .node .key rect {fill: #00eccc;stroke: none;}
+                    .link .to-key,.join {stroke: #00eccc;}
+                    .join {stroke-dasharray: 2, 2;}
+                    .link .from-data {stroke: #3182bd;}
+                    .link .from-selection {stroke: #3182bd;}
+                  </style>
+                </defs>
+                <g class="left" transform="translate(40,0)">
+                  <g class="link">
+                    <path class="to-array from-selection" d="M51.4677734375,60C75.73388671875,60 75.73388671875,60 100,60"></path>
+                    <path class="to-element from-array" d="M137.576171875,60C168.7880859375,60 168.7880859375,12 200,12"></path>
+                    <path class="to-element from-array" d="M137.576171875,60C168.7880859375,60 168.7880859375,36 200,36"></path>
+                    <path class="to-element from-array" d="M137.576171875,60C168.7880859375,60 168.7880859375,60 200,60"></path>
+                    <path class="to-element from-array" d="M137.576171875,60C168.7880859375,60 168.7880859375,84 200,84"></path>
+                    <path class="to-element from-array" d="M137.576171875,60C168.7880859375,60 168.7880859375,108 200,108"></path>
+                    <path class="to-key from-element" d="M247.576171875,12C273.7880859375,12 273.7880859375,12 300,12"></path>
+                    <path class="to-key from-element" d="M247.576171875,36C273.7880859375,36 273.7880859375,36 300,36"></path>
+                    <path class="to-key from-element" d="M247.576171875,60C273.7880859375,60 273.7880859375,60 300,60"></path>
+                    <path class="to-key from-element" d="M247.576171875,84C273.7880859375,84 273.7880859375,84 300,84"></path>
+                    <path class="to-key from-element" d="M247.576171875,108C273.7880859375,108 273.7880859375,108 300,108"></path>
+                  </g>
+                  <g class="node">
+                    <g class="selection" transform="translate(0,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="51.4677734375"></rect>
+                      <text dy=".35em" x="6">selection</text>
+                    </g>
+                    <g class="array" transform="translate(100,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="37.576171875"></rect>
+                      <text dy=".35em" x="6">group</text>
+                    </g>
+                    <g class="element" transform="translate(200,12)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
+                      <text dy=".35em" x="6">element</text>
+                    </g>
+                    <g class="key" transform="translate(300,12)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
+                      <path class="join" d="M32,0C60,0 60,48 88,48"></path>
+                      <text dy=".35em" x="6">A</text>
+                    </g>
+                    <g class="element" transform="translate(200,36)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
+                      <text dy=".35em" x="6">element</text>
+                    </g>
+                    <g class="key" transform="translate(300,36)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
+                      <text dy=".35em" x="6">B</text>
+                    </g>
+                    <g class="element" transform="translate(200,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
+                      <text dy=".35em" x="6">element</text>
+                    </g>
+                    <g class="key" transform="translate(300,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
+                      <text dy=".35em" x="6">C</text>
+                    </g>
+                    <g class="element" transform="translate(200,84)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
+                      <text dy=".35em" x="6">element</text>
+                    </g>
+                    <g class="key" transform="translate(300,84)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
+                      <text dy=".35em" x="6">D</text>
+                    </g>
+                    <g class="element" transform="translate(200,108)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
+                      <text dy=".35em" x="6">element</text>
+                    </g>
+                    <g class="key" transform="translate(300,108)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
+                      <path class="join" d="M32,0C60,0 60,-72 88,-72"></path>
+                      <text dy=".35em" x="6">E</text>
+                    </g>
+                  </g>
+                </g>
+                <g class="right" transform="translate(760,0)">
+                  <g class="link">
+                    <path class="to-array from-data" d="M-32,60C-66,60 -66,60 -100,60"></path>
+                    <path class="to-datum from-array" d="M-134.783203125,60C-167.3916015625,60 -167.3916015625,12 -200,12"></path>
+                    <path class="to-datum from-array" d="M-134.783203125,60C-167.3916015625,60 -167.3916015625,36 -200,36"></path>
+                    <path class="to-datum from-array" d="M-134.783203125,60C-167.3916015625,60 -167.3916015625,60 -200,60"></path>
+                    <path class="to-datum from-array" d="M-134.783203125,60C-167.3916015625,60 -167.3916015625,84 -200,84"></path>
+                    <path class="to-datum from-array" d="M-134.783203125,60C-167.3916015625,60 -167.3916015625,108 -200,108"></path>
+                    <path class="to-key from-datum" d="M-232,12C-266,12 -266,12 -300,12"></path>
+                    <path class="to-key from-datum" d="M-232,36C-266,36 -266,36 -300,36"></path>
+                    <path class="to-key from-datum" d="M-232,60C-266,60 -266,60 -300,60"></path>
+                    <path class="to-key from-datum" d="M-232,84C-266,84 -266,84 -300,84"></path>
+                    <path class="to-key from-datum" d="M-232,108C-266,108 -266,108 -300,108"></path>
+                  </g>
+                  <g class="node">
+                    <g class="data" transform="translate(0,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">data</text>
+                    </g>
+                    <g class="array" transform="translate(-100,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="34.783203125" x="-34.783203125"></rect>
+                      <text dy=".35em" x="-28.783203125">array</text>
+                    </g>
+                    <g class="datum" transform="translate(-200,12)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">Y</text>
+                    </g>
+                    <g class="key" transform="translate(-300,12)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">Y</text>
+                    </g>
+                    <g class="datum" transform="translate(-200,36)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">E</text>
+                    </g>
+                    <g class="key" transform="translate(-300,36)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">E</text>
+                    </g>
+                    <g class="datum" transform="translate(-200,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">A</text>
+                    </g>
+                    <g class="key" transform="translate(-300,60)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">A</text>
+                    </g>
+                    <g class="datum" transform="translate(-200,84)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">O</text>
+                    </g>
+                    <g class="key" transform="translate(-300,84)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">O</text>
+                    </g>
+                    <g class="datum" transform="translate(-200,108)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">I</text>
+                    </g>
+                    <g class="key" transform="translate(-300,108)">
+                      <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
+                      <text dy=".35em" x="-26">I</text>
+                    </g>
+                  </g>
+                </g>
+              </svg>
             </div>
 
           <!-- Notas -->
@@ -346,7 +617,8 @@
               <li>A continuación establecemos el data join, vinculamos los datos a nuestros elementos seleccionados. Se hace con el método data(). Los datos siempre serán un array, cada item del array se vincula a un elemento mediante una función de mapeo que por defecto es el índice.</li>
               <li>Por último operamos sobre el sub-grupo que nos interesa, enter, exit o update. En nuestro caso, añadimos (append) un elemento círculo por cada pais.</li>
               <li>A la selección establecida vamos aplicando las propiedades para darle una posición, tamaño y color en función de los datos del pais.</li>
-              <li>COROLARIO: (gráfico bostock) D3 cuenta con un potente mecanismo, los data joins, que en el fondo sirven como algoritmo diff mediante el cual mutar el DOM de forma más eficiente, ¿nos suena verdad?</li>
+              <li>COROLARIO: (gráfico bostock) Con este ejemplo lo que pretendía ilustrar es que D3 cuenta con un potente mecanismo, los data joins, para gestionar el DOM por nosotros. ¿nos suena verdad?</li>
+              <li>En el fondo, estas uniones entre datos y elementos sirven como algoritmo diff mediante el cual evaluar que parte del DOM hay que mutar, y gracias al patrón enter-update-exit, actuar de un modo u otro. Asi se puede ser mucho más preciso y eficiente.</li>
             </ul>
           </aside>
         </section>
@@ -354,17 +626,73 @@
         <!-- SLIDE Sample -->
         <section>
           <h4>Riqueza por Paises</h4>
-          <iframe style="background-color: white" data-src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%" height="600"></iframe>
-          <a href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Github</a>
+          <iframe style="background-color: white" data-src="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/" width="100%" height="560"></iframe>
+          <a target="_blank" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Github</a>
+
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>¿Cómo se expresan o aplican las uniones de datos en código? Mediantes las selecciones. El core de D3.js incorpora funcionalidad para seleccionar elementos del DOM, muy al estilo de JQuery.</li>
+              <li>Por si teníais curiosidad, aqui tenéis el ejemplo anterior implementado con D3 de verdad.</li>
+              <li>En este caso sólo se ha operado sobre el sub-grupo ENTER, es decir, sólo se añaden nuevos círculos con cada pais en la lista, ya que los datos son estáticos, no van a cambiar.</li>
+              <li>No obstante si que se han añadido eventos para mostrar un popup animado, etc, para que veáis que D3 permite interacción con los elementos.</li>
             </ul>
           </aside>
         </section>
 
       </section>
+
+      <!-- GRUPO Pugna por el DOM -->
+      <section>
+
+        <!-- SLIDE Qué Sucederá -->
+        <section>
+          <div class="flex-row spaced">
+            <object type="image/svg+xml" data="media/react_logo.svg" height="100">React Logo</object>
+            <svg class="fragment" data-fragment-index="1" width="100" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 252 39.51">
+              <defs>
+                <style>
+                  .flecha{fill:none;stroke:#b7b7b7;stroke-linecap:round;stroke-miterlimit:10;stroke-width:4px;}
+                </style>
+              </defs>
+              <g id="Flecha_4">
+                <line class="flecha" x1="2" y1="19.76" x2="250" y2="19.76"/>
+                <line class="flecha" x1="250" y1="19.76" x2="232.24" y2="2"/>
+                <line class="flecha" x1="232.24" y1="37.51" x2="250" y2="19.76"/>
+              </g>
+            </svg>
+            <h2 style="margin:0;padding:15px;border:2px solid white;border-radius:10px;">DOM</h2>
+            <svg class="fragment" data-fragment-index="1" style="transform:rotate(180deg)" width="100" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 252 39.51">
+              <defs>
+                <style>
+                  .flecha{fill:none;stroke:#b7b7b7;stroke-linecap:round;stroke-miterlimit:10;stroke-width:4px;}
+                </style>
+              </defs>
+              <g id="Flecha_5">
+                <line class="flecha" x1="2" y1="19.76" x2="250" y2="19.76"/>
+                <line class="flecha" x1="250" y1="19.76" x2="232.24" y2="2"/>
+                <line class="flecha" x1="232.24" y1="37.51" x2="250" y2="19.76"/>
+              </g>
+            </svg>
+            <object type="image/svg+xml" data="media/d3_logo.svg" height="100">React Logo</object>
+          </div>
+
+          <!-- Notas -->
+          <aside class="notes">
+            <ul>
+              <li>Resumen de lo visto hasta ahora en 1 frase: Tanto React como D3 tienen en común la gestión eficiente del DOM. En el caso de React mediante el DOM virtual, y en el caso de D3 gracias a las selecciones, los data joins y el patrón enter-update-exit.</li>
+              <li>Pero ambos van a controlar el DOM real por nosotros.</li>
+              <li>¿Qué pensáis que sucederá entonces si los ponemos a trabajar juntos? ¿Lo adivináis? Ya os lo digo yo ...</li>
+            </ul>
+          </aside>
+        </section>
+
+        <!-- SLIDE A tortas -->
+        <section data-background="./media/fight.gif">
+          <h2>¡A tortas por el DOM!</h2>
+        </section>
+
+      </section>
+
 
 
 
