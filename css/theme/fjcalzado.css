@@ -288,6 +288,9 @@ body {
 .reveal h6.space-up-down {
   margin: 70px 0; }
 
+.reveal .text-shadow {
+  text-shadow: 0 0 20px #20232a, 0 0 5px #20232a; }
+
 .reveal .pulse-size {
   animation-name: pulse-size-animation;
   animation-duration: 0.6s;

@@ -93,6 +93,10 @@ section.has-light-background {
     }
   }
 
+  .text-shadow {
+    text-shadow: 0 0 20px $backgroundColor, 0 0 5px $backgroundColor;
+  }
+
   .pulse-size {
     animation-name: pulse-size-animation;
     animation-duration: 0.6s;
