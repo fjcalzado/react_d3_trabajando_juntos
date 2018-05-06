@@ -3,15 +3,6 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Archivo+Black");
-section.has-light-background,
-section.has-light-background h1,
-section.has-light-background h2,
-section.has-light-background h3,
-section.has-light-background h4,
-section.has-light-background h5,
-section.has-light-background h6 {
-  color: #20232a; }
-
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -219,7 +210,7 @@ body {
   transition: color .15s ease; }
 
 .reveal a:hover {
-  color: #44caff;
+  color: #ff55f7;
   text-shadow: none;
   border: none; }
 
@@ -288,6 +279,15 @@ body {
 .reveal h6.space-up-down {
   margin: 70px 0; }
 
+.reveal section.has-light-background,
+.reveal section.has-light-background h1,
+.reveal section.has-light-background h2,
+.reveal section.has-light-background h3,
+.reveal section.has-light-background h4,
+.reveal section.has-light-background h5,
+.reveal section.has-light-background h6 {
+  color: #20232a; }
+
 .reveal .text-shadow {
   text-shadow: 0 0 20px #20232a, 0 0 5px #20232a; }
 
@@ -304,12 +304,6 @@ body {
   animation-direction: alternate;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; }
-
-.reveal .react-color {
-  color: #61dafb; }
-
-.reveal .d3-color {
-  color: #f68e48; }
 
 .reveal .flex-row {
   display: flex;

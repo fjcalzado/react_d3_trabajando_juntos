@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as d3 from "d3";
 
 const style = require("./collision.style.scss");
+const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
 const ButtonComponent = ({label, onClick}) => (
@@ -29,17 +30,16 @@ interface CollisionState {
 export class CollisionComponent extends React.Component<{}, CollisionState> {
   constructor(props) {
     super(props);
-
     this.state = {
       msg: "Soy un componente de React",
-      color: "#00eccc",
+      color: styleDefs.primaryColor,
       targetId: "collision-target"
     }
   }
 
   private handleD3jsClick = () => {
     d3.select("#collision-target")
-      .style("background-color", "#f68e48")
+      .style("background-color", styleDefs.d3Color)
       .text("D3.js ha modificado este nodo");
   }
 
@@ -47,7 +47,7 @@ export class CollisionComponent extends React.Component<{}, CollisionState> {
     this.setState({
       ...this.state,
       msg: "React ha modificado este nodo",
-      color: "#61dafb"
+      color: styleDefs.reactColor
     })
   }
 
