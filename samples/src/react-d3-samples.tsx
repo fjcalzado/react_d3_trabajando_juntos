@@ -1,15 +1,15 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { HelloComponent } from './00/hello';
-import { CollisionComponent } from './01-collision/collision';
+import { HelloComponent } from './countries/hello';
+import { CollisionComponent } from './collision/collision';
 
 ReactDOM.render(
   <HelloComponent/>,
-  document.getElementById('react-d3-sample00')
+  document.getElementById('sample-countries')
 );
 
 ReactDOM.render(
   <CollisionComponent/>,
-  document.getElementById('react-d3-sample01')
+  document.getElementById('sample-collision')
 );
