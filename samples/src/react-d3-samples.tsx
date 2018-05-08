@@ -1,34 +1,39 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { HelloComponent } from './countries/hello';
+import { CountriesComponent } from './countries/countries';
 import { CollisionComponent } from './collision/collision.component';
-import { D3RenderComponent } from './d3-render/d3render.component';
+import { D3RenderComponent } from './d3-render/d3-render.component';
+import { ReactRenderComponent } from "./react-render/react-render.component";
 
-if (document.getElementById('sample-countries')) {
-  ReactDOM.render(
-    <HelloComponent/>,
-    document.getElementById('sample-countries')
-  );
+
+const renderRoot = (id: string, component: JSX.Element) => {
+  const root = document.getElementById(id);
+  return root ? ReactDOM.render(component, root) : null;
 }
 
-if (document.getElementById('sample-collision')) {
-  ReactDOM.render(
-    <CollisionComponent/>,
-    document.getElementById('sample-collision')
-  );
-}
+// Initialize samples in its corresponding root.
+renderRoot(
+  'sample-countries',
+  <CountriesComponent/>
+);
 
-if (document.getElementById('sample-d3-render-static')) {
-  ReactDOM.render(
-    <D3RenderComponent dynamic={false} numBars={10} />,
-    document.getElementById('sample-d3-render-static')
-  );
-}
+renderRoot(
+  'sample-collision',
+  <CollisionComponent/>
+);
 
-if (document.getElementById('sample-d3-render-dynamic')) {
-  ReactDOM.render(
-    <D3RenderComponent dynamic={true} numBars={30} />,
-    document.getElementById('sample-d3-render-dynamic')
-  );
-}
+renderRoot(
+  'sample-d3-render-static',
+  <D3RenderComponent dynamic={false} numBars={10} />
+);
+
+renderRoot(
+  'sample-d3-render-dynamic',
+  <D3RenderComponent dynamic={true} numBars={30} />
+);
+
+renderRoot(
+  'sample-react-render',
+  <ReactRenderComponent />
+);

@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { ChartStaticComponent } from './chart-static.component';
 import { ChartDynamicComponent } from './chart-dynamic.component';
+import { getRandomArray } from '../util';
 
-
-const getRandomArray = (n, min, max) => () => {
-  return Array.from({length: n}, () => Math.random() * (max - min) + min);
-}
 
 interface D3RenderProps {
   dynamic: boolean;

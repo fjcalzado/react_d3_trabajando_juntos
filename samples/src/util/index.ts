@@ -1,0 +1,1 @@
+export { getRandomArray } from "./randomize";
