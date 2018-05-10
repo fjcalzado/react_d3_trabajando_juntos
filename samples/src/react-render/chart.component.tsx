@@ -1,33 +1,35 @@
 import * as React from 'react';
 import { plotLine } from './chart.business';
+import { ChartSetup, defaultChartSetup } from './chart.setup';
 
 const style = require("./chart.style.scss");
 
 
 interface ChartProps {
   data: number[];
-  width?: number;
-  height?: number;
 }
 
-export class ChartComponent extends React.PureComponent<ChartProps, {}> {
+interface ChartState {
+  setup: ChartSetup;
+}
+
+export class ChartComponent extends React.PureComponent<ChartProps, ChartState> {
   constructor(props) {
     super(props);
-  }
 
-  static defaultProps = {
-    width: 600,
-    height: 350,
+    this.state = {
+      setup: defaultChartSetup,
+    }
   }
 
   public render() {
     return (
       <svg
         className={style.lineChart}
-        width={this.props.width}
-        height={this.props.height}
+        width={this.state.setup.width}
+        height={this.state.setup.height}
       >
-        {plotLine(this.props.data, 0, 100, this.props.width, this.props.height)}
+        {plotLine(this.state.setup, this.props.data)}
       </svg>
 
     );

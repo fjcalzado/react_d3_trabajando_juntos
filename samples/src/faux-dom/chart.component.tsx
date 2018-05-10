@@ -9,7 +9,7 @@ interface ChartProps {
   data: number[];
 }
 
-export class ChartStaticComponent extends React.Component<ChartProps, {}> {
+export class ChartComponent extends React.Component<ChartProps, {}> {
   constructor(props) {
     super(props);
   }

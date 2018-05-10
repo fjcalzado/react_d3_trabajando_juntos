@@ -1,29 +1,28 @@
 import * as d3 from 'd3';
+import { ChartSetup } from './chart.setup';
 
 const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
-const width = 600;
-const height = 350;
-const barSeparation = 0.05;
-
+// Module global variables.
+let setup: ChartSetup = null;
 let svg = null;
 let bars = null;
 let x = null;
 let y = null;
-let trDelay = null;
 
-export const createChart = (node, data: number[], transitionDelays = 500) => {
+export const createChart = (chartSetup: ChartSetup, node, data: number[]) => {
+  setup = chartSetup;
+
   // Create SVG.
   svg = d3.select(node)
     .append("svg")
-      .attr("width", width)
-      .attr("height", height);
+      .attr("width", setup.width)
+      .attr("height", setup.height);
   const defs = svg.append("defs")
 
   // Create effects definitions.
-  trDelay = transitionDelays;
   createGradient(defs);
   createShadow(defs);
 
@@ -32,11 +31,11 @@ export const createChart = (node, data: number[], transitionDelays = 500) => {
 
   y = d3.scaleLinear()
     .domain([0, maxDataValue])
-    .range([height, 0]);
+    .range([setup.height, 0]);
   x = d3.scaleBand<Number>()
     .domain(data.map((d,i) => i))
-    .rangeRound([0, width])
-    .paddingInner(barSeparation);
+    .rangeRound([0, setup.width])
+    .paddingInner(setup.barSeparation);
 
   // Create bars. Enter().
   bars = svg
@@ -48,7 +47,7 @@ export const createChart = (node, data: number[], transitionDelays = 500) => {
     .enter().append("rect")
       .attr("x", (d, i) => x(i))
       .attr("y", d => y(d))
-      .attr("height", d => height - y(d))
+      .attr("height", d => setup.height - y(d))
       .attr("width", d => x.bandwidth())
       .attr("fill", "url(#barGradient)")
       .on("mouseover", handleMouseOver)
@@ -59,10 +58,10 @@ export const updateChart = (data: number[]) => {
   // Rejoin data and update bars with transition.
   bars.selectAll("rect")
     .data(data).transition()
-      .duration(trDelay)
+      .duration(setup.transitionDelay)
       .attr("x", (d, i) => x(i))
       .attr("y", d => y(d))
-      .attr("height", d => height - y(d))
+      .attr("height", d => setup.height - y(d))
       .attr("width", d => x.bandwidth())
       .attr("fill", "url(#barGradient)");
 }
@@ -71,14 +70,14 @@ function handleMouseOver(d, i) {
   d3.select(this).transition()
     .attr("fill", styleDefs.selectionColor)
     .attr("stroke", styleDefs.secondaryColor)
-    .duration(trDelay/4);
+    .duration(setup.transitionDelay/4);
 }
 
 function handleMouseOut(d, i) {
   d3.select(this).transition()
     .attr("fill", "url(#barGradient)")
     .attr("stroke", undefined)
-    .duration(trDelay/4);
+    .duration(setup.transitionDelay/4);
 }
 
 const createGradient = (defs) => {
@@ -87,7 +86,7 @@ const createGradient = (defs) => {
       .attr("id", "barGradient")
       .attr("gradientUnits", "userSpaceOnUse")
       .attr("x1", "0")
-      .attr("y1", height)
+      .attr("y1", setup.height)
       .attr("x2", "0")
       .attr("y2", "0");
   gradient
