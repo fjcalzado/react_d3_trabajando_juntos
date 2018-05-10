@@ -21,9 +21,32 @@ export const createChart = (chartSetup: ChartSetup, node, data: number[]) => {
       .attr("height", setup.height);
   const defs = svg.append("defs")
 
+
   // Mock data for test.
-  svg.append("circle")
-    .attr("cx", 300)
-    .attr("cy", 150)
-    .attr("r", 100);
+  const dataMock = [
+    {a: 0, r: 0},
+    {a: Math.PI * 0.25, r: 80},
+    {a: Math.PI * 0.50, r: 80},
+    {a: Math.PI * 0.75, r: 80},
+    {a: Math.PI * 1, r: 80},
+    {a: Math.PI * 1.25, r: 80},
+    //{a: Math.PI * 1.50, r: 80},
+    //{a: Math.PI * 1.75, r: 80},
+    //{a: Math.PI * 2, r: 80}
+  ];
+
+  const lineRadial = d3.lineRadial()
+    .radius(d => d["r"])
+    .angle(d => d["a"]);
+
+  svg
+    .append("g")
+      .attr("class", "lines")
+      .attr("transform", `translate(${setup.width / 2} ${setup.height/2})`)
+    .append("path")
+      .datum(dataMock)
+      .attr("fill", "none")
+      .attr("stroke", "black")
+      .attr("stroke-width", "2px")
+      .attr("d", lineRadial);
 }
