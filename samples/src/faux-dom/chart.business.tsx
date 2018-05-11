@@ -1,52 +1,57 @@
 import * as React from 'react';
 import * as d3 from 'd3';
-import { ChartSetup } from './chart.setup';
+import { ChartSetup, setup } from './chart.setup';
+import { treeSetup } from "./tree.setup";
+import { Segment } from './tree.generator';
 
 const style = require("./chart.style.scss");
 //const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
+
 // Module global variables.
-let setup = null;
 let svg = null;
-let trDelay = null;
+let tree = null;
+let thickScale = null;
+let segmentGenerator = null;
 
-export const createChart = (chartSetup: ChartSetup, node, data: number[]) => {
-  setup = chartSetup;
-
+export const createChart = (node, data: Segment[]) => {
   // Create SVG.
   svg = d3.select(node)
     .append("svg")
       .attr("width", setup.width)
       .attr("height", setup.height);
-  const defs = svg.append("defs")
+  const defs = svg.append("defs");
 
-
-  // Mock data for test.
-  const dataMock = [
-    {a: 0, r: 0},
-    {a: Math.PI * 0.25, r: 80},
-    {a: Math.PI * 0.50, r: 80},
-    {a: Math.PI * 0.75, r: 80},
-    {a: Math.PI * 1, r: 80},
-    {a: Math.PI * 1.25, r: 80},
-    //{a: Math.PI * 1.50, r: 80},
-    //{a: Math.PI * 1.75, r: 80},
-    //{a: Math.PI * 2, r: 80}
-  ];
-
-  const lineRadial = d3.lineRadial()
-    .radius(d => d["r"])
-    .angle(d => d["a"]);
-
-  svg
+  tree = svg
     .append("g")
-      .attr("class", "lines")
-      .attr("transform", `translate(${setup.width / 2} ${setup.height/2})`)
+      .attr("class", "tree")
+      .attr("transform", `translate(${setup.width / 2} ${setup.height})`);
+
+  // Create scales and generators.
+  thickScale = d3.scaleLinear()
+    .domain([0, treeSetup.totalLevels])
+    .range([treeSetup.maxThick, treeSetup.minThick]);
+
+  segmentGenerator = d3.line()
+    .x(point => point["0"])
+    .y(point => point["1"]);
+
+  // Create segments.
+  const segments = tree.selectAll("path")
+    .data(data).enter()
     .append("path")
-      .datum(dataMock)
       .attr("fill", "none")
       .attr("stroke", "black")
-      .attr("stroke-width", "2px")
-      .attr("d", lineRadial);
+      .attr("stroke-width", (d: Segment) => thickScale(d.level) )
+      .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
+}
+
+export const updateChart = (data: Segment[]) => {
+  // Rejoin data and update bars with transition.
+  tree.selectAll("path")
+    .data(data).transition()
+      .duration(setup.transitionDelay)
+      .attr("stroke-width", (d: Segment) => thickScale(d.level) )
+      .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
 }

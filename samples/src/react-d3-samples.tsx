@@ -41,5 +41,5 @@ renderRoot(
 
 renderRoot(
   'sample-faux-dom',
-  <FauxDomComponent />
+  <FauxDomComponent dynamic={false} />
 );

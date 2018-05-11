@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { plotLine } from './chart.business';
-import { ChartSetup, defaultChartSetup } from './chart.setup';
+import { ChartSetup, setup } from './chart.setup';
 
 const style = require("./chart.style.scss");
 
@@ -9,27 +9,19 @@ interface ChartProps {
   data: number[];
 }
 
-interface ChartState {
-  setup: ChartSetup;
-}
-
-export class ChartComponent extends React.PureComponent<ChartProps, ChartState> {
+export class ChartComponent extends React.PureComponent<ChartProps, {}> {
   constructor(props) {
     super(props);
-
-    this.state = {
-      setup: defaultChartSetup,
-    }
   }
 
   public render() {
     return (
       <svg
         className={style.lineChart}
-        width={this.state.setup.width}
-        height={this.state.setup.height}
+        width={setup.width}
+        height={setup.height}
       >
-        {plotLine(this.state.setup, this.props.data)}
+        {plotLine(this.props.data)}
       </svg>
 
     );

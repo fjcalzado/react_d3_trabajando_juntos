@@ -1,20 +1,17 @@
 import * as d3 from 'd3';
-import { ChartSetup } from './chart.setup';
+import { ChartSetup, setup } from './chart.setup';
 
 const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
 // Module global variables.
-let setup: ChartSetup = null;
 let svg = null;
 let bars = null;
 let x = null;
 let y = null;
 
-export const createChart = (chartSetup: ChartSetup, node, data: number[]) => {
-  setup = chartSetup;
-
+export const createChart = (node, data: number[]) => {
   // Create SVG.
   svg = d3.select(node)
     .append("svg")
@@ -26,11 +23,8 @@ export const createChart = (chartSetup: ChartSetup, node, data: number[]) => {
   createGradient(defs);
   createShadow(defs);
 
-  // Create scales;
-  const maxDataValue = d3.max(data, (d, i) => d);
-
   y = d3.scaleLinear()
-    .domain([0, maxDataValue])
+    .domain([setup.dataRangeMin, setup.dataRangeMax])
     .range([setup.height, 0]);
   x = d3.scaleBand<Number>()
     .domain(data.map((d,i) => i))

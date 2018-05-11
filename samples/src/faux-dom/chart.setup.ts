@@ -4,8 +4,8 @@ export interface ChartSetup {
   transitionDelay: number;
 }
 
-export const defaultChartSetup: ChartSetup = {
+export const setup: ChartSetup = {
   width: 600,
-  height: 350,
-  transitionDelay: 750,
+  height: 450,
+  transitionDelay: 500,
 }

@@ -15,7 +15,7 @@ export class ReactRenderComponent extends React.Component<ReactRenderProps, Reac
     super(props);
 
     this.state = {
-      data: getRandomArray(50, 0, 100)(),
+      data: getRandomArray(61, 1, 22)(),
     }
   }
 

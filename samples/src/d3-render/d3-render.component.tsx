@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ChartStaticComponent } from './chart-static.component';
 import { ChartDynamicComponent } from './chart-dynamic.component';
 import { getRandomArray } from '../util';
+import { setup } from './chart.setup';
 
 
 interface D3RenderProps {
@@ -19,7 +20,7 @@ export class D3RenderComponent extends React.Component<D3RenderProps, D3RenderSt
   constructor(props) {
     super(props);
 
-    const randomGenerator = getRandomArray(this.props.numBars || 20, 0, 10);
+    const randomGenerator = getRandomArray(this.props.numBars || 20, setup.dataRangeMin, setup.dataRangeMax);
     this.state = {
       data: randomGenerator(),
       randomGenerator,

@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { createChart } from './chart.business';
-import { defaultChartSetup } from './chart.setup';
+import { createChart, updateChart } from './chart.business';
+import { setup } from './chart.setup';
+import { Segment } from './tree.generator';
 
 const style = require("./chart.style.scss");
 
 
 interface ChartProps {
-  data: number[];
+  data: Segment[];
 }
 
 export class ChartComponent extends React.Component<ChartProps, {}> {
@@ -21,11 +22,15 @@ export class ChartComponent extends React.Component<ChartProps, {}> {
   }
 
   componentDidMount() {
-    createChart(defaultChartSetup, this.rootNodeRef, this.props.data);
+    createChart(this.rootNodeRef, this.props.data);
   }
 
-  shouldComponentUpdate() {
-    return false;
+  shouldComponentUpdate(prevProps: ChartProps) {
+    return Boolean(prevProps.data !== this.props.data)
+  }
+
+  componentDidUpdate(prevProps) {
+    updateChart(this.props.data);
   }
 
   public render() {

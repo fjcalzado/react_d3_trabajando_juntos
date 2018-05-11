@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { createChart, updateChart } from './chart.business';
-import { defaultChartSetup } from './chart.setup';
 
 const style = require("./chart.style.scss");
 
@@ -21,7 +20,7 @@ export class ChartDynamicComponent extends React.Component<ChartProps, {}> {
   }
 
   componentDidMount() {
-    createChart(defaultChartSetup, this.rootNodeRef, this.props.data);
+    createChart(this.rootNodeRef, this.props.data);
   }
 
   shouldComponentUpdate(prevProps: ChartProps) {
