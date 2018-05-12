@@ -5,7 +5,7 @@ import { CountriesComponent } from './countries/countries';
 import { CollisionComponent } from './collision/collision.component';
 import { D3RenderComponent } from './d3-render/d3-render.component';
 import { ReactRenderComponent } from "./react-render/react-render.component";
-import { FauxDomComponent } from './faux-dom/faux-dom.component';
+import { FauxDomSample } from './faux-dom/sample.component';
 
 
 const renderRoot = (id: string, component: JSX.Element) => {
@@ -41,5 +41,5 @@ renderRoot(
 
 renderRoot(
   'sample-faux-dom',
-  <FauxDomComponent dynamic={false} />
+  <FauxDomSample dynamic={false} />
 );

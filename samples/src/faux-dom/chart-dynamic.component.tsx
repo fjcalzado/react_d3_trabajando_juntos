@@ -10,7 +10,7 @@ interface ChartProps {
   data: Segment[];
 }
 
-export class ChartComponent extends React.Component<ChartProps, {}> {
+export class ChartDynamicComponent extends React.Component<ChartProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -30,7 +30,7 @@ export class ChartComponent extends React.Component<ChartProps, {}> {
   }
 
   componentDidUpdate(prevProps) {
-    updateChart(this.props.data);
+    updateChart(this.rootNodeRef, this.props.data);
   }
 
   public render() {
