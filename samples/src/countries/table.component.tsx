@@ -16,7 +16,7 @@ export class TableComponent extends React.PureComponent<TableProps, {}> {
   public render() {
     return (
       <div className={style.tableScroll} style={{width: setup.width, height: setup.height}}>
-        <table >
+        <table className={style.dataTable}>
           <tbody>
             <tr>
               <th>País</th>

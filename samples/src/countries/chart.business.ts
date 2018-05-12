@@ -130,11 +130,9 @@ const createCountries = (data: Country[]) => {
 }
 
 const createPopup = (node) => {
-  if (!infoPopup) {
-    infoPopup = d3.select(node)
-      .append("div")
-        .attr("class", style.infoPopup);
-  }
+  infoPopup = d3.select(node)
+    .append("div")
+      .attr("class", style.infoPopup);
 }
 
 const updatePositionInfoPopup = () => {

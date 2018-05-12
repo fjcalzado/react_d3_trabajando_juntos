@@ -47,9 +47,6 @@ svg {
 .countries {
   fill-opacity: 0.7;
   stroke-opacity: 0;
-  transition-property: stroke-opacity filter;
-  transition-duration: 0.2s;
-  transition-timing-function: ease;
 
   .country {
     &:hover {
