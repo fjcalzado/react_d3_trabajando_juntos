@@ -1,0 +1,35 @@
+// Palette. Candidates
+$tone1: #00eccc;
+$tone2: #ff55f7;
+$tone3: #ff8182;
+$tone4: #44caff;
+$toneDark1: #20232a;
+$reactColor: #61dafb;
+$d3Color: #f68e48;
+
+
+// Palette. Definitives
+$primaryColor: $tone1;
+$secondaryColor: $tone2;
+$selectionColor: $tone3;
+$darkColor: $toneDark1;
+
+// Fonts:
+$primaryFont: "Montserrat", Helvetica, sans-serif;
+$primaryFontColor: #eee;
+$secondaryFont: "Archivo Black", Helvetica, sans-serif;
+$secondaryFontColor: #fff;
+
+// JS export
+:export {
+  primaryColor: $primaryColor;
+  secondaryColor: $secondaryColor;
+  selectionColor: $selectionColor;
+  darkColor: $darkColor;
+  primaryFont: $primaryFont;
+  primaryFontColor: $primaryFontColor;
+  secondaryFont: $secondaryFont;
+  secondaryFontColor: $secondaryFontColor;
+  reactColor: $reactColor;
+  d3Color: $d3Color;
+}

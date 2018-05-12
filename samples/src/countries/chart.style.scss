@@ -1,0 +1,121 @@
+$softWhite: hsl(0, 0%, 80%);
+$darkGrey: hsl(0, 0%, 20%);
+$softRadius: 4px;
+$africaColor: rgb(102, 230, 165);
+$asiaColor: rgb(128, 177, 235);
+$americaColor: rgb(251, 128, 114);
+$europeColor: rgb(231, 41, 138);
+$oceaniaColor: rgb(231, 138, 195);
+
+@mixin continentFiller($color) {
+  fill: $color;
+  background-color: $color;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.continent {
+  &--africa {
+    @include continentFiller($africaColor);
+  }
+
+  &--asia {
+    @include continentFiller($asiaColor);
+  }
+
+  &--america {
+    @include continentFiller($americaColor);
+  }
+
+  &--europe {
+    @include continentFiller($europeColor);
+  }
+
+  &--oceania {
+    @include continentFiller($oceaniaColor);
+  }
+}
+
+svg {
+  font-family: inherit;
+}
+
+.countries {
+  fill-opacity: 0.7;
+  stroke-opacity: 0;
+
+  .country {
+    &:hover {
+      filter: url(#bubbleShadow);
+      stroke: $softWhite;
+      stroke-opacity: 0.5;
+      cursor: help;
+    }
+  }
+}
+
+.axis-group {
+  .axis {
+    font-family: inherit;
+
+    text {
+      fill: $softWhite;
+      fill-opacity: 0.8;
+      font-size: 0.8rem;
+    }
+
+    path,
+    line {
+      stroke: $softWhite;
+      stroke-opacity: 0.3;
+    }
+  }
+}
+
+.labels {
+  stroke: none;
+  fill: $softWhite;
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .main-title {
+    font-size: 1.6rem;
+  }
+}
+
+.info-popup {
+  position: absolute;
+  opacity: 0;
+  padding: 0.25rem;
+  pointer-events: none;
+  color: white;
+  background-color: $darkGrey;
+  border-radius: $softRadius;
+  font-size: 0.8rem;
+  table-layout: auto;
+  white-space: nowrap;
+
+  &_data {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  &_units {
+    text-align: left;
+  }
+
+  &_caption {
+    font-size: 1rem;
+  }
+
+  &_subcaption {
+    border-radius: $softRadius;
+    color: $darkGrey;
+  }
+}

@@ -3,6 +3,7 @@
  */
 
 // Default mixins and settings -----------------
+@import "./fjcalzado-defs";
 @import "../template/mixins";
 @import "../template/settings";
 // ---------------------------------------------
@@ -14,48 +15,38 @@
 // Override theme settings (see ../template/settings.scss)
 
 // Background of the presentation
-$backgroundColor: #20232a;
+$backgroundColor: $darkColor;
 
 // Primary/body text
-$mainFont: "Montserrat", Helvetica, sans-serif;
+$mainFont: $primaryFont;
 $mainFontSize: 38px;
-$mainColor: #eee;
+$mainColor: $primaryFontColor;
 
 // Vertical spacing between blocks of text
 $blockMargin: 20px;
 
 // Headings
 $headingMargin: 0 0 $blockMargin 0;
-$headingFont: "Archivo Black", Helvetica, sans-serif;
-$headingColor: #fff;
+$headingFont: $secondaryFont;
+$headingColor: $secondaryFontColor;
 $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: none;
 $headingFontWeight: 400;
 
 // Links and actions
-$linkColor: #00eccc;
-$linkColorHover: #44caff;
+$linkColor: $primaryColor;
+$linkColorHover: $secondaryColor;
 
 // Text selection
-$selectionBackgroundColor: lighten($linkColor, 25%);
+$selectionBackgroundColor: $selectionColor;
 
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1em;
 
-section.has-light-background {
-  &,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $backgroundColor;
-  }
-}
+
 
 // Theme template ------------------------------
 @import "../template/theme";
@@ -74,10 +65,10 @@ section.has-light-background {
 
 @keyframes pulse-glow-animation {
   from {
-    text-shadow: 0 0 20px transparentize($linkColor, 1);
+    text-shadow: 0 0 20px transparentize($primaryColor, 1);
   }
   to {
-    text-shadow: 0 0 50px transparentize($linkColor, 0), 0 0 60px white;
+    text-shadow: 0 0 50px transparentize($primaryColor, 0), 0 0 60px white;
   }
 }
 
@@ -91,6 +82,22 @@ section.has-light-background {
     &.space-up-down {
       margin: 70px 0;
     }
+  }
+
+  section.has-light-background {
+    &,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $darkColor;
+    }
+  }
+
+  .text-shadow {
+    text-shadow: 0 0 20px $darkColor, 0 0 5px $darkColor;
   }
 
   .pulse-size {
@@ -107,14 +114,6 @@ section.has-light-background {
     animation-direction: alternate;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-  }
-
-  .react-color {
-    color: #61dafb;
-  }
-
-  .d3-color {
-    color: #f68e48;
   }
 
   .flex-row {

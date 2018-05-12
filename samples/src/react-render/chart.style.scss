@@ -1,0 +1,54 @@
+@import "../../../css/theme/source/fjcalzado-defs.scss";
+
+.line-chart {
+  .driver {
+    .line {
+      fill: none;
+      stroke: url(#lineGradient);
+      stroke-width: 0.5px;
+      cursor: pointer;
+    }
+
+    .name {
+      font-size: 0.8rem;
+      fill: $primaryColor;
+      stroke: none;
+      alignment-baseline: middle;
+      text-anchor: start;
+      cursor: pointer;
+    }
+
+    .end {
+      display: none;
+      stroke: none;
+    }
+
+    .end-text {
+      display: none;
+      font-size: 0.75rem;
+      fill: white;
+      stroke: none;
+      alignment-baseline: middle;
+      text-anchor: middle;
+    }
+
+    &:hover {
+      .line {
+        stroke-width: 3px;
+      }
+
+      .name {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .end {
+        display: unset;
+      }
+
+      .end-text {
+        display: unset;
+      }
+    }
+  }
+}
