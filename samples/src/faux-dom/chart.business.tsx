@@ -13,6 +13,7 @@ let svg = null;
 let tree = null;
 let thickScale = null;
 let opacityScale = null;
+let colorScale = null;
 let segmentGenerator = null;
 
 export const createChart = (node: Element, data: Segment[]) => {
@@ -35,6 +36,10 @@ export const createChart = (node: Element, data: Segment[]) => {
   opacityScale = d3.scalePow().exponent(2)
     .domain([0, treeSetup.totalLevels])
     .range([1, 0.5]);
+  colorScale = d3.scaleLinear<string>()
+    .domain([0, treeSetup.totalLevels])
+    .range([styleDefs.primaryColor as string, styleDefs.secondaryColor as string])
+    .interpolate(d3.interpolateHcl);
 
   segmentGenerator = d3.line()
     .x(point => point["0"])
@@ -45,10 +50,10 @@ export const createChart = (node: Element, data: Segment[]) => {
     .data(data).enter()
     .append("path")
       .attr("fill", "none")
-      .attr("stroke", "black")
-      .attr("stroke-width", (d: Segment) => thickScale(d.level))
-      //.attr("opacity", (d: Segment) => opacityScale(d.level))
-      .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
+      .attr("stroke", d => colorScale(d.level))
+      .attr("stroke-width", d => thickScale(d.level))
+      //.attr("opacity", d => opacityScale(d.level))
+      .attr("d", d => segmentGenerator(d.points as [number,number][]) );
 }
 
 export const updateChart = (node: Element, data: Segment[]) => {
@@ -57,7 +62,8 @@ export const updateChart = (node: Element, data: Segment[]) => {
     .selectAll("path")
     .data(data).transition()
       .duration(setup.transitionDelay)
-      .attr("stroke-width", (d: Segment) => thickScale(d.level) )
-      //.attr("opacity", (d: Segment) => opacityScale(d.level))
-      .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
+      .attr("stroke", d => colorScale(d.level))
+      .attr("stroke-width", d => thickScale(d.level) )
+      //.attr("opacity", d => opacityScale(d.level))
+      .attr("d", d => segmentGenerator(d.points as [number,number][]) );
 }
