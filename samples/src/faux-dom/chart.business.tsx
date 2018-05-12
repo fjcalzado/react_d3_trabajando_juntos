@@ -5,7 +5,7 @@ import { treeSetup } from "./tree.setup";
 import { Segment } from './tree.generator';
 
 const style = require("./chart.style.scss");
-//const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
+const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
 
@@ -13,6 +13,7 @@ const style = require("./chart.style.scss");
 let svg = null;
 let tree = null;
 let thickScale = null;
+let opacityScale = null;
 let segmentGenerator = null;
 
 export const createChart = (node, data: Segment[]) => {
@@ -32,6 +33,9 @@ export const createChart = (node, data: Segment[]) => {
   thickScale = d3.scaleLinear()
     .domain([0, treeSetup.totalLevels])
     .range([treeSetup.maxThick, treeSetup.minThick]);
+  opacityScale = d3.scalePow().exponent(2)
+    .domain([0, treeSetup.totalLevels])
+    .range([1, 0.5]);
 
   segmentGenerator = d3.line()
     .x(point => point["0"])
@@ -43,7 +47,8 @@ export const createChart = (node, data: Segment[]) => {
     .append("path")
       .attr("fill", "none")
       .attr("stroke", "black")
-      .attr("stroke-width", (d: Segment) => thickScale(d.level) )
+      .attr("stroke-width", (d: Segment) => thickScale(d.level))
+      //.attr("opacity", (d: Segment) => opacityScale(d.level))
       .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
 }
 
@@ -53,5 +58,6 @@ export const updateChart = (data: Segment[]) => {
     .data(data).transition()
       .duration(setup.transitionDelay)
       .attr("stroke-width", (d: Segment) => thickScale(d.level) )
+      //.attr("opacity", (d: Segment) => opacityScale(d.level))
       .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
 }
