@@ -1,0 +1,22 @@
+@import "../../../css/theme/source/fjcalzado-defs.scss";
+
+.toggle-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1rem;
+
+  .toggle {
+    padding: 0.25rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-out;
+
+    &.active {
+      color: $darkColor;
+      background-color: $primaryColor;
+    }
+  }
+}

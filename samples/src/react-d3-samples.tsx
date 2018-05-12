@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { CountriesComponent } from './countries/countries';
+import { CountriesSample } from './countries';
 import { CollisionSample } from './collision';
 import { D3RenderSample } from './d3-render';
 import { ReactRenderSample } from "./react-render";
@@ -16,7 +16,7 @@ const renderRoot = (id: string, component: JSX.Element) => {
 // Initialize samples in its corresponding root.
 renderRoot(
   'sample-countries',
-  <CountriesComponent/>
+  <CountriesSample/>
 );
 
 renderRoot(

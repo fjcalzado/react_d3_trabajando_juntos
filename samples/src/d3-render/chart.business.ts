@@ -17,11 +17,10 @@ export const createChart = (node, data: number[]) => {
     .append("svg")
       .attr("width", setup.width)
       .attr("height", setup.height);
-  const defs = svg.append("defs")
 
   // Create effects definitions.
+  const defs = svg.append("defs");
   createGradient(defs);
-  createShadow(defs);
 
   y = d3.scaleLinear()
     .domain([setup.dataRangeMin, setup.dataRangeMax])
@@ -95,29 +94,4 @@ const createGradient = (defs) => {
     .append("stop")
       .attr("offset", "100%")
       .attr("stop-color", styleDefs.secondaryColor);
-}
-
-const createShadow = (defs) => {
-  // const filter = defs
-  //   .append("filter")
-  //     .attr("id", "barShadow")
-  //     .attr("filterUnits", "userSpaceOnUse")
-  //     .attr("x", -50)
-  //     .attr("y", -50)
-  //     .attr("width", width + 50)
-  //     .attr("height", height + 50)
-  // filter.append("feGaussianBlur")
-  //   .attr("in", "SourceAlpha")
-  //   .attr("result", "blurOut")
-  //   .attr("stdDeviation", 10);
-  // filter.append("feOffset")
-  //   .attr("in", "blurOut")
-  //   .attr("result", "dropBlur")
-  //   .attr("dx", 0)
-  //   .attr("dy", 0);
-  // filter.append("feComposite")
-  //   .attr("operator", "over")
-  //   .attr("in", "SourceGraphic")
-  //   .attr("in2", "dropBlur")
-  //   .attr("result", "final");
 }

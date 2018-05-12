@@ -1,0 +1,51 @@
+$softRadius: 3px;
+$highlightColor: hsla(0, 0%, 80%, 0.15s);
+
+.table-scroll {
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  table-layout: auto;
+  border-collapse: collapse;
+  text-align: right;
+  white-space: nowrap;
+
+  th {
+    background-color: hsl(0, 0%, 90%);
+    color: hsla(0, 0%, 35%, 1);
+    text-align: right;
+    padding-right: $softRadius;
+    padding-left: 3vw;
+
+    &:first-child {
+      border-top-left-radius: $softRadius;
+      border-bottom-left-radius: $softRadius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $softRadius;
+      border-bottom-right-radius: $softRadius;
+    }
+  }
+
+  tr:nth-child(odd) {
+    background-color: $highlightColor;
+  }
+
+  td {
+    color: hsl(0, 0%, 80%);
+    padding-right: $softRadius;
+
+    &:first-child {
+      border-top-left-radius: $softRadius;
+      border-bottom-left-radius: $softRadius;
+    }
+
+    &:last-child {
+      border-top-right-radius: $softRadius;
+      border-bottom-right-radius: $softRadius;
+    }
+  }
+}
