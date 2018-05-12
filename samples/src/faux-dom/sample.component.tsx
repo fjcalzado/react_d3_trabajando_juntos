@@ -2,18 +2,18 @@ import * as React from "react";
 import { ChartDynamicComponent } from "./chart-dynamic.component";
 import { ChartFauxComponent } from "./chart-fauxdom.component";
 import { generateTree, Segment } from "./tree.generator";
+import { setup } from "./chart.setup";
 
 const style = require("./sample.style.scss");
 
 
 interface FauxDomProps {
-  dynamic: boolean;
-  interval?: number;
 }
 
 interface FauxDomState {
   data: Segment[];
   fauxDOM: boolean;
+  dynamicTimerId: number;
 }
 
 export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
@@ -23,6 +23,7 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
     this.state = {
       data: generateTree(),
       fauxDOM: true,
+      dynamicTimerId: null,
     }
   }
 
@@ -34,7 +35,18 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
   }
 
   private startDynamicData() {
-    setInterval(this.updateData, this.props.interval || 1000);
+    this.setState({
+      ...this.state,
+      dynamicTimerId: window.setInterval(this.updateData, setup.dynamicInterval),
+    });
+  }
+
+  private stopDynamicData() {
+    window.clearInterval(this.state.dynamicTimerId);
+    this.setState({
+      ...this.state,
+      dynamicTimerId: null,
+    });
   }
 
   private handleRefreshData = () => {
@@ -48,18 +60,27 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
     });
   }
 
-  public componentDidMount() {
-    if (this.props.dynamic) this.startDynamicData();
+  private handleToggleAutoRefresh = (e) => {
+    Boolean(e.target.checked) ? this.startDynamicData() : this.stopDynamicData();
   }
 
   public render() {
     return (
       <>
         <div className={style.controlArea} >
-          <button onClick={this.handleToggleFauxDOM}>
+          <button className={style.control} onClick={this.handleToggleFauxDOM}>
             {`FauxDOM ${this.state.fauxDOM ? "ON" : "OFF"}`}
           </button>
-          <button onClick={this.handleRefreshData}>Refresh</button>
+          <button className={style.control} onClick={this.handleRefreshData}>Refresh</button>
+          <label htmlFor="autoRefreshId">
+            <input
+              id="autoRefreshId"
+              type="checkbox"
+              checked={Boolean(this.state.dynamicTimerId)}
+              onChange={this.handleToggleAutoRefresh}
+            />
+            Auto
+          </label>
         </div>
         { this.state.fauxDOM ?
           <ChartFauxComponent data={this.state.data}/> :

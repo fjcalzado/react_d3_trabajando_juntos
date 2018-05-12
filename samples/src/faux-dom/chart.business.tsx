@@ -8,7 +8,6 @@ const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
-
 // Module global variables.
 let svg = null;
 let tree = null;
