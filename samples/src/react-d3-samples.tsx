@@ -2,10 +2,10 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { CountriesComponent } from './countries/countries';
-import { CollisionComponent } from './collision/collision.component';
-import { D3RenderComponent } from './d3-render/d3-render.component';
-import { ReactRenderComponent } from "./react-render/react-render.component";
-import { FauxDomSample } from './faux-dom/sample.component';
+import { CollisionSample } from './collision';
+import { D3RenderSample } from './d3-render';
+import { ReactRenderSample } from "./react-render";
+import { FauxDomSample } from './faux-dom';
 
 
 const renderRoot = (id: string, component: JSX.Element) => {
@@ -21,22 +21,22 @@ renderRoot(
 
 renderRoot(
   'sample-collision',
-  <CollisionComponent/>
+  <CollisionSample/>
 );
 
 renderRoot(
   'sample-d3-render-static',
-  <D3RenderComponent dynamic={false} numBars={10} />
+  <D3RenderSample dynamic={false} numBars={10} />
 );
 
 renderRoot(
   'sample-d3-render-dynamic',
-  <D3RenderComponent dynamic={true} numBars={30} />
+  <D3RenderSample dynamic={true} numBars={30} />
 );
 
 renderRoot(
   'sample-react-render',
-  <ReactRenderComponent />
+  <ReactRenderSample />
 );
 
 renderRoot(

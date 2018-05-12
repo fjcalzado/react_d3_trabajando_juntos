@@ -10,7 +10,7 @@ interface ReactRenderState {
   data: number[];
 }
 
-export class ReactRenderComponent extends React.Component<ReactRenderProps, ReactRenderState> {
+export class ReactRenderSample extends React.Component<ReactRenderProps, ReactRenderState> {
   constructor(props) {
     super(props);
 

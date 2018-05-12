@@ -16,7 +16,7 @@ interface D3RenderState {
   randomGenerator: () => number[];
 }
 
-export class D3RenderComponent extends React.Component<D3RenderProps, D3RenderState> {
+export class D3RenderSample extends React.Component<D3RenderProps, D3RenderState> {
   constructor(props) {
     super(props);
 

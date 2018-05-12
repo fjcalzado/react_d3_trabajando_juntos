@@ -27,7 +27,7 @@ interface CollisionState {
   targetId: string
 }
 
-export class CollisionComponent extends React.Component<{}, CollisionState> {
+export class CollisionSample extends React.Component<{}, CollisionState> {
   constructor(props) {
     super(props);
     this.state = {
