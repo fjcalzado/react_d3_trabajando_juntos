@@ -16,7 +16,7 @@ let thickScale = null;
 let opacityScale = null;
 let segmentGenerator = null;
 
-export const createChart = (node, data: Segment[]) => {
+export const createChart = (node: Element, data: Segment[]) => {
   // Create SVG.
   svg = d3.select(node)
     .append("svg")
@@ -52,9 +52,10 @@ export const createChart = (node, data: Segment[]) => {
       .attr("d", (d: Segment) => segmentGenerator(d.points as [number,number][]) );
 }
 
-export const updateChart = (data: Segment[]) => {
-  // Rejoin data and update bars with transition.
-  tree.selectAll("path")
+export const updateChart = (node: Element, data: Segment[]) => {
+  // Rejoin data and update elements.
+  d3.select(node).select("svg").select("g[class=tree]")
+    .selectAll("path")
     .data(data).transition()
       .duration(setup.transitionDelay)
       .attr("stroke-width", (d: Segment) => thickScale(d.level) )
