@@ -12,6 +12,7 @@ interface FauxDomProps {
 
 interface FauxDomState {
   data: Segment[];
+  color: boolean;
   fauxDOM: boolean;
   dynamicTimerId: number;
 }
@@ -22,6 +23,7 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
 
     this.state = {
       data: generateTree(),
+      color: false,
       fauxDOM: true,
       dynamicTimerId: null,
     }
@@ -46,6 +48,13 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
     this.setState({
       ...this.state,
       dynamicTimerId: null,
+    });
+  }
+
+  private handleToggleColor = () => {
+    this.setState({
+      ...this.state,
+      color: !this.state.color,
     });
   }
 
@@ -81,10 +90,11 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
             />
             Auto
           </label>
+          <button className={style.control} onClick={this.handleToggleColor}>Toggle Color</button>
         </div>
         { this.state.fauxDOM ?
-          <ChartFauxComponent data={this.state.data}/> :
-          <ChartDynamicComponent data={this.state.data}/>
+          <ChartFauxComponent data={this.state.data} color={this.state.color}/> :
+          <ChartDynamicComponent data={this.state.data} color={this.state.color}/>
         }
 
       </>

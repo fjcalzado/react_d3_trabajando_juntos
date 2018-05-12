@@ -8,9 +8,10 @@ const style = require("./chart.style.scss");
 
 interface ChartProps {
   data: Segment[];
+  color: boolean;
 }
 
-export class ChartDynamicComponent extends React.Component<ChartProps, {}> {
+export class ChartDynamicComponent extends React.PureComponent<ChartProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -22,15 +23,11 @@ export class ChartDynamicComponent extends React.Component<ChartProps, {}> {
   }
 
   componentDidMount() {
-    createChart(this.rootNodeRef, this.props.data);
+    createChart(this.rootNodeRef, this.props.data, this.props.color);
   }
 
-  shouldComponentUpdate(prevProps: ChartProps) {
-    return Boolean(prevProps.data !== this.props.data)
-  }
-
-  componentDidUpdate(prevProps) {
-    updateChart(this.rootNodeRef, this.props.data);
+  componentDidUpdate() {
+    updateChart(this.rootNodeRef, this.props.data, this.props.color);
   }
 
   public render() {

@@ -9,6 +9,7 @@ const style = require("./chart.style.scss");
 
 interface ChartProps extends ReactFauxDomProps {
   data: Segment[];
+  color: boolean;
 }
 
 class InnerChartFauxComponent extends React.Component<ChartProps, {}> {
@@ -19,14 +20,17 @@ class InnerChartFauxComponent extends React.Component<ChartProps, {}> {
   componentDidMount() {
     // Provide a faux DOM.
     const fauxDom = this.props.connectFauxDOM("div", "chart");
-    createChart(fauxDom, this.props.data);
+    createChart(fauxDom, this.props.data, this.props.color);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.data !== this.props.data) {
+    // Intentionally check condition to call D3. FauxDOM HOC will
+    // fire updates through property "chart" changes, but those should
+    // be filtered.
+    if (prevProps.data !== this.props.data || prevProps.color !== this.props.color) {
       // Reatach to faux DOM.
       const fauxDom = this.props.connectFauxDOM("div", "chart");
-      updateChart(fauxDom, this.props.data);
+      updateChart(fauxDom, this.props.data, this.props.color);
       this.props.animateFauxDOM(setup.transitionDelay * 1.25);
     }
   }

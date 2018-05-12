@@ -3,6 +3,7 @@ export interface ChartSetup {
   height: number;
   transitionDelay: number;
   dynamicInterval: number;
+  noColor: string;
 }
 
 export const setup: ChartSetup = {
@@ -10,4 +11,5 @@ export const setup: ChartSetup = {
   height: 450,
   transitionDelay: 500,
   dynamicInterval: 1000,
+  noColor: "white",
 }
