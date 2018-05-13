@@ -1,6 +1,11 @@
-import * as d3 from 'd3';
 import { ChartSetup, setup } from './chart.setup';
 import { Country } from './data';
+import { select, event as d3Event } from "d3-selection";
+import { scaleLinear, scaleLog, scaleSqrt, scaleOrdinal } from "d3-scale";
+import { axisBottom, axisLeft } from "d3-axis";
+import { extent } from "d3-array";
+const d3 = { select, scaleLinear, scaleLog, scaleSqrt, scaleOrdinal,
+  axisBottom, axisLeft, extent };
 
 const style = require("./chart.style.scss");
 
@@ -137,8 +142,8 @@ const createPopup = (node) => {
 
 const updatePositionInfoPopup = () => {
   infoPopup
-    .style("left", `${d3.event.pageX - (infoPopup.node().getBoundingClientRect().width / 2)}px`)
-    .style("top", `${d3.event.pageY - parseInt(infoPopup.style("height"), 0) - 5}px`);
+    .style("left", `${d3Event.pageX - (infoPopup.node().getBoundingClientRect().width / 2)}px`)
+    .style("top", `${d3Event.pageY - parseInt(infoPopup.style("height"), 0) - 5}px`);
 }
 
 const showInfoPopup = (d) => {

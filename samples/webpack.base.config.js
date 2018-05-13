@@ -1,6 +1,7 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require('webpack');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var basePath = __dirname;
 
@@ -14,7 +15,15 @@ module.exports = {
     vendor: [
       'react',
       'react-dom',
-      // 'd3',
+      'react-faux-dom',
+      'd3-selection',
+      'd3-scale',
+      'd3-axis',
+      'd3-array',
+      'd3-shape',
+      'd3-interpolate',
+      'd3-random',
+      'd3-transition'
     ],
   },
   output: {
@@ -73,12 +82,6 @@ module.exports = {
       },
     ],
   },
-  // For development https://webpack.js.org/configuration/devtool/#for-development
-  devtool: 'inline-source-map',
-  devServer: {
-    port: 8081,
-    noInfo: true,
-  },
   plugins: [
     // Generate development gallery index.html in /dist. Only for development purposes.
     new HtmlWebpackPlugin({
@@ -90,5 +93,6 @@ module.exports = {
       names: ['vendor', 'manifest'],
       inject: 'body',
     }),
+    new BundleAnalyzerPlugin()
   ],
 };

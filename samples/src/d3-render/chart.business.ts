@@ -1,5 +1,8 @@
-import * as d3 from 'd3';
 import { ChartSetup, setup } from './chart.setup';
+import { select } from "d3-selection";
+import { scaleLinear, scaleBand } from "d3-scale";
+import 'd3-transition';
+const d3 = { select, scaleLinear, scaleBand };
 
 const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");

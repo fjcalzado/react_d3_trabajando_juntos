@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as d3 from "d3";
+import { select } from "d3-selection";
+const d3 = { select };
 
 const style = require("./collision.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");

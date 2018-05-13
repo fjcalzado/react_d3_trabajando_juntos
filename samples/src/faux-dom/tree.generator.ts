@@ -1,5 +1,7 @@
-import * as d3 from "d3";
 import { treeSetup } from "./tree.setup";
+import { scaleLinear, scalePow } from "d3-scale";
+import { randomNormal, randomUniform } from "d3-random";
+const d3 = { scaleLinear, scalePow, randomNormal, randomUniform };
 
 export interface Segment {
   level: number;

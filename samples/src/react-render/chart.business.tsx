@@ -1,7 +1,9 @@
 import * as React from 'react';
-import * as d3 from 'd3';
 import { ChartSetup, setup } from './chart.setup';
 import { DriverLapByLap } from './data';
+import { scaleLinear } from "d3-scale";
+import { line } from "d3-shape";
+const d3 = { scaleLinear, line };
 
 const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");

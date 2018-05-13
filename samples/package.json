@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "React D3.js integration demo samples",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build:dev": "rimraf dist && webpack",
-    "build:prod": "rimraf dist && webpack -p"
+    "start": "webpack-dev-server --config=webpack.dev.config.js",
+    "build:dev": "rimraf dist && webpack --config=webpack.dev.config.js",
+    "build:prod": "rimraf dist && webpack -p --config=webpack.prod.config.js"
   },
   "author": "Javier Calzado",
   "license": "MIT",
@@ -34,6 +34,8 @@
     "typescript": "^2.3.4",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-bundle-analyzer": "^2.11.2",
+    "webpack-dev-server": "^2.4.5",
+    "webpack-merge": "^4.1.2"
   }
 }

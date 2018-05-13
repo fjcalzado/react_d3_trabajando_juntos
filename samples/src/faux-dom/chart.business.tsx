@@ -1,8 +1,13 @@
 import * as React from 'react';
-import * as d3 from 'd3';
 import { ChartSetup, setup } from './chart.setup';
 import { treeSetup } from "./tree.setup";
 import { Segment } from './tree.generator';
+import { select } from "d3-selection";
+import { scaleLinear, scalePow } from "d3-scale";
+import { line } from "d3-shape";
+import { interpolateHcl } from "d3-interpolate";
+import 'd3-transition';
+const d3 = { select, scaleLinear, scalePow, line, interpolateHcl };
 
 const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
