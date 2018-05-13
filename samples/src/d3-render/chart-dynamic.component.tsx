@@ -27,7 +27,7 @@ export class ChartDynamicComponent extends React.Component<ChartProps, {}> {
     return Boolean(prevProps.data !== this.props.data)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     updateChart(this.props.data);
   }
 

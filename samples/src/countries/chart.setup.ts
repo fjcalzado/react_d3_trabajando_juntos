@@ -12,7 +12,7 @@ export interface ChartSetup {
 }
 
 export const setup: ChartSetup = {
-  width: 600,
+  width: 750,
   height: 450,
   marginLeft: 50,
   marginRight: 10,

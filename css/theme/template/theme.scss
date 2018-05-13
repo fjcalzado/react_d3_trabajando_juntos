@@ -5,7 +5,8 @@
  *********************************************/
 
 body {
-	@include bodyBackground();
+  @include bodyBackground();
+  @include bodyAddons();
 	background-color: $backgroundColor;
 }
 

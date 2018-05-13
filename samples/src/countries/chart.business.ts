@@ -151,20 +151,20 @@ const showInfoPopup = (d) => {
     `
     <table>
       <tr>
-        <th class="${style.infoPopupCaption}">${d.country}</th>
-        <th class="${style.infoPopupSubcaption} ${continentScale(d.continent)}">${d.continent}</th>
+        <th class="${style.caption}">${d.country}</th>
+        <th class="${style.subcaption} ${continentScale(d.continent)}">${d.continent}</th>
       </tr>
       <tr>
-        <td class="${style.infoPopupData}">${d.purchasingPower.toLocaleString()}</td>
-        <td class="${style.infoPopupUnits}"><small>$</small></td>
+        <td class="${style.data}">${d.purchasingPower.toLocaleString()}</td>
+        <td class="${style.units}">$</td>
       </tr>
       <tr>
-        <td class="${style.infoPopupData}">${d.lifeExpectancy.toLocaleString()}</td>
-        <td class="${style.infoPopupUnits}"><small>Años</small></td>
+        <td class="${style.data}">${d.lifeExpectancy.toLocaleString()}</td>
+        <td class="${style.units}">Años</td>
       </tr>
       <tr>
-        <td class="${style.infoPopupData}">${d.population.toLocaleString()}</td>
-        <td class="${style.infoPopupUnits}"><small>Habitantes<small></td>
+        <td class="${style.data}">${d.population.toLocaleString()}</td>
+        <td class="${style.units}">Habitantes</td>
       </tr>
     </table>
   `

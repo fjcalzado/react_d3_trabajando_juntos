@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var basePath = __dirname;
 
@@ -93,6 +92,5 @@ module.exports = {
       names: ['vendor', 'manifest'],
       inject: 'body',
     }),
-    new BundleAnalyzerPlugin()
   ],
 };

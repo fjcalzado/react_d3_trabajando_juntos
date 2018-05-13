@@ -16,6 +16,57 @@ $oceaniaColor: rgb(231, 138, 195);
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  .info-popup {
+    position: absolute;
+    padding: 0.25rem;
+    opacity: 0;
+    pointer-events: none;
+    color: white;
+    background-color: $darkGrey;
+    border-radius: $softRadius;
+    table-layout: auto;
+    white-space: nowrap;
+
+    table {
+      tbody {
+        tr {
+          border: none;
+        }
+
+        th {
+          border: none;
+
+          &.caption {
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+          }
+
+          &.subcaption {
+            font-size: 0.8rem;
+            border-radius: $softRadius;
+            color: $darkGrey;
+            text-align: center;
+          }
+        }
+
+        td {
+          border: none;
+
+          &.data {
+            font-size: 1rem;
+            text-align: right;
+          }
+
+          &.units {
+            font-size: 0.75rem;
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
 }
 
 .continent {
@@ -42,80 +93,49 @@ $oceaniaColor: rgb(231, 138, 195);
 
 svg {
   font-family: inherit;
-}
 
-.countries {
-  fill-opacity: 0.7;
-  stroke-opacity: 0;
+  .countries {
+    fill-opacity: 0.7;
+    stroke-opacity: 0;
 
-  .country {
-    &:hover {
-      filter: url(#bubbleShadow);
-      stroke: $softWhite;
-      stroke-opacity: 0.5;
-      cursor: help;
+    .country {
+      &:hover {
+        filter: url(#bubbleShadow);
+        stroke: $softWhite;
+        stroke-opacity: 0.5;
+        cursor: help;
+      }
     }
   }
-}
 
-.axis-group {
-  .axis {
-    font-family: inherit;
+  .axis-group {
+    .axis {
+      font-family: inherit;
 
-    text {
-      fill: $softWhite;
-      fill-opacity: 0.8;
-      font-size: 0.8rem;
+      text {
+        fill: $softWhite;
+        fill-opacity: 0.8;
+        font-size: 0.8rem;
+      }
+
+      path,
+      line {
+        stroke: $softWhite;
+        stroke-opacity: 0.3;
+      }
+    }
+  }
+
+  .labels {
+    stroke: none;
+    fill: $softWhite;
+
+    .title {
+      font-size: 1.2rem;
     }
 
-    path,
-    line {
-      stroke: $softWhite;
-      stroke-opacity: 0.3;
+    .main-title {
+      font-size: 1.6rem;
     }
-  }
-}
-
-.labels {
-  stroke: none;
-  fill: $softWhite;
-
-  .title {
-    font-size: 1.2rem;
-  }
-
-  .main-title {
-    font-size: 1.6rem;
-  }
-}
-
-.info-popup {
-  position: absolute;
-  opacity: 0;
-  padding: 0.25rem;
-  pointer-events: none;
-  color: white;
-  background-color: $darkGrey;
-  border-radius: $softRadius;
-  font-size: 0.8rem;
-  table-layout: auto;
-  white-space: nowrap;
-
-  &_data {
-    text-align: right;
-    font-weight: bold;
-  }
-
-  &_units {
-    text-align: left;
-  }
-
-  &_caption {
-    font-size: 1rem;
-  }
-
-  &_subcaption {
-    border-radius: $softRadius;
-    color: $darkGrey;
   }
 }

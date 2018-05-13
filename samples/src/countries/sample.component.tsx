@@ -49,10 +49,10 @@ export class CountriesSample extends React.Component<{}, CountriesState> {
 const ToggleBar = ({modes, active, onChange}) => (
   <div className={style.toggleBar}>
     {modes.map((m, i) => (
-      <div className={cnc(style.toggle, (active === m) && style.active)}
+      <p className={cnc(style.toggle, (active === m) && style.active)}
         key={i} onClick={() => onChange(m)}>
         {m}
-      </div>
+      </p>
     ))}
   </div>
 );

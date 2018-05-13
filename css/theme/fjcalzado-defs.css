@@ -1,0 +1,11 @@
+:export {
+  primaryColor: #00eccc;
+  secondaryColor: #ff55f7;
+  contrastColor: #ff8182;
+  darkColor: #20232a;
+  primaryFont: "Montserrat", Helvetica, sans-serif;
+  primaryFontColor: #eee;
+  secondaryFont: "Archivo Black", Helvetica, sans-serif;
+  secondaryFontColor: #fff;
+  reactColor: #61dafb;
+  d3Color: #f68e48; }

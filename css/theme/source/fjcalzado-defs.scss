@@ -11,7 +11,7 @@ $d3Color: #f68e48;
 // Palette. Definitives
 $primaryColor: $tone1;
 $secondaryColor: $tone2;
-$selectionColor: $tone3;
+$contrastColor: $tone3;
 $darkColor: $toneDark1;
 
 // Fonts:
@@ -24,7 +24,7 @@ $secondaryFontColor: #fff;
 :export {
   primaryColor: $primaryColor;
   secondaryColor: $secondaryColor;
-  selectionColor: $selectionColor;
+  contrastColor: $contrastColor;
   darkColor: $darkColor;
   primaryFont: $primaryFont;
   primaryFontColor: $primaryFontColor;

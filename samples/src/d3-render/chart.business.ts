@@ -64,7 +64,7 @@ export const updateChart = (data: number[]) => {
 
 function handleMouseOver(d, i) {
   d3.select(this).transition()
-    .attr("fill", styleDefs.selectionColor)
+    .attr("fill", styleDefs.contrastColor)
     .attr("stroke", styleDefs.secondaryColor)
     .duration(setup.transitionDelay/4);
 }

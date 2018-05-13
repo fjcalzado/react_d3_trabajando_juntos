@@ -3,12 +3,33 @@
  */
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 @import url("https://fonts.googleapis.com/css?family=Archivo+Black");
+:export {
+  primaryColor: #00eccc;
+  secondaryColor: #ff55f7;
+  contrastColor: #ff8182;
+  darkColor: #20232a;
+  primaryFont: "Montserrat", Helvetica, sans-serif;
+  primaryFontColor: #eee;
+  secondaryFont: "Archivo Black", Helvetica, sans-serif;
+  secondaryFontColor: #fff;
+  reactColor: #61dafb;
+  d3Color: #f68e48; }
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
 body {
   background: #20232a;
   background-color: #20232a; }
+  body ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem; }
+  body ::-webkit-scrollbar-thumb {
+    background: #00eccc; }
+  body ::-webkit-scrollbar-track {
+    background: #626b81;
+    border: 0.2rem solid transparent;
+    background-clip: content-box; }
 
 .reveal {
   font-family: "Montserrat", Helvetica, sans-serif;
@@ -17,13 +38,13 @@ body {
   color: #eee; }
 
 ::selection {
-  color: #fff;
-  background: #6dffeb;
+  color: #eee;
+  background: #ff8182;
   text-shadow: none; }
 
 ::-moz-selection {
-  color: #fff;
-  background: #6dffeb;
+  color: #eee;
+  background: #ff8182;
   text-shadow: none; }
 
 .reveal .slides > section,
@@ -314,6 +335,8 @@ body {
     justify-content: center; }
   .reveal .flex-row.spaced {
     justify-content: space-around; }
+  .reveal .flex-row.top-align {
+    align-items: flex-start; }
   .reveal .flex-row .header-in-row {
     margin: 0 20px; }
 
@@ -321,3 +344,12 @@ body {
   padding: 1.5rem;
   border-radius: 0.5rem;
   background-color: rgba(98, 107, 129, 0.5); }
+
+.reveal .no-bullet {
+  list-style-type: none; }
+
+.reveal .positive {
+  color: #00eccc; }
+
+.reveal .negative {
+  color: #ff55f7; }

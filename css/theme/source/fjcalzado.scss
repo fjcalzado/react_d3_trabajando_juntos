@@ -39,12 +39,32 @@ $linkColor: $primaryColor;
 $linkColorHover: $secondaryColor;
 
 // Text selection
-$selectionBackgroundColor: $selectionColor;
+$selectionColor: $primaryFontColor;
+$selectionBackgroundColor: $contrastColor;
 
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;
 $heading3Size: 1.3em;
 $heading4Size: 1em;
+
+// Customize scroll bar in body.
+@mixin bodyAddons() {
+  // Default scrollbars style. Chrome.
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $primaryColor;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: lighten($backgroundColor, 30%);
+    border: 0.2rem solid transparent;
+    background-clip: content-box;
+  }
+}
 
 
 
@@ -130,6 +150,10 @@ $heading4Size: 1em;
       justify-content: space-around;
     }
 
+    &.top-align {
+      align-items: flex-start;
+    }
+
     .header-in-row {
       margin: 0 $blockMargin;
     }
@@ -139,6 +163,18 @@ $heading4Size: 1em;
     padding: 1.5rem;
     border-radius: 0.5rem;
     background-color: transparentize(lighten($backgroundColor, 30%), 0.5);
+  }
+
+  .no-bullet {
+    list-style-type: none;
+  }
+
+  .positive {
+    color: $primaryColor;
+  }
+
+  .negative {
+    color: $secondaryColor;
   }
 }
 

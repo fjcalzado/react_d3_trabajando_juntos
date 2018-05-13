@@ -19,11 +19,11 @@ export class ChartStaticComponent extends React.Component<ChartProps, {}> {
     this.rootNodeRef = componentNode;
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     createChart(this.rootNodeRef, this.props.data);
   }
 
-  shouldComponentUpdate() {
+  public shouldComponentUpdate() {
     return false;
   }
 

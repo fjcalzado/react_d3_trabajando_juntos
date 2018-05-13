@@ -41,3 +41,7 @@ $selectionColor: #fff;
 @mixin bodyBackground() {
 	background: $backgroundColor;
 }
+
+@mixin bodyAddons() {
+  // Customize body.
+}
