@@ -326,18 +326,26 @@ body {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out; }
 
-.reveal .flex-row {
+.reveal .flex {
   display: flex;
-  flex-direction: row;
   align-items: center;
   margin: 20px 0; }
-  .reveal .flex-row.center {
-    justify-content: center; }
-  .reveal .flex-row.spaced {
-    justify-content: space-around; }
-  .reveal .flex-row.top-align {
+  .reveal .flex.row {
+    flex-direction: row; }
+    .reveal .flex.row.spaced {
+      justify-content: space-around; }
+    .reveal .flex.row.center {
+      justify-content: center; }
+  .reveal .flex.column {
+    flex-direction: column;
     align-items: flex-start; }
-  .reveal .flex-row .header-in-row {
+    .reveal .flex.column.spaced {
+      align-items: space-around; }
+    .reveal .flex.column.center {
+      align-items: center; }
+  .reveal .flex.top-align {
+    align-items: flex-start; }
+  .reveal .flex .header-in-row {
     margin: 0 20px; }
 
 .reveal .code-area {

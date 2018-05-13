@@ -103,7 +103,7 @@
 
         <!-- Slide - React Intro -->
         <section>
-          <div class="flex-row center">
+          <div class="flex row center">
             <object type="image/svg+xml" data="media/react_logo.svg" height="75">React Logo</object>
             <h2 class="header-in-row">React</h2>
           </div>
@@ -127,7 +127,7 @@
 
         <!-- Slide - DOM Real vs DOM Virtual -->
         <section>
-          <div class="flex-row spaced">
+          <div class="flex row spaced">
             <div>
               <h3>DOM Real</h3>
               <ul>
@@ -274,7 +274,7 @@
 
         <!-- Slide - D3.js Intro -->
         <section>
-          <div class="flex-row center">
+          <div class="flex row center">
             <object type="image/svg+xml" data="media/d3_logo.svg" height="75">D3.js Logo</object>
             <h2 class="header-in-row">D3.js</h2>
           </div>
@@ -627,7 +627,7 @@
 
         <!-- Slide - Sample -->
         <section>
-          <div id="sample-countries" class="flex-row center"></div>
+          <div id="sample-countries" class="flex row center"></div>
           <a style="font-size:1.8rem" target="_blank" href="https://github.com/fjcalzado/DemoSeries-D3JS-Bubble-Chart">Github</a>
 
           <!-- Notas -->
@@ -649,7 +649,7 @@
 
         <!-- Slide - Qué Sucederá -->
         <section>
-          <div class="flex-row spaced">
+          <div class="flex row spaced">
             <object type="image/svg+xml" data="media/react_logo.svg" height="100">React Logo</object>
             <svg class="fragment" data-fragment-index="1" width="100" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 252 39.51">
               <defs>
@@ -697,7 +697,7 @@
         <!-- Slide - Test de colisión -->
         <section>
           <h2 style="margin-bottom:40px">Test de colisión</h2>
-          <div id="sample-collision" class="flex-row center"></div>
+          <div id="sample-collision" class="flex row center"></div>
         </section>
 
       </section>
@@ -722,9 +722,9 @@
         <!-- Slide - Código Variante Estática -->
         <section>
           <h4>Versión Estática</h4>
-          <pre><code class="code-area typescript" data-trim="true" data-noescape="true">
+          <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
-              data: number[];
+              data: any[];
             }
 
             class ChartComponent extends React.Component&ltProps, {}&gt {
@@ -758,15 +758,15 @@
 
          <!-- Slide - Ejemplo Variante Estática -->
          <section>
-          <div id="sample-d3-render-static" class="flex-row center"></div>
+          <div id="sample-d3-render-static" class="flex row center"></div>
         </section>
 
         <!-- Slide - Código Variante Dinámica -->
         <section>
           <h4>Versión Dinámica</h4>
-          <pre><code class="code-area js" data-trim="true" data-noescape="true">
+          <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
-              data: number[];
+              data: any[];
             }
 
             class ChartComponent extends React.Component&ltProps, {}&gt {
@@ -805,28 +805,30 @@
 
         <!-- Slide - Ejemplo Variante Dinámica -->
         <section>
-          <div id="sample-d3-render-dynamic" class="flex-row center"></div>
+          <div id="sample-d3-render-dynamic" class="flex row center"></div>
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
         <section>
-          <div class="flex-row spaced top-align">
+          <div class="flex column center">
             <div>
-              <h4>PROS</h4>
-              <ul class="no-bullet">
-                <li class="fragment"><strong class="positive">✓ </strong>Muy sencilla</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Efectiva</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Código Nativo D3</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
-              </ul>
-            </div>
-            <div>
-              <h4>CONS</h4>
-              <ul class="no-bullet">
-                <li class="fragment"><strong class="negative">✗ </strong>Reconciliación React</li>
-                <li class="fragment"><strong class="negative">✗ </strong>Porción DOM mutable</li>
-                <li class="fragment"><strong class="negative">✗ </strong><i>Server side rendering</i></li>
-              </ul>
+              <div class="flex row top-align">
+                <h4>PROS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="positive">✓ </strong>Muy sencilla y efectiva, funciona</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>Funcionalidad completa D3</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>Código nativo D3 y ejemplos</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
+                </ul>
+              </div>
+              <div class="flex row top-align">
+                <h4>CONS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="negative">✗ </strong>DOM Virtual / Reconciliación React</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Porción del DOM mutable</li>
+                  <li class="fragment"><strong class="negative">✗ </strong><i>Server Side Rendering</i></li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -844,9 +846,9 @@
           <p>D3 al servicio de React</p>
         </section>
 
-        <!-- Slide - Código Variante Estática -->
+        <!-- Slide - Código -->
         <section>
-          <pre><code class="code-area typescript" data-trim="true" data-noescape="true">
+          <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
               data: any[];
             }
@@ -858,15 +860,18 @@
 
               private calculatePath = (lineData) => {
                 // Usamos D3 para cálculos
-                d3.scaleLinear()...
-                d3.line()...
+                // d3.scaleLinear()...
+                // d3.line()...
+                return ...
               }
 
               public render() {
                 return (
                   &ltsvg width="500px" height="300px"&gt
                     {
-                      &ltpath d={this.calculatePath()} className="line" /&gt
+                      this.props.data.map(lineData => (
+                        &ltpath d={this.calculatePath(lineData)} className="line" /&gt
+                      ))
                     }
                   &lt/svg&gt
                 );
@@ -875,60 +880,157 @@
           </code></pre>
         </section>
 
-          <!-- Slide - Ejemplo Variante Estática -->
-          <section>
-          <div id="sample-d3-render-static" class="flex-row center"></div>
+        <!-- Slide - Ejemplo -->
+        <section>
+          <div id="sample-react-render" class="flex row center"></div>
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
         <section>
-          <div class="flex-row spaced top-align">
+          <div class="flex column center">
             <div>
-              <h4>PROS</h4>
-              <ul class="no-bullet">
-                <li class="fragment"><strong class="positive">✓ </strong>Muy sencilla</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Efectiva</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Código Nativo D3</li>
-                <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
-              </ul>
-            </div>
-            <div>
-              <h4>CONS</h4>
-              <ul class="no-bullet">
-                <li class="fragment"><strong class="negative">✗ </strong>Reconciliación React</li>
-                <li class="fragment"><strong class="negative">✗ </strong>Porción DOM mutable</li>
-                <li class="fragment"><strong class="negative">✗ </strong><i>Server side rendering</i></li>
-              </ul>
+              <div class="flex row top-align">
+                <h4>PROS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="positive">✓ </strong>Código React</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>DOM Virtual / Reconciliación</li>
+                  <li class="fragment"><strong class="positive">✓ </strong><i>Server Side Rendering</i></li>
+                </ul>
+              </div>
+              <div class="flex row top-align">
+                <h4>CONS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="negative">✗ </strong>Complejidad exponencial</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Reimplementar funcionalidad D3</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Ejemplos D3</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Amplio conocimiento API D3</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Transiciones</li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
+      </section>
+
+
+       <!-- |GRUPO| 3 Faux DOM -->
+       <section>
+
+          <!-- Slide - En que consiste la solución -->
+          <section>
+            <h3><i>Faux</i> DOM</h3>
+            <p>React y D3 totalmente separados</p>
+          </section>
+
+          <!-- Slide - Código Variante Estática -->
+          <section>
+            <h4>Versión Estática</h4>
+            <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
+              interface Props extends ReactFauxDomProps {
+                data: any[];
+              }
+
+              class ChartComponent extends React.Component&lt;Props, {}&gt; {
+                constructor(props) {
+                  super(props);
+                }
+
+                public componentDidMount() {
+                  // Creamos un Faux DOM para D3
+                  const fauxDom = this.props.connectFauxDOM("div", "chart");
+                  createChart(fauxDom, this.props.data);
+                }
+
+                public render() {
+                  return (
+                    &lt;div className="container"&gt;
+                      {this.props.chart}
+                    &lt;/div&gt;
+                  );
+                }
+              }
+            </code></pre>
+          </section>
+
+          <!-- Slide - Código Variante Dinámica -->
+          <section>
+            <h4>Versión Dinámica</h4>
+            <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
+              interface Props extends ReactFauxDomProps {
+                data: any[];
+              }
+
+              class ChartComponent extends React.Component&lt;Props, {}&gt; {
+                constructor(props) {
+                  super(props);
+                }
+
+                public componentDidMount() {
+                  // Creamos un Faux DOM para D3
+                  const fauxDom = this.props.connectFauxDOM("div", "chart");
+                  createChart(fauxDom, this.props.data);
+                }
+
+                public componentDidUpadte(prevProps) {
+                  if (prevProps.data !== this.props.data) {
+                    // Obtenemos el FauxDOM
+                    const fauxDom = this.props.connectFauxDOM("div", "chart");
+                    updateChart(fauxDom, this.props.data);
+                    this.props.animateFauxDOM(1000);
+                  }
+                }
+
+                public render() {
+                  return (
+                    &lt;div className="container"&gt;
+                      {this.props.chart}
+                    &lt;/div&gt;
+                  );
+                }
+              }
+            </code></pre>
+          </section>
+
+          <!-- Slide - Ejemplo -->
+          <section>
+            <div class="flex row center">
+              <div id="sample-faux-dom"></div>
+            </div>
+          </section>
+
+          <!-- Slide - Resumen Pros & Cons -->
+          <section>
+            <div class="flex column center">
+              <div>
+                <div class="flex row top-align">
+                  <h4>PROS</h4>
+                  <ul class="no-bullet">
+                    <li class="fragment"><strong class="positive">✓ </strong>Funcionalidad completa D3</li>
+                    <li class="fragment"><strong class="positive">✓ </strong>Código nativo D3 y ejemplos</li>
+                    <li class="fragment"><strong class="positive">✓ </strong>DOM Virtual / Reconciliación</li>
+                    <li class="fragment"><strong class="positive">✓ </strong><i>Server Side Rendering</i></li>
+                    <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
+                  </ul>
+                </div>
+                <div class="flex row top-align">
+                  <h4>CONS</h4>
+                  <ul class="no-bullet">
+                    <li class="fragment"><strong class="negative">✗ </strong>Nueva entidad en flujo renderizado</li>
+                    <li class="fragment"><strong class="negative">✗ </strong>Toda la responsabilidad</li>
+                    <li class="fragment"><strong class="negative">✗ </strong>Rendimiento en gráficos complejos</li>
+                    <li class="fragment"><strong class="negative">✗ </strong>Pseudo transiciones via muestreo</li>
+                    <li class="fragment"><strong class="negative">✗ </strong>¿Mantenimiento? ¿Proyecto desactualizado?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </section>
-
-
-
-
-      <section>
-      </section>
-
-      <section data-background-iframe="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">
-        <h4>iFrame en background</h4>
-      </section>
-
-      <section>
-        <p>Probando un link externo en iframe</p>
-        <a data-preview-link="true" href="https://fjcalzado.github.io/DemoSeries-D3JS-Bubble-Chart/">Link</a>
-      </section>
-
-      <section data-background-color="#fff" data-background="https://media.giphy.com/media/lueaDWxOz0LNS/giphy.gif">
-        <h2>... pelea asegurada!</h2>
-      </section>
-
 
     </div>
   </div>
-
-
 
 
 

@@ -3,6 +3,7 @@ import { ChartDynamicComponent } from "./chart-dynamic.component";
 import { ChartFauxComponent } from "./chart-fauxdom.component";
 import { generateTree, Segment } from "./tree.generator";
 import { setup } from "./chart.setup";
+import { cnc } from "../util";
 
 const style = require("./sample.style.scss");
 
@@ -81,7 +82,7 @@ export class FauxDomSample extends React.Component<FauxDomProps, FauxDomState> {
             {`FauxDOM ${this.state.fauxDOM ? "ON" : "OFF"}`}
           </button>
           <button className={style.control} onClick={this.handleRefreshData}>Refresh</button>
-          <label htmlFor="autoRefreshId">
+          <label htmlFor="autoRefreshId" className={cnc(style.control, style.checkbox)}>
             <input
               id="autoRefreshId"
               type="checkbox"

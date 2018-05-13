@@ -7,7 +7,7 @@ export interface ChartSetup {
 }
 
 export const setup: ChartSetup = {
-  width: 600,
+  width: 700,
   height: 450,
   transitionDelay: 500,
   dynamicInterval: 1000,

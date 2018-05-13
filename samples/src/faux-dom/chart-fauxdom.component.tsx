@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createChart, updateChart } from './chart.business';
 import { setup } from './chart.setup';
 import { Segment } from './tree.generator';
-import { withFauxDOM, ReactFauxDomProps, createElement } from 'react-faux-dom'
+import { withFauxDOM, ReactFauxDomProps } from 'react-faux-dom';
 
 const style = require("./chart.style.scss");
 

@@ -136,19 +136,39 @@ $heading4Size: 1em;
     animation-timing-function: ease-in-out;
   }
 
-  .flex-row {
+  .flex {
     display: flex;
-    flex-direction: row;
     align-items: center;
     margin: $blockMargin 0;
 
-    &.center {
-      justify-content: center;
+    &.row {
+      flex-direction: row;
+
+      &.spaced {
+        justify-content: space-around;
+      }
+
+      &.center {
+        justify-content: center;
+      }
     }
 
-    &.spaced {
-      justify-content: space-around;
+    &.column {
+      flex-direction: column;
+      align-items: flex-start;
+
+      &.spaced {
+        align-items: space-around;
+      }
+
+      &.center {
+        align-items: center;
+      }
     }
+
+
+
+
 
     &.top-align {
       align-items: flex-start;

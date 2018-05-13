@@ -6,5 +6,12 @@
 
   .control {
     margin: 0 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+
+    &.checkbox {
+      display: flex;
+      align-items: flex-end;
+    }
   }
 }
