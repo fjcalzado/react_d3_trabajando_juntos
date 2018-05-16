@@ -713,12 +713,15 @@
       <!-- |GRUPO| 1 DOM compartido pero no solapado -->
       <section>
 
-        <!-- Slide - En que consiste la solución -->
+        <!-- Slide - Titulo Intro -->
         <section>
           <h3>DOM compartido</h3>
           <p>Juntos pero no revueltos</p>
+        </section>
 
-          <svg class="fragment" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <!-- Slide - En que consiste la solución -->
+        <section>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewbox="0 0 900 425.8" style="enable-background:new 0 0 900 425.8;" xml:space="preserve">
             <style type="text/css">
               .svg-c-rule0{fill:none;}
@@ -745,7 +748,7 @@
               .svg-c-rule24{fill:#20232A;}
               .svg-c-rule25{font-size:21px;}
             </style>
-            <g id="Capa_1">
+            <g>
               <polygon class="svg-c-rule4" points="658.5,207.4 658.5,85.4 48.5,85.4 48.5,323 542.9,323 	"/>
               <polygon class="svg-c-rule5" points="658.5,207.4 849.3,208.1 849.3,377.9 542.9,376.9 542.9,323 	"/>
               <text transform="matrix(1 0 0 1 112.8565 63.3566)" class="svg-c-rule6 svg-c-rule7 svg-c-rule8">DOM Virtual</text>
@@ -794,7 +797,6 @@
               <text transform="matrix(1 0 0 1 643.1665 275.7831)" class="svg-c-rule24 svg-c-rule7 svg-c-rule25">SVG</text>
             </g>
           </svg>
-
         </section>
 
         <!-- Slide - Código Variante Estática -->
@@ -918,10 +920,103 @@
       <!-- |GRUPO| 2 React renderiza, D3 calcula -->
       <section>
 
-        <!-- Slide - En que consiste la solución -->
+        <!-- Slide - Titulo Intro -->
         <section>
           <h3>React <i>renderiza</i>, D3 calcula</h3>
           <p>D3 al servicio de React</p>
+        </section>
+
+        <!-- Slide - En que consiste la solución -->
+        <section>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewbox="0 0 900 500" style="enable-background:new 0 0 900 500;" xml:space="preserve">
+            <style type="text/css">
+              .svg-d-rule0{fill:#00D4EC;fill-opacity:0.2;}
+              .svg-d-rule1{opacity:0.2;fill:#F68E48;enable-background:new;}
+              .svg-d-rule2{fill:#B4B4B4;}
+              .svg-d-rule3{font-family:'Montserrat';}
+              .svg-d-rule4{font-size:32px;}
+              .svg-d-rule5{fill:#FFFFFF;}
+              .svg-d-rule6{font-size:38px;}
+              .svg-d-rule7{fill:none;stroke:#AAAAAA;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:11.829,11.8286;}
+              .svg-d-rule8{fill:none;stroke:#F68E48;stroke-miterlimit:10;}
+              .svg-d-rule9{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:3;stroke-miterlimit:10;}
+              .svg-d-rule10{fill:none;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+              .svg-d-rule11{font-size:21px;}
+              .svg-d-rule12{fill:#00D4EC;stroke:#00D4EC;stroke-width:3;stroke-miterlimit:10;}
+              .svg-d-rule13{fill:none;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+              .svg-d-rule14{fill:#F68E48;}
+              .svg-d-rule15{font-family:'Montserrat';}
+              .svg-d-rule16{fill:none;stroke:#F68E48;stroke-width:3;stroke-miterlimit:10;}
+              .svg-d-rule17{fill:#FFFFFF;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+              .svg-d-rule18{fill:#FFFFFF;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+            </style>
+            <polygon class="svg-d-rule0" points="863.2,366.5 863.2,72.7 40.7,72.7 40.7,366.5 "/>
+            <polygon class="svg-d-rule1" points="219.6,393.4 605.7,394.1 605.7,470 219.6,469 "/>
+            <text transform="matrix(1 0 0 1 132.8565 50.6566)" class="svg-d-rule2 svg-d-rule3 svg-d-rule4">DOM Virtual</text>
+            <text transform="matrix(1 0 0 1 561.5232 50.6566)" class="svg-d-rule2 svg-d-rule3 svg-d-rule4">DOM Real</text>
+            <text transform="matrix(1 0 0 1 500.5502 445.1328)" class="svg-d-rule5 svg-d-rule3 svg-d-rule6">D3.js</text>
+            <g>
+              <path class="svg-d-rule5" d="M475.2,167.3v-8.6c0-3.8-3.1-6.9-6.9-6.9l-9.5-0.1c-3.8-0.1-6.9,3-6.9,6.8l5.4,0.1c0.5-1.1,1.9-1.8,3.2-1.7
+                l6,0.1c1.9,0.1,3.5,1.6,3.5,3.5v5.1c0,1.9-1.5,3.4-3.4,3.4l-6-0.1c-1.3,0-2.7-0.8-3.3-1.8L452,167c0,3.8,3.1,6.9,6.9,6.9l9.5,0.1
+                C472.2,174.1,475.2,171.1,475.2,167.3z"/>
+              <path class="svg-d-rule5" d="M440.5,166.8c-0.6,1.1-2,1.8-3.3,1.8l-5.6-0.1c-2,0-3.5-1.6-3.5-3.6v-5.3c0-1.9,1.5-3.5,3.5-3.4l5.6,0.1
+                c1.4,0,2.7,0.7,3.3,1.9l5.5,0.1c0-3.9-3.2-7.1-7-7.1l-9.1-0.1c-3.9-0.1-7,3.1-7,6.9v8.8c0,3.9,3.2,7.1,7,7.1l9.1,0.1
+                c3.9,0.1,7-3.1,7-6.9L440.5,166.8z"/>
+              <path class="svg-d-rule5" d="M438.7,162.6c0,1.3,1,2.4,2.4,2.4l15.8,0.1c1.3,0,2.4-1.1,2.4-2.4s-1-2.4-2.4-2.4l-15.8-0.1
+                C439.8,160.2,438.7,161.3,438.7,162.6z"/>
+            </g>
+            <path class="svg-d-rule7" d="M621.6-25.5"/>
+            <path class="svg-d-rule7" d="M-21.9,220"/>
+            <path class="svg-d-rule7" d="M668,216.9"/>
+            <text transform="matrix(1 0 0 1 396.5543 135.6836)" class="svg-d-rule5 svg-d-rule3 svg-d-rule6">React</text>
+            <path class="svg-d-rule8" d="M652.7,266.2"/>
+            <path class="svg-d-rule8" d="M779.5,393"/>
+            <ellipse transform="matrix(0.3417 -0.9398 0.9398 0.3417 296.2089 674.4679)" class="svg-d-rule9" cx="629.6" cy="125.8" rx="23.9" ry="23.9"/>
+            <circle class="svg-d-rule9" cx="564.9" cy="190.5" r="23.9"/>
+            <line class="svg-d-rule10" x1="629.6" y1="125.8" x2="694.3" y2="190.5"/>
+            <line class="svg-d-rule10" x1="629.6" y1="125.8" x2="564" y2="191.3"/>
+            <circle class="svg-d-rule9" cx="500.1" cy="254.4" r="23.9"/>
+            <ellipse transform="matrix(0.3162 -0.9487 0.9487 0.3162 189.1797 771.2373)" class="svg-d-rule9" cx="629.6" cy="254.4" rx="23.9" ry="23.9"/>
+            <line class="svg-d-rule10" x1="564.9" y1="189.7" x2="629.6" y2="254.4"/>
+            <line class="svg-d-rule10" x1="564.9" y1="189.7" x2="499.3" y2="255.3"/>
+            <circle class="svg-d-rule9" cx="759.1" cy="255.1" r="23.9"/>
+            <circle class="svg-d-rule9" cx="694.4" cy="319.8" r="23.9"/>
+            <circle class="svg-d-rule9" cx="823.8" cy="319.8" r="23.9"/>
+            <line class="svg-d-rule10" x1="759.1" y1="255.1" x2="823.8" y2="319.8"/>
+            <line class="svg-d-rule10" x1="759.1" y1="255.1" x2="693.5" y2="320.7"/>
+            <line class="svg-d-rule10" x1="694.4" y1="190.4" x2="759.1" y2="255.2"/>
+            <text transform="matrix(1 0 0 1 738.1665 263.0831)" class="svg-d-rule5 svg-d-rule3 svg-d-rule11">SVG</text>
+            <ellipse class="svg-d-rule12" cx="219.6" cy="125.8" rx="23.9" ry="23.9"/>
+            <circle class="svg-d-rule12" cx="154.9" cy="190.5" r="23.9"/>
+            <line class="svg-d-rule13" x1="219.6" y1="125.8" x2="284.3" y2="190.5"/>
+            <line class="svg-d-rule13" x1="219.6" y1="125.8" x2="154" y2="191.3"/>
+            <circle class="svg-d-rule12" cx="90.1" cy="254.4" r="23.9"/>
+            <ellipse class="svg-d-rule12" cx="219.6" cy="254.4" rx="23.9" ry="23.9"/>
+            <line class="svg-d-rule13" x1="154.9" y1="189.7" x2="219.6" y2="254.4"/>
+            <line class="svg-d-rule13" x1="154.9" y1="189.7" x2="89.3" y2="255.3"/>
+            <circle class="svg-d-rule12" cx="349.1" cy="255.1" r="23.9"/>
+            <circle class="svg-d-rule12" cx="284.4" cy="319.8" r="23.9"/>
+            <circle class="svg-d-rule12" cx="413.8" cy="319.8" r="23.9"/>
+            <line class="svg-d-rule13" x1="349.1" y1="255.1" x2="413.8" y2="319.8"/>
+            <line class="svg-d-rule13" x1="349.1" y1="255.1" x2="283.5" y2="320.7"/>
+            <line class="svg-d-rule13" x1="284.4" y1="190.4" x2="349.1" y2="255.2"/>
+            <text transform="matrix(1 0 0 1 328.1665 263.0831)" class="svg-d-rule5 svg-d-rule3 svg-d-rule11">SVG</text>
+            <text transform="matrix(1 0 0 1 326.1664 443.1324)" class="svg-d-rule14 svg-d-rule15 svg-d-rule6">f(x) </text>
+            <text transform="matrix(1 0 0 1 241.1664 443.1324)" class="svg-d-rule14 svg-d-rule15 svg-d-rule6">f(x) </text>
+            <text transform="matrix(1 0 0 1 412.1664 443.1324)" class="svg-d-rule14 svg-d-rule15 svg-d-rule6">f(x) </text>
+            <line class="svg-d-rule16" x1="284.4" y1="393.8" x2="284.4" y2="356.3"/>
+            <polygon class="svg-d-rule14" points="289.5,362.2 284.4,357.1 279.3,362.2 279.3,357.9 284.4,352.8 289.5,357.9"/>
+            <path class="svg-d-rule16" d="M299,457h-61c-2.2,0-4-1.8-4-4v-42.7c0-2.2,1.8-4,4-4h61c2.2,0,4,1.8,4,4V453C303,455.2,301.2,457,299,457z"/>
+            <path class="svg-d-rule16" d="M384,457h-61c-2.2,0-4-1.8-4-4v-42.7c0-2.2,1.8-4,4-4h61c2.2,0,4,1.8,4,4V453C388,455.2,386.2,457,384,457z"/>
+            <path class="svg-d-rule16" d="M469,457h-61c-2.2,0-4-1.8-4-4v-42.7c0-2.2,1.8-4,4-4h61c2.2,0,4,1.8,4,4V453C473,455.2,471.2,457,469,457z"/>
+            <line class="svg-d-rule16" x1="351.4" y1="394" x2="351.4" y2="318.8"/>
+            <polygon class="svg-d-rule14" points="356.5,324.8 351.4,319.7 346.3,324.8 346.3,320.5 351.4,315.4 356.5,320.5"/>
+            <line class="svg-d-rule16" x1="415.4" y1="393.8" x2="415.4" y2="356.3"/>
+            <polygon class="svg-d-rule14" points="420.5,362.2 415.4,357.1 410.3,362.2 410.3,357.9 415.4,352.8 420.5,357.9"/>
+            <circle class="svg-d-rule17" cx="694.3" cy="190.5" r="23.9"/>
+            <circle class="svg-d-rule18" cx="284.3" cy="190.5" r="23.9"/>
+          </svg>
         </section>
 
         <!-- Slide - Código -->
@@ -992,120 +1087,227 @@
       </section>
 
 
-       <!-- |GRUPO| 3 Faux DOM -->
-       <section>
+      <!-- |GRUPO| 3 Faux DOM -->
+      <section>
 
-          <!-- Slide - En que consiste la solución -->
-          <section>
-            <h3><i>Faux</i> DOM</h3>
-            <p>React y D3 totalmente separados</p>
-          </section>
+        <!-- Slide - Titulo Intro -->
+        <section>
+          <h3><i>Faux</i> DOM</h3>
+          <p>React y D3 totalmente separados</p>
+        </section>
 
-          <!-- Slide - Código Variante Estática -->
-          <section>
-            <h4>Versión Estática</h4>
-            <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
-              interface Props extends ReactFauxDomProps {
-                data: any[];
+        <!-- Slide - En que consiste la solución -->
+        <section>
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          viewbox="0 0 1150 400" style="enable-background:new 0 0 1150 400;" xml:space="preserve">
+            <style type="text/css">
+              .svg-e-rule0{fill:#F68E48;fill-opacity:0.2;}
+              .svg-e-rule1{fill:#00D4EC;fill-opacity:0.2;}
+              .svg-e-rule2{fill:#B4B4B4;}
+              .svg-e-rule3{font-family:'Montserrat';}
+              .svg-e-rule4{font-size:32px;}
+              .svg-e-rule5{fill:#FFFFFF;}
+              .svg-e-rule6{font-size:38px;}
+              .svg-e-rule7{fill:none;stroke:#AAAAAA;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:11.829,11.8286;}
+              .svg-e-rule8{fill:none;stroke:#F68E48;stroke-miterlimit:10;}
+              .svg-e-rule9{fill:#7F7F7F;stroke:#7F7F7F;stroke-width:3;stroke-miterlimit:10;}
+              .svg-e-rule10{fill:none;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+              .svg-e-rule11{fill:#00D4EC;stroke:#00D4EC;stroke-width:3;stroke-miterlimit:10;}
+              .svg-e-rule12{fill:none;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+              .svg-e-rule13{font-size:21px;}
+              .svg-e-rule14{fill:#FFFFFF;stroke:#7F7F7F;stroke-width:5;stroke-miterlimit:10;}
+              .svg-e-rule15{fill:#FFFFFF;stroke:#00D4EC;stroke-width:5;stroke-miterlimit:10;}
+              .svg-e-rule16{fill:#F68E48;stroke:#F68E48;stroke-width:3;stroke-miterlimit:10;}
+              .svg-e-rule17{fill:#F68E48;stroke:#F68E48;stroke-width:5;stroke-miterlimit:10;}
+              .svg-e-rule18{fill:#00ECCC;fill-opacity:0.2;}
+              .svg-e-rule19{font-size:26px;}
+              .svg-e-rule20{fill:none;stroke:#00ECCC;stroke-width:5;stroke-miterlimit:10;stroke-dasharray:6,6;}
+              .svg-e-rule21{fill:#00ECCC;}
+            </style>
+            <rect x="31.1" y="72.7" class="svg-e-rule0" width="234.8" height="224.3"/>
+            <polygon class="svg-e-rule1" points="1117.2,366.5 1117.2,72.7 294.7,72.7 294.7,366.5 "/>
+            <text transform="matrix(1 0 0 1 386.8523 50.6566)" class="svg-e-rule2 svg-e-rule3 svg-e-rule4">DOM Virtual</text>
+            <text transform="matrix(1 0 0 1 815.519 50.6566)" class="svg-e-rule2 svg-e-rule3 svg-e-rule4">DOM Real</text>
+            <text transform="matrix(1 0 0 1 108.1958 135.7946)" class="svg-e-rule5 svg-e-rule3 svg-e-rule6">D3.js</text>
+            <g>
+              <path class="svg-e-rule5" d="M729.2,167.3v-8.6c0-3.8-3.1-6.9-6.9-6.9l-9.5-0.1c-3.8-0.1-6.9,3-6.9,6.8l5.4,0.1c0.5-1.1,1.9-1.8,3.2-1.7
+                l6,0.1c1.9,0.1,3.5,1.6,3.5,3.5v5.1c0,1.9-1.5,3.4-3.4,3.4l-6-0.1c-1.3,0-2.7-0.8-3.3-1.8L706,167c0,3.8,3.1,6.9,6.9,6.9l9.5,0.1
+                C726.2,174.1,729.2,171.1,729.2,167.3z"/>
+              <path class="svg-e-rule5" d="M694.5,166.8c-0.6,1.1-2,1.8-3.3,1.8l-5.6-0.1c-2,0-3.5-1.6-3.5-3.6v-5.3c0-1.9,1.5-3.5,3.5-3.4l5.6,0.1
+                c1.4,0,2.7,0.7,3.3,1.9l5.5,0.1c0-3.9-3.2-7.1-7-7.1l-9.1-0.1c-3.9-0.1-7,3.1-7,6.9v8.8c0,3.9,3.2,7.1,7,7.1l9.1,0.1
+                c3.9,0.1,7-3.1,7-6.9L694.5,166.8z"/>
+              <path class="svg-e-rule5" d="M692.7,162.6c0,1.3,1,2.4,2.4,2.4l15.8,0.1c1.3,0,2.4-1.1,2.4-2.4s-1-2.4-2.4-2.4l-15.8-0.1
+                C693.8,160.2,692.7,161.3,692.7,162.6z"/>
+            </g>
+            <path class="svg-e-rule7" d="M871.6-25.5"/>
+            <path class="svg-e-rule7" d="M232.1,220"/>
+            <path class="svg-e-rule7" d="M922,216.9"/>
+            <text transform="matrix(1 0 0 1 650.5501 135.6836)" class="svg-e-rule5 svg-e-rule3 svg-e-rule6">React</text>
+            <path class="svg-e-rule8" d="M906.7,266.2"/>
+            <path class="svg-e-rule8" d="M1033.5,393"/>
+            <ellipse transform="matrix(0.3417 -0.9398 0.9398 0.3417 463.4136 913.1752)" class="svg-e-rule9" cx="883.5" cy="125.8" rx="23.9" ry="23.9"/>
+            <circle class="svg-e-rule9" cx="818.9" cy="190.5" r="23.9"/>
+            <line class="svg-e-rule10" x1="883.6" y1="125.8" x2="948.3" y2="190.5"/>
+            <line class="svg-e-rule10" x1="883.6" y1="125.8" x2="818" y2="191.3"/>
+            <circle class="svg-e-rule9" cx="754.1" cy="254.4" r="23.9"/>
+            <ellipse transform="matrix(0.3162 -0.9487 0.9487 0.3162 362.8625 1012.2014)" class="svg-e-rule9" cx="883.6" cy="254.4" rx="23.9" ry="23.9"/>
+            <line class="svg-e-rule10" x1="818.9" y1="189.7" x2="883.6" y2="254.4"/>
+            <line class="svg-e-rule10" x1="818.9" y1="189.7" x2="753.3" y2="255.3"/>
+            <ellipse class="svg-e-rule11" cx="473.6" cy="125.8" rx="23.9" ry="23.9"/>
+            <circle class="svg-e-rule11" cx="408.9" cy="190.5" r="23.9"/>
+            <line class="svg-e-rule12" x1="473.6" y1="125.8" x2="538.3" y2="190.5"/>
+            <line class="svg-e-rule12" x1="473.6" y1="125.8" x2="408" y2="191.3"/>
+            <circle class="svg-e-rule11" cx="344.1" cy="254.4" r="23.9"/>
+            <ellipse class="svg-e-rule11" cx="473.6" cy="254.4" rx="23.9" ry="23.9"/>
+            <line class="svg-e-rule12" x1="408.9" y1="189.7" x2="473.6" y2="254.4"/>
+            <line class="svg-e-rule12" x1="408.9" y1="189.7" x2="343.3" y2="255.3"/>
+            <g class="fragment" data-fragment-index="2">
+              <g>
+                <circle class="svg-e-rule9" cx="1013.1" cy="255.1" r="23.9"/>
+                <circle class="svg-e-rule9" cx="948.4" cy="319.8" r="23.9"/>
+                <circle class="svg-e-rule9" cx="1077.8" cy="319.8" r="23.9"/>
+                <line class="svg-e-rule10" x1="1013.1" y1="255.1" x2="1077.8" y2="319.8"/>
+                <line class="svg-e-rule10" x1="1013.1" y1="255.1" x2="947.5" y2="320.7"/>
+                <line class="svg-e-rule10" x1="948.4" y1="190.4" x2="1013.1" y2="255.2"/>
+                <text transform="matrix(1 0 0 1 992.1623 263.0831)" class="svg-e-rule5 svg-e-rule3 svg-e-rule13">SVG</text>
+              </g>
+              <g>
+                <circle class="svg-e-rule11" cx="603.1" cy="255.1" r="23.9"/>
+                <circle class="svg-e-rule11" cx="538.4" cy="319.8" r="23.9"/>
+                <circle class="svg-e-rule11" cx="667.8" cy="319.8" r="23.9"/>
+                <line class="svg-e-rule12" x1="603.1" y1="255.1" x2="667.8" y2="319.8"/>
+                <line class="svg-e-rule12" x1="603.1" y1="255.1" x2="537.5" y2="320.7"/>
+                <line class="svg-e-rule12" x1="538.4" y1="190.4" x2="603.1" y2="255.2"/>
+                <text transform="matrix(1 0 0 1 582.1623 263.0831)" class="svg-e-rule5 svg-e-rule3 svg-e-rule13">SVG</text>
+              </g>
+            </g>
+            <circle class="svg-e-rule14" cx="948.3" cy="190.5" r="23.9"/>
+            <circle class="svg-e-rule15" cx="538.3" cy="190.5" r="23.9"/>
+            <g>
+              <circle class="svg-e-rule16" cx="148" cy="190.5" r="23.9"/>
+              <circle class="svg-e-rule16" cx="83.3" cy="255.1" r="23.9"/>
+              <circle class="svg-e-rule16" cx="212.7" cy="255.1" r="23.9"/>
+              <line class="svg-e-rule17" x1="148" y1="190.5" x2="212.7" y2="255.1"/>
+              <line class="svg-e-rule17" x1="148" y1="190.5" x2="82.4" y2="256.1"/>
+              <text transform="matrix(1 0 0 1 127.0623 198.4331)" class="svg-e-rule5 svg-e-rule3 svg-e-rule13">SVG</text>
+            </g>
+            <text transform="matrix(1 0 0 1 74.8523 50.6566)" class="svg-e-rule2 svg-e-rule3 svg-e-rule4">Faux DOM</text>
+            <g class="fragment" data-fragment-index="1">
+              <rect x="31.1" y="297" class="svg-e-rule18" width="234.8" height="69.5"/>
+              <text transform="matrix(1 0 0 1 46.8622 340.6999)" class="svg-e-rule5 svg-e-rule3 svg-e-rule19">react-faux-dom</text>
+              <polyline class="svg-e-rule20" points="265.9,336.3 458,336.3 539.1,255.2 539.1,220.1"/>
+              <polygon class="svg-e-rule21" points="547.6,230.1 539.1,221.6 530.6,230.1 530.6,222.9 539.1,214.4 547.6,222.9"/>
+              <line class="svg-e-rule20" x1="148.5" y1="246.1" x2="148.5" y2="290.3"/>
+              <polygon class="svg-e-rule21" points="140,280.3 148.5,288.8 157,280.3 157,287.5 148.5,296 140,287.5"/>
+            </g>
+          </svg>
+        </section>
+
+        <!-- Slide - Código Variante Estática -->
+        <section>
+          <h4>Versión Estática</h4>
+          <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
+            interface Props extends ReactFauxDomProps {
+              data: any[];
+            }
+
+            class ChartComponent extends React.Component&lt;Props, {}&gt; {
+              constructor(props) {
+                super(props);
               }
 
-              class ChartComponent extends React.Component&lt;Props, {}&gt; {
-                constructor(props) {
-                  super(props);
-                }
+              public componentDidMount() {
+                // Creamos un Faux DOM para D3
+                const fauxDom = this.props.connectFauxDOM("div", "chart");
+                createChart(fauxDom, this.props.data);
+              }
 
-                public componentDidMount() {
-                  // Creamos un Faux DOM para D3
+              public render() {
+                return (
+                  &lt;div className="container"&gt;
+                    {this.props.chart}
+                  &lt;/div&gt;
+                );
+              }
+            }
+          </code></pre>
+        </section>
+
+        <!-- Slide - Código Variante Dinámica -->
+        <section>
+          <h4>Versión Dinámica</h4>
+          <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
+            interface Props extends ReactFauxDomProps {
+              data: any[];
+            }
+
+            class ChartComponent extends React.Component&lt;Props, {}&gt; {
+              constructor(props) {
+                super(props);
+              }
+
+              public componentDidMount() {
+                // Creamos un Faux DOM para D3
+                const fauxDom = this.props.connectFauxDOM("div", "chart");
+                createChart(fauxDom, this.props.data);
+              }
+
+              public componentDidUpadte(prevProps) {
+                if (prevProps.data !== this.props.data) {
+                  // Obtenemos el FauxDOM
                   const fauxDom = this.props.connectFauxDOM("div", "chart");
-                  createChart(fauxDom, this.props.data);
-                }
-
-                public render() {
-                  return (
-                    &lt;div className="container"&gt;
-                      {this.props.chart}
-                    &lt;/div&gt;
-                  );
+                  updateChart(fauxDom, this.props.data);
+                  this.props.animateFauxDOM(1000);
                 }
               }
-            </code></pre>
-          </section>
 
-          <!-- Slide - Código Variante Dinámica -->
-          <section>
-            <h4>Versión Dinámica</h4>
-            <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
-              interface Props extends ReactFauxDomProps {
-                data: any[];
+              public render() {
+                return (
+                  &lt;div className="container"&gt;
+                    {this.props.chart}
+                  &lt;/div&gt;
+                );
               }
+            }
+          </code></pre>
+        </section>
 
-              class ChartComponent extends React.Component&lt;Props, {}&gt; {
-                constructor(props) {
-                  super(props);
-                }
+        <!-- Slide - Ejemplo -->
+        <section>
+          <div class="flex row center">
+            <div id="sample-faux-dom"></div>
+          </div>
+        </section>
 
-                public componentDidMount() {
-                  // Creamos un Faux DOM para D3
-                  const fauxDom = this.props.connectFauxDOM("div", "chart");
-                  createChart(fauxDom, this.props.data);
-                }
-
-                public componentDidUpadte(prevProps) {
-                  if (prevProps.data !== this.props.data) {
-                    // Obtenemos el FauxDOM
-                    const fauxDom = this.props.connectFauxDOM("div", "chart");
-                    updateChart(fauxDom, this.props.data);
-                    this.props.animateFauxDOM(1000);
-                  }
-                }
-
-                public render() {
-                  return (
-                    &lt;div className="container"&gt;
-                      {this.props.chart}
-                    &lt;/div&gt;
-                  );
-                }
-              }
-            </code></pre>
-          </section>
-
-          <!-- Slide - Ejemplo -->
-          <section>
-            <div class="flex row center">
-              <div id="sample-faux-dom"></div>
-            </div>
-          </section>
-
-          <!-- Slide - Resumen Pros & Cons -->
-          <section>
-            <div class="flex column center">
-              <div>
-                <div class="flex row top-align">
-                  <h4>PROS</h4>
-                  <ul class="no-bullet">
-                    <li class="fragment"><strong class="positive">✓ </strong>Funcionalidad completa D3</li>
-                    <li class="fragment"><strong class="positive">✓ </strong>Código nativo D3 y ejemplos</li>
-                    <li class="fragment"><strong class="positive">✓ </strong>DOM Virtual / Reconciliación</li>
-                    <li class="fragment"><strong class="positive">✓ </strong><i>Server Side Rendering</i></li>
-                    <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
-                  </ul>
-                </div>
-                <div class="flex row top-align">
-                  <h4>CONS</h4>
-                  <ul class="no-bullet">
-                    <li class="fragment"><strong class="negative">✗ </strong>Nueva entidad en flujo renderizado</li>
-                    <li class="fragment"><strong class="negative">✗ </strong>Toda la responsabilidad</li>
-                    <li class="fragment"><strong class="negative">✗ </strong>Rendimiento en gráficos complejos</li>
-                    <li class="fragment"><strong class="negative">✗ </strong>Pseudo transiciones via muestreo</li>
-                    <li class="fragment"><strong class="negative">✗ </strong>¿Mantenimiento? ¿Proyecto desactualizado?</li>
-                  </ul>
-                </div>
+        <!-- Slide - Resumen Pros & Cons -->
+        <section>
+          <div class="flex column center">
+            <div>
+              <div class="flex row top-align">
+                <h4>PROS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="positive">✓ </strong>Funcionalidad completa D3</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>Código nativo D3 y ejemplos</li>
+                  <li class="fragment"><strong class="positive">✓ </strong>DOM Virtual / Reconciliación</li>
+                  <li class="fragment"><strong class="positive">✓ </strong><i>Server Side Rendering</i></li>
+                  <li class="fragment"><strong class="positive">✓ </strong>Transiciones</li>
+                </ul>
+              </div>
+              <div class="flex row top-align">
+                <h4>CONS</h4>
+                <ul class="no-bullet">
+                  <li class="fragment"><strong class="negative">✗ </strong>Nueva entidad en flujo renderizado</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Toda la responsabilidad</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Rendimiento en gráficos complejos</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Pseudo transiciones via muestreo</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>¿Mantenimiento? ¿Proyecto desactualizado?</li>
+                </ul>
               </div>
             </div>
-          </section>
-
+          </div>
         </section>
+
+      </section>
 
     </div>
   </div>
