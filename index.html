@@ -256,15 +256,17 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Todos los cambios que generan nuestros componentes react, ya sea por interacción del usuario o cambios de estado, van a parar al DOM Virtual</li>
-              <li>Los cambios se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato. Pero no promocionan diréctamente al DOM real.</li>
-              <li>Es React quien determina cuando se debe actualizar el DOM Real y en un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre ambos árboles y determina cuando y qué debe modificarse</li>
+              <li>Todos los cambios que generan nuestros componentes react, ya sea por cambios de propiedades o de estado, van a parar al DOM Virtual</li>
+              <li>Los cambios se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato. Pero no promocionan directamente al DOM real.</li>
+              <li>Es React quien determina cuando se debe actualizar el DOM Real y en un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre el árbol virtual actual y una versión anterior, y también la compara con el DOM real.</li>
+              <li>De este modo, se genera una delta que determina con precisión qué debe modificarse en el DOM real, con una granularidad muy fina</li>
               <li>Gracias a la reconciliación, los cambios se propagan al DOM real de manera eficiente, ya que se hacen en 'batch', con el mínimo número de operaciones posible.</li>
               <li>Este proceso de reconciliación, por tanto, sirve como mecanismo de sincronización entre ambos mundos.</li>
               <li>En RESUMEN: <b>React gestiona los cambios en el DOM y lo mantiene actualizado por nosotros de forma eficiente</b></li>
             </ul>
           </aside>
         </section>
+
       </section>
 
 
@@ -692,12 +694,37 @@
         <!-- Slide - A tortas -->
         <section data-background="./media/fight.gif">
           <h2 class="text-shadow">¡A tortas por el DOM!</h2>
+
+          <aside class="notes">
+            <ul>
+              <li>Vale si, he dramatizado un poco. Igual no es tan violento. Pero desde luego vamos a tener problemas, y para ilustrarlo veamos el siguiente ejemplo.</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Test de colisión -->
         <section>
           <h2 style="margin-bottom:40px">Test de colisión</h2>
           <div id="sample-collision" class="flex row center"></div>
+
+          <aside class="notes">
+            <ul>
+              <li>Simple aplicación (real, no es un mock ni nada de eso) que reproduce el problema</li>
+              <li>Consiste en un contenedor de React con 3 componentes, 2 botones y un div</li>
+              <li>Cada botón modificará el DIV</li>
+              <li>El de la izquierda lo hará siguiendo el flujo habitual de React, via cambio de propiedades.</li>
+              <li>El de la derecha, sin embargo, instancia a D3 para que modifique el nodo target, mutando directamente el DOM.</li>
+              <li>Veamos que sucede:
+                <ul>
+                  <li>Primero React, todo funciona como esperamos</li>
+                  <li>Ahora el turno de D3. Funciona también, hemos cambiado el color y texto del target como era esperable. Pero este cambio tiene consecuencias. Hemos mutado el DOM.</li>
+                  <li>¿Que pasará si clico de nuevo en React? Ha dejado de funcionar.</li>
+                  <li><b>Hemos perdido la sincronicidad entre DOM virtual y real</b></li>
+                  <li>El cambio ha podido propagarse hasta el DOM virtual pero al aplicar el DIFF se comparará con la versión anterior del DOM virtual y también con el propio DOM real, que sin embargo ha mutado. El nodo que React esperaba encontrarse en el DOM real ya no es el mismo</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
         </section>
 
       </section>
@@ -707,6 +734,14 @@
       <!-- Slide - Soluciones -->
       <section>
         <h2>Soluciones</h2>
+
+        <aside class="notes">
+          <ul>
+            <li>Ya conocemos el problema, veamos las soluciones que tenemos.</li>
+            <li>A continuación os mostraré distintas alternativas y algunas de sus variantes.</li>
+            <li>Plantearemos en qué consiste cada solución, veremos código en React a modo de plantilla para cada solución y también os enseñaré ejemplos reales implementados de esa manera.</li>
+          </ul>
+        </aside>
       </section>
 
 
@@ -717,6 +752,15 @@
         <section>
           <h3>DOM compartido</h3>
           <p>Juntos pero no revueltos</p>
+
+          <aside class="notes">
+            <ul>
+              <li>Primera solución, DOM compartido</li>
+              <li>Consiste compartir el DOM de modo que las 2 librerías tengan su espacio para trabajar pero sin solaparse, marcando la frontera clara entre una y otra.</li>
+              <li>Por eso lo he llamado Juntos pero no Revueltos. React renderizará la mayor parte de nuestra app excepto la visualización de datos o gráficos que será cosa de D3.js</li>
+              <li>¿Cómo conseguimos esto?</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - En que consiste la solución -->
@@ -797,6 +841,16 @@
               <text transform="matrix(1 0 0 1 643.1665 275.7831)" class="svg-c-rule24 svg-c-rule7 svg-c-rule25">SVG</text>
             </g>
           </svg>
+
+          <aside class="notes">
+            <ul>
+              <li>La idea: Crear un componente en react que sirva de contenedor.</li>
+              <li>Como decía un compañero mío, su única misión es ser un cascarón en React, un único nodo que sirva como punto de entrada a D3.js para operar a sus anchas con el DOM.</li>
+              <li>Ese contenedor lo vemos representado en blanco y el secreto está en indicarle a React que a partir de ese nodo es territorio de D3</li>
+              <li>Para React, todo lo que hay desde ese nodo hacia adentro, no le incumbe. Es como una caja negra.</li>
+              <li>De esta forma mantenemos dos islas conectadas pero separadas, sin solapes ni interferencias</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Código Variante Estática -->
@@ -834,11 +888,23 @@
               }
             }
           </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
          <!-- Slide - Ejemplo Variante Estática -->
          <section>
           <div id="sample-d3-render-static" class="flex row center"></div>
+
+          <aside class="notes">
+            <ul>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Código Variante Dinámica -->
@@ -881,11 +947,23 @@
               }
             }
           </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Ejemplo Variante Dinámica -->
         <section>
           <div id="sample-d3-render-dynamic" class="flex row center"></div>
+
+          <aside class="notes">
+            <ul>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
@@ -911,6 +989,12 @@
               </div>
             </div>
           </div>
+
+          <aside class="notes">
+            <ul>
+              <li></li>
+            </ul>
+          </aside>
         </section>
 
       </section>
