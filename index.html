@@ -891,7 +891,18 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>Esta es la solución más sencilla de todas, pero muy efectiva, funciona.</li>
+              <li>Tan fácil como hacer un componente básico, donde alimentemos los datos para ser visualizados como propiedad, y como render() un simple div a modo de contenedor.</li>
+              <li>Esto nos va a proporcionar el nodo que necesitamos en el DOM.</li>
+              <li>Una vez el componente se monte, el nodo DIV se creará en el DOM.</li>
+              <li>Almacenaremos localmente la referencia de dicho nodo real para pasarsela a D3 y que empiece a construir su árbol de elementos.</li>
+              <li>Esto se hará justo después de que el componente se haya montado, ahi es el momento de invocar a D3 para que construya el gráfico.</li>
+              <li><b>El secreto: evitar que haya más actualizaciones, para lo cual ponemos shouldComponentUpdate a false</b></li>
+              <li>Bloqueamos cualquier intento de renderizado por parte de React, el DIV contenedor solo se renderizará por tanto una vez, al montarse.</li>
+              <li>Del resto se encarga D3.js</li>
+              <li>Ahora bien, un matiz importante, aqui la premisa es que los datos no van a cambiar, serán estáticos, de ahí el título </li>
+              <li>¿Por qué? Porque invocamos a D3 una sóla vez, al montarse el componente. Si los datos cambian, la propiedad data cambia, pero no se realiza ningún re-render ni se vuelve a invocar D3 en ningún momento.</li>
+              <li>Por tanto esta solución es adecuada para los casos más sencillos en donde sabemos que los datos no cambian, que no necesitamos real time.</li>
             </ul>
           </aside>
         </section>
