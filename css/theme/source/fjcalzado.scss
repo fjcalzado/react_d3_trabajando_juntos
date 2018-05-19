@@ -166,10 +166,6 @@ $heading4Size: 1em;
       }
     }
 
-
-
-
-
     &.top-align {
       align-items: flex-start;
     }
@@ -195,6 +191,20 @@ $heading4Size: 1em;
 
   .negative {
     color: $secondaryColor;
+  }
+
+  .svg-button {
+    margin: 0 1rem;
+
+    svg {
+      fill: $linkColor;
+      transition: transform 0.12s ease-out, fill 0.12s ease-out;
+
+      &:hover {
+        fill: $linkColorHover;
+        transform: scale(1.2);
+      }
+    }
   }
 }
 

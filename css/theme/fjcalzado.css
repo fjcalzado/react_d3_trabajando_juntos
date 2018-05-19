@@ -361,3 +361,12 @@ body {
 
 .reveal .negative {
   color: #ff55f7; }
+
+.reveal .svg-button {
+  margin: 0 1rem; }
+  .reveal .svg-button svg {
+    fill: #00eccc;
+    transition: transform 0.12s ease-out, fill 0.12s ease-out; }
+    .reveal .svg-button svg:hover {
+      fill: #ff55f7;
+      transform: scale(1.2); }
