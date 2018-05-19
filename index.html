@@ -862,8 +862,9 @@
 
           <aside class="notes">
             <ul>
+              <li>Mirad, este esquema nos suena de React, DOM Virtual vs DOM Real y la reconciliación para sincronizar cambios</li>
               <li>La idea: Crear un componente en react que sirva de contenedor.</li>
-              <li>Como decía un compañero mío, su única misión es ser un cascarón en React, un único nodo que sirva como punto de entrada a D3.js para operar a sus anchas con el DOM.</li>
+              <li>Como decía un compañero mío, su única misión es ser un cascarón en React, <b>un único nodo que sirva como punto de entrada a D3.js</b> para operar a sus anchas con el DOM.</li>
               <li>Ese contenedor lo vemos representado en blanco y el secreto está en indicarle a React que a partir de ese nodo es territorio de D3</li>
               <li>Para React, todo lo que hay desde ese nodo hacia adentro, no le incumbe. Es como una caja negra.</li>
               <li>De esta forma mantenemos dos islas conectadas pero separadas, sin solapes ni interferencias</li>
@@ -931,7 +932,14 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>Ejemplo básico y sencillo implementado con esta solución</li>
+              <li>He generado un </b>vector de números random</b> que será inyectado en la propiedad DATA del componente React</li>
+              <li>Ese vector random determinará la altura de las barras</li>
+              <li>Cuando el componente se monta, D3.js entra en acción y genera los nodos SVG en función de los datos</li>
+              <li>Como hemos comentado antes, la premisa es que los datos no cambien, ya que si lo hicieran el gráfico no se enteraría porque se pinta ¡solo al montarse!</li>
+              <li>Eso si, puedo refrescar la página y que se genere un nuevo set de datos aleatorios, y al volver a montarse el componente, mi gráfico cambiaría.</li>
+              <li>Pero una de las características más potentes de D3 es trabajar con datos en tiempo real, que los datos cambien y el gráfico reaccione ante esos cambios ¿verdad?</li>
+              <li>No os preocupeis, tenémos la versión dinámica para eso. Veamos</li>
             </ul>
           </aside>
         </section>
@@ -979,7 +987,23 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>Fijaos que es muy similar a la anterior:
+                <ul>
+                  <li>Datos como propiedad</li>
+                  <li>Metodo render con un simple DIV</li>
+                  <li>Extraemos la referencia del nodo DIV en el DOM real y la almacenamos para pasarsela a D3</li>
+                </ul>
+              </li>
+              <li>Hasta ahí todo igual, la diferencia está en el ciclo de vida.</li>
+              <li>LLamamos a D3 una primera vez para crear el gráfico desde cero, ¿cuando? cuando el componente se monta, en el DidMount. Aqui se implementará el patrón ENTER de D3</li>
+              <li>Además, ya no bloqueamos todos los renders, sino que permitimos actualizaciones cuando los datos han cambiado.
+                <ul>
+                  <li>Fijaos que en este ejemplo donde sólo tenemos una propiedad  y se está haciendo una comparación shallow, se podría haber hecho esto con un PureComponente.</li>
+                  <li>He decidio hacerlo en el shouldComponentUpdate y no con un PureComponente, como alternativa, y porque podría ser que los datos cambien sin seguir el paradigma inmutable, en cuyo caso necesitaríamos una comparación en profundidad.</li>
+                </ul>
+              </li>
+              <li>Como permitimos un render cuando los datos cambian, controlamos eso en el siguiente punto del ciclo de vida, en el componentDidUpdate.</li>
+              <li>Aqui volvemos a llamar a D3 con los nuevos datos e implementamos el patron Update para que D3 realice las actualizaciones pertienentes según los nuevos datos.</li>
             </ul>
           </aside>
         </section>
@@ -990,7 +1014,10 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>Este nuevo ejemplo, basado en la versión estática, tiene la peculiaridad de que los datos se vuelven a randomizar en intervalos de 1 segundo.</li>
+              <li>Cada segundo un nuevo vector de datos aleatorios entra como propiedad del componente, que dispara una actualización que acaba llamando al patrón update de D3.js</li>
+              <li>En ese patrón he implementado además una transición para que el efecto quede mas chulo. D3.js es muy bueno haciendo este tipo de animaciones, y como estamos mutando el DOM directamente, se puede hacer sin interferencia con React.</li>
+              <li>Fijaos que aparente queda nuestro gráfico!</li>
             </ul>
           </aside>
         </section>
@@ -1021,7 +1048,13 @@
 
           <aside class="notes">
             <ul>
-              <li></li>
+              <li>✓ La solución más sencilla, empezad siempre por aqui, es el caso base, después vais promocionando a otras soluciones</li>
+              <li>✓ Todo el API de D3 disponible, veremos en otras soluciones que nos restringimos a ciertas funciones de D3.</li>
+              <li>✓ El código que generamos es código 100% nativo de D3. Esto permite que consultemos la enorme cantidad de ejemplos disponbiles de D3. En D3 se desarrolla mucho a base de ejemplos, es la mejor manera de aprender.</li>
+              <li>✓ Transiciones soportadas pq mutamos el DOM directamente, no tenemos la problemática con las animaciones que hay en React.</li>
+              <li>✗ NO usamos el dom virtual / reconciliación que es un mecanismo muy eficiente de actualización del DOM. Nos salimos del paradigam de React</li>
+              <li>✗ Tenemos un trozo de nuestro DOM mutable, sin reglas, con total libertad. Esto no es un problema en si, mutar no es nada malo siempre que se sepa lo que estamos haciendo.</li>
+              <li>✗ No podemos generar markup de forma remota ya que D3 necesita mutar el DOM real de forma directa. D3 necesita estar en cliente mutando el DOM que el usuario ve.</li>
             </ul>
           </aside>
         </section>
@@ -1037,6 +1070,15 @@
         <section>
           <h3>React <i>renderiza</i>, D3 calcula</h3>
           <p>D3 al servicio de React</p>
+
+          <aside class="notes">
+            <ul>
+              <li>Nueva aproximación</li>
+              <li>Más protagonismo para REACT</li>
+              <li>REACT tiene el peso del renderizado</li>
+              <li>Por eso decimos D3 al servicio de React, como esclavo</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - En que consiste la solución -->
@@ -1130,6 +1172,17 @@
             <circle class="svg-d-rule17" cx="694.3" cy="190.5" r="23.9"/>
             <circle class="svg-d-rule18" cx="284.3" cy="190.5" r="23.9"/>
           </svg>
+
+          <aside class="notes">
+            <ul>
+              <li>Panorama de React ya lo conocemos. DOM virtual vs Real + Reconciliación</li>
+              <li>Todo el árbol de componentes dentro de React. React renderiza todo.</li>
+              <li><b>RECOMENDACIÓN</b>: Aunque no es necesario ahora, mantened un contenedor para vuestro gráfico. Puede que necesiteis implementar otra alternativa más adelante.</li>
+              <li>Dijimos: D3 API enorme, core para DOM pequeño, muchos helpers matemáticos.</li>
+              <li>Usemos los helpers de D3 para apoyarnos y calcular tamaños, posiciones, escalas, etc.</li>
+              <li>No obstante, los elementos SVG del gráfico serán siempre React.</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Código -->
@@ -1164,11 +1217,33 @@
               }
             }
           </code></pre>
+
+          <aside class="notes">
+            <ul>
+              <li>Ejemplo muy sencillito para ilustrar esta solución.</li>
+              <li>Igual que antes: Datos como propiedad.</li>
+              <li>Aqui he decidido hacerlo puro, si los datos cambian, habrá nuevo render.</li>
+              <li>Por tanto soporta datos dinámicos.</li>
+              <li>La chicha está en el RENDER. Ahora es mucho más elaborado.</li>
+              <li>Genera un contendor SVG y todos los elementos que componen el gráfico.</li>
+              <li>Líneas en este caso, cuyas coordenadas son calculadas por D3.</li>
+              <li>Como veis es un ejemplo muuuy sencillo, porque su complejidad crece rápidamente.</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Ejemplo -->
         <section>
           <div id="sample-react-render" class="flex row center"></div>
+
+          <aside class="notes">
+            <ul>
+              <li>Resultado de carrera de F1. Posición de cada piloto en cada vuelta.</li>
+              <li>Un array donde cada datum representa un piloto y su posición en cada vuelta.</li>
+              <li>Por sencillez el ejemplo es estático pero esta solución soporta real time, aunque a través de React y sus re-renders.</li>
+              <li>Interactividad, tb posible dentro de React: hover, onclick, etc, etc.</li>
+            </ul>
+          </aside>
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
@@ -1195,6 +1270,19 @@
               </div>
             </div>
           </div>
+
+          <aside class="notes">
+            <ul>
+              <li>✓ Para los puristas, código 100% React.</li>
+              <li>✓ Performance y eficiencia de React.</li>
+              <li>✓ SSR es posible siguiendo los mecanismos que ya existen en React (Next.js)</li>
+              <li>✗ Gráficos sencillos, ok, gráficos complejos, código jodido.</li>
+              <li>✗ Acabamos duplicando código que ya existe en D3.js.</li>
+              <li>✗ Perdemos los miles de ejemplos de D3. El código nativo D3 no se va a parecer al código que necesitaremos en React para nuestro gráfico.</li>
+              <li>✗ Requiere dominio del API de D3</li>
+              <li>✗ 3rd party library para transiciones (animaciones con CSS si)</li>
+            </ul>
+          </aside>
         </section>
 
       </section>
@@ -1324,7 +1412,7 @@
               data: any[];
             }
 
-            class ChartComponent extends React.Component&lt;Props, {}&gt; {
+            class InnerChartComponent extends React.Component&lt;Props, {}&gt; {
               constructor(props) {
                 super(props);
               }
@@ -1343,6 +1431,8 @@
                 );
               }
             }
+
+            const ChartComponent = withFauxDOM(InnerChartComponent);
           </code></pre>
         </section>
 
@@ -1354,7 +1444,7 @@
               data: any[];
             }
 
-            class ChartComponent extends React.Component&lt;Props, {}&gt; {
+            class InnerChartComponent extends React.Component&lt;Props, {}&gt; {
               constructor(props) {
                 super(props);
               }
@@ -1365,7 +1455,7 @@
                 createChart(fauxDom, this.props.data);
               }
 
-              public componentDidUpadte(prevProps) {
+              public componentDidUpdate(prevProps) {
                 if (prevProps.data !== this.props.data) {
                   // Obtenemos el FauxDOM
                   const fauxDom = this.props.connectFauxDOM("div", "chart");
@@ -1382,6 +1472,8 @@
                 );
               }
             }
+
+            const ChartComponent = withFauxDOM(InnerChartComponent);
           </code></pre>
         </section>
 
@@ -1410,9 +1502,9 @@
                 <h4>CONS</h4>
                 <ul class="no-bullet">
                   <li class="fragment"><strong class="negative">✗ </strong>Nueva entidad en flujo renderizado</li>
-                  <li class="fragment"><strong class="negative">✗ </strong>Toda la responsabilidad</li>
                   <li class="fragment"><strong class="negative">✗ </strong>Rendimiento en gráficos complejos</li>
                   <li class="fragment"><strong class="negative">✗ </strong>Pseudo transiciones via muestreo</li>
+                  <li class="fragment"><strong class="negative">✗ </strong>Toda la responsabilidad</li>
                   <li class="fragment"><strong class="negative">✗ </strong>¿Mantenimiento? ¿Proyecto desactualizado?</li>
                 </ul>
               </div>
@@ -1421,6 +1513,52 @@
         </section>
 
       </section>
+
+
+      <!-- |GRUPO| Despedida -->
+      <section>
+
+        <!-- Slide - Consejo -->
+        <section>
+          <h2>Consejo</h2>
+          <ul>
+            <li>Comenzad siempre por la Solución 1</li>
+            <li>Id promocionando a otras soluciones o versiones a medida que lo necesitéis</li>
+          </ul>
+        </section>
+
+        <!-- Slide - Enlaces -->
+        <section>
+          <div class="flex column center" style="font-size:1.75rem;">
+            <object type="image/svg+xml" data="media/github_logo.svg" height="80" style="opacity:0.75;">Github Logo</object>
+            <div class="flex column center" style="margin-left:1rem">
+              <a target="_blank" href="https://github.com/fjcalzado/react_d3_trabajando_juntos/tree/master/samples">Ejemplos D3.js</a>
+              <a target="_blank" href="https://github.com/fjcalzado/react_d3_trabajando_juntos">Presentación</a>
+            </div>
+          </div>
+          <div class="flex column center" style="margin-top:3rem;">
+            <object type="image/svg+xml" data="media/lemoncode_logo.svg" width="250" height="125">Lemoncode Logo</object>
+            <div class="flex column center" style="font-size:1.75rem;">
+              <a target="_blank" href="https://github.com/lemoncode">Repositorios Lemoncode</a>
+              <ul class="flex column center no-bullet">
+                <li><a target="_blank" href="https://github.com/Lemoncode/react-by-sample">react-by-sample</a></li>
+                <li><a target="_blank" href="https://github.com/Lemoncode/react-typescript-samples">react-typescript-by-sample</a></li>
+                <li><a target="_blank" href="https://github.com/Lemoncode/webpack-by-sample">webpack-by-sample</a></li>
+                <li><a target="_blank" href="https://github.com/Lemoncode/redux-by-sample">redux-by-sample</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="notes">
+            <ul>
+              <li>Todo el material que habéis visto está disponible en Github, tanto la propia presentación como los ejemplos</li>
+              <li>Además os recomiendo que consultéis las guías Lemoncode donde tratamos paso a paso y con ejemplos muchas tecnologías como React, Redux, Webpack, etc. Se agradecen estrellitas :)</li>
+            </ul>
+          </aside>
+        </section>
+
+      </section>
+
 
     </div>
   </div>
