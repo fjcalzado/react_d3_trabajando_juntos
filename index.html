@@ -39,7 +39,7 @@
     <div class="slides">
 
       <!-- Slide - Apertura -->
-      <section>
+      <section data-timing="0">
 
         <object type="image/svg+xml" data="media/osc_logo.svg" height="120">Open South Code Logo</object>
         <h1 class="space-up-down">
@@ -59,10 +59,10 @@
 
 
       <!-- |GRUPO| Resumen Contenido -->
-      <section>
+      <section >
 
         <!-- Slide - Introducción -->
-        <section>
+        <section data-timing="30">
           <object class="fragment" data-fragment-index="1" data-autoslide="2000"
             type="image/svg+xml" data="media/react_logo.svg" height="180">React Logo</object>
           <svg class="fragment pulse-size" data-fragment-index="3" style="margin: 0 50px"
@@ -79,7 +79,7 @@
         </section>
 
         <!-- Slide - Contenido -->
-        <section>
+        <section data-timing="60">
           <h2>Contenido</h2>
           <ul>
             <li class="fragment"><a target="_blank" href="https://reactjs.org/">React</a></li>
@@ -102,7 +102,7 @@
       <section>
 
         <!-- Slide - React Intro -->
-        <section>
+        <section data-timing="120">
           <div class="flex row center">
             <object type="image/svg+xml" data="media/react_logo.svg" height="75">React Logo</object>
             <h2 class="header-in-row">React</h2>
@@ -126,7 +126,7 @@
         </section>
 
         <!-- Slide - DOM Real vs DOM Virtual -->
-        <section>
+        <section data-timing="120">
           <div class="flex row spaced">
             <div>
               <h3>DOM Real</h3>
@@ -160,7 +160,7 @@
         </section>
 
         <!-- Slide - Reconciliación -->
-        <section>
+        <section data-timing="120">
           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewbox="0 0 960 560.5" style="enable-background:new 0 0 960 560.5;" xml:space="preserve">
             <style type="text/css">
@@ -293,7 +293,7 @@
       <section>
 
         <!-- Slide - D3.js Intro -->
-        <section>
+        <section data-timing="120">
           <div class="flex row center">
             <object type="image/svg+xml" data="media/d3_logo.svg" height="75">D3.js Logo</object>
             <h2 class="header-in-row">D3.js</h2>
@@ -319,7 +319,7 @@
         </section>
 
         <!-- Slide - Data Joins -->
-        <section>
+        <section data-timing="120">
           <h2><i>Data Joins</i></h2>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            height="600" viewbox="0 0 960 700" style="enable-background:new 0 0 960 700;" xml:space="preserve">
@@ -465,7 +465,7 @@
         </section>
 
         <!-- Slide - Selecciones -->
-        <section>
+        <section data-timing="120">
           <h2>Selecciones</h2>
             <pre><code class="code-area js" data-trim="true" data-noescape="true">
               const paises = [...];
@@ -643,10 +643,10 @@
               <li>En el fondo, estas uniones entre datos y elementos sirven como algoritmo diff mediante el cual evaluar que parte del DOM hay que mutar, y gracias al patrón enter-update-exit, actuar de un modo u otro. Asi se puede ser mucho más preciso y eficiente.</li>
             </ul>
           </aside>
-        </section>
+        </section >
 
         <!-- Slide - Sample -->
-        <section>
+        <section data-timing="120">
           <div id="sample-countries" class="flex row center"></div>
           <a style="font-size:1.8rem" target="_blank" href="https://github.com/fjcalzado/DemoSeries-D3JS-Bubble-Chart">Github</a>
 
@@ -668,7 +668,7 @@
       <section>
 
         <!-- Slide - Qué Sucederá -->
-        <section>
+        <section data-timing="120">
           <div class="flex row spaced">
             <object type="image/svg+xml" data="media/react_logo.svg" height="100">React Logo</object>
             <svg class="fragment" data-fragment-index="1" width="100" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 252 39.51">
@@ -710,7 +710,7 @@
         </section>
 
         <!-- Slide - A tortas -->
-        <section data-background="./media/fight.gif">
+        <section data-timing="15" data-background="./media/fight.gif">
           <h2 class="text-shadow">¡A tortas por el DOM!</h2>
 
           <aside class="notes">
@@ -721,7 +721,7 @@
         </section>
 
         <!-- Slide - Test de colisión -->
-        <section>
+        <section data-timing="120">
           <h2 style="margin-bottom:40px">Test de colisión</h2>
           <div id="sample-collision" class="flex row center"></div>
 
@@ -750,7 +750,7 @@
 
 
       <!-- Slide - Soluciones -->
-      <section>
+      <section data-timing="15">
         <h2>Soluciones</h2>
 
         <aside class="notes">
@@ -767,7 +767,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section>
+        <section data-timing="120">
           <h3>DOM compartido</h3>
           <p>Juntos pero no revueltos</p>
 
@@ -782,7 +782,7 @@
         </section>
 
         <!-- Slide - En que consiste la solución -->
-        <section>
+        <section data-timing="120">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewbox="0 0 900 425.8" style="enable-background:new 0 0 900 425.8;" xml:space="preserve">
             <style type="text/css">
@@ -873,7 +873,7 @@
         </section>
 
         <!-- Slide - Código Variante Estática -->
-        <section>
+        <section data-timing="120">
           <h4>Versión Estática</h4>
           <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
@@ -927,7 +927,7 @@
         </section>
 
          <!-- Slide - Ejemplo Variante Estática -->
-         <section>
+         <section data-timing="120">
           <div id="sample-d3-render-static" class="flex row center"></div>
 
           <aside class="notes">
@@ -945,7 +945,7 @@
         </section>
 
         <!-- Slide - Código Variante Dinámica -->
-        <section>
+        <section data-timing="120">
           <h4>Versión Dinámica</h4>
           <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
@@ -1009,7 +1009,7 @@
         </section>
 
         <!-- Slide - Ejemplo Variante Dinámica -->
-        <section>
+        <section data-timing="120">
           <div id="sample-d3-render-dynamic" class="flex row center"></div>
 
           <aside class="notes">
@@ -1023,7 +1023,7 @@
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
-        <section>
+        <section data-timing="120">
           <div class="flex column center">
             <div>
               <div class="flex row top-align">
@@ -1067,7 +1067,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section>
+        <section data-timing="120">
           <h3>React <i>renderiza</i>, D3 calcula</h3>
           <p>D3 al servicio de React</p>
 
@@ -1082,7 +1082,7 @@
         </section>
 
         <!-- Slide - En que consiste la solución -->
-        <section>
+        <section data-timing="120">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewbox="0 0 900 500" style="enable-background:new 0 0 900 500;" xml:space="preserve">
             <style type="text/css">
@@ -1186,7 +1186,7 @@
         </section>
 
         <!-- Slide - Código -->
-        <section>
+        <section data-timing="120">
           <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props {
               data: any[];
@@ -1233,7 +1233,7 @@
         </section>
 
         <!-- Slide - Ejemplo -->
-        <section>
+        <section data-timing="120">
           <div id="sample-react-render" class="flex row center"></div>
 
           <aside class="notes">
@@ -1247,7 +1247,7 @@
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
-        <section>
+        <section data-timing="120">
           <div class="flex column center">
             <div>
               <div class="flex row top-align">
@@ -1292,7 +1292,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section>
+        <section data-timing="120">
           <h3><i>Faux</i> DOM</h3>
           <p>React y D3 totalmente separados</p>
 
@@ -1307,7 +1307,7 @@
         </section>
 
         <!-- Slide - En que consiste la solución -->
-        <section>
+        <section data-timing="120">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewbox="0 0 1150 400" style="enable-background:new 0 0 1150 400;" xml:space="preserve">
             <style type="text/css">
@@ -1431,7 +1431,7 @@
         </section>
 
         <!-- Slide - Código Variante Estática -->
-        <section>
+        <section data-timing="120">
           <h4>Versión Estática</h4>
           <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props extends ReactFauxDomProps {
@@ -1486,7 +1486,7 @@
         </section>
 
         <!-- Slide - Código Variante Dinámica -->
-        <section>
+        <section data-timing="120">
           <h4>Versión Dinámica</h4>
           <pre><code class="code-area jsx" data-trim="true" data-noescape="true">
             interface Props extends ReactFauxDomProps {
@@ -1546,7 +1546,7 @@
         </section>
 
         <!-- Slide - Ejemplo -->
-        <section>
+        <section data-timing="120">
           <div class="flex row center">
             <div id="sample-faux-dom"></div>
           </div>
@@ -1568,7 +1568,7 @@
         </section>
 
         <!-- Slide - Resumen Pros & Cons -->
-        <section>
+        <section data-timing="120">
           <div class="flex column center">
             <div>
               <div class="flex row top-align">
@@ -1621,7 +1621,7 @@
       <section>
 
         <!-- Slide - Enlaces -->
-        <section>
+        <section data-timing="20">
           <h3 style="margin:2rem 0;">Enlaces</h3>
           <div class="flex column center">
             <a target="_blank" href="https://github.com/fjcalzado/react_d3_trabajando_juntos/tree/master/samples">Ejemplos D3.js</a>
@@ -1660,7 +1660,7 @@
         </section>
 
         <!-- Slide - Cierre Lemoncode -->
-        <section>
+        <section data-timing="20">
           <div class="flex column center">
             <object type="image/svg+xml" data="media/lemoncode_logo.svg" width="250" height="200">Lemoncode Logo</object>
             <div class="flex column center" style="font-size:2rem;">
@@ -1709,6 +1709,7 @@
       maxScale: 4.0,
       viewDistance: 3,  // Distancia de Lazy loading medida en slides, (contenido/recursos a cargar de las x slides por delante de la actual).
       transition: 'slide', // Opciones: none/fade/slide/convex/concave/zoom.
+      defaultTiming: '100',
 
       multiplex: {
         secret: masterKey, // null o la clave/secreto, según sea el cliente o master el que se haya conectado.
