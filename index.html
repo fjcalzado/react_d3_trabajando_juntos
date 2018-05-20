@@ -56,6 +56,7 @@
             <li>Me llamo Javier Calzado, soy compañero de Lemoncode.</li>
             <li>Para quien no nos conozca, nos dedicamos fundamentalmente al mundo Front-End y desarrollo web.</li>
             <li>Y en este ratito vamos a hablar de React y D3.js.</li>
+            <li>▶</li>
           </ul>
         </aside>
 
@@ -85,6 +86,7 @@
                   <li>Que puedan trabajar juntas sin problemas.</li>
                 </ul>
               </li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -103,10 +105,11 @@
             <ul>
               <li>División en los siguientes puntos:
                 <ul>
-                  <li>Breve introducción a React. Foco en gestión del DOM.</li>
-                  <li>Idem para D3. Nos centramos en características clave: Data Joins.</li>
-                  <li>Problema de trabajar juntos.</li>
-                  <li>Soluciones, con ejemplos y un poco de código.</li>
+                  <li>▼ Breve introducción a React. Foco en gestión del DOM.</li>
+                  <li>▼ Idem para D3. Nos centramos en características clave: Data Joins.</li>
+                  <li>▼ Problema de trabajar juntos.</li>
+                  <li>▼ Soluciones, con ejemplos y un poco de código.</li>
+                  <li>▶</li>
                 </ul>
               </li>
             </ul>
@@ -136,20 +139,20 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Librería MUY popular que nos permite construir interfaces de usuario.</li>
-              <li>Basado en componentes: pequeños elementos funcionales (un botón, un input, etc) que gracias a la composición forman componentes más complejos.</li>
-              <li>Declarativo, QUE queremos representar, NO COMO hacerlo.
+              <li>▼ Librería MUY popular que nos permite construir interfaces de usuario.</li>
+              <li>▼ Basado en componentes: pequeños elementos funcionales (un botón, un input, etc) que gracias a la composición forman componentes más complejos.</li>
+              <li>▼ Declarativo, QUE queremos representar, NO COMO hacerlo.
                 <ul>
                   <li>React nos abstrae de modificar el DOM, lo hace por nosotros.</li>
                 </ul>
               </li>
-              <li>Caracteristica estrella: DOM VIRTUAL.
+              <li>▼ Caracteristica estrella: DOM VIRTUAL.
                 <ul>
                   <li>Manejo eficiente del DOM REAL.</li>
                   <li>Tiene otras (paradigma inmutable, one way data binding, etc).</li>
                 </ul>
               </li>
-              <li>Veamos con más detalle.</li>
+              <li>Veamos con más detalle ▼</li>
             </ul>
           </aside>
         </section>
@@ -182,18 +185,19 @@
               <li>Abstracción de una abstracción.</li>
               <li>DOM real:
                 <ul>
-                  <li>Ligado al navegador.</li>
-                  <li>Entidad pesada con API grande. Jerarquía árbol, recorrerla es lento.</li>
-                  <li>Operaciones caras, costosas. Muchos cambios directos al DOM puede ser ineficiente.</li>
+                  <li>▼ Ligado al navegador.</li>
+                  <li>▼ Entidad pesada con API grande. Jerarquía árbol, recorrerla es lento.</li>
+                  <li>▼ Operaciones caras, costosas. Muchos cambios directos al DOM puede ser ineficiente.</li>
                 </ul>
               </li>
               <li>DOM virtual en cambio:
                 <ul>
-                  <li>Vive en memoria, no está atacheado a ningún sitio.</li>
-                  <li>Entidad ligera, DOM real adelgazado, a dieta.</li>
-                  <li>Operacione mucho más baratas, casi sin coste en performance.</li>
+                  <li>▼ Vive en memoria, no está atacheado a ningún sitio.</li>
+                  <li>▼ Entidad ligera, DOM real adelgazado, a dieta.</li>
+                  <li>▼ Operacione mucho más baratas, casi sin coste en performance.</li>
                 </ul>
               </li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -317,13 +321,14 @@
               <li>Cambios UI a DOM Virtual, no promocionan a DOM Real.</li>
               <li>Aglutinador de cambios | Buffer | Capa intermedia | Borrador.</li>
               <li>DOM virtual es rápido y barato, acepta muchos cambios, no penaliza.</li>
-              <li>Ejemplo: renderizar nuevo elemento, nuevo nodo.</li>
-              <li>Proceso RECONCILIACIÓN. Algoritmo DIFF compara con versión anterior de DOM Virtual y con DOM Real.</li>
-              <li>Se genera la delta con el minimo numero de cambios.</li>
-              <li>Se comitea/aplica esta delta en el DOM Real.</li>
+              <li>▼ Ejemplo: renderizar nuevo elemento, nuevo nodo.</li>
+              <li>▼ Proceso RECONCILIACIÓN. Algoritmo DIFF compara con versión anterior de DOM Virtual y con DOM Real.</li>
+              <li>▼ Se genera la delta con el minimo numero de cambios.</li>
+              <li>▼ Se comitea/aplica esta delta en el DOM Real.</li>
               <li>Eficiente. Mínimo número de operaciones.</li>
-              <li>Reconciliacion: mecanismo de sincronización.</li>
+              <li>▼ Reconciliacion: mecanismo de sincronización.</li>
               <li>En RESUMEN: <b>React gestiona los cambios en el DOM y lo mantiene actualizado por nosotros de forma eficiente</b></li>
+              <li>▶</li>
             </ul>
           </aside>
         </section>
@@ -352,20 +357,20 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Framework/librería para visualización interactiva de datos.
+              <li>▼ Framework/librería para visualización interactiva de datos.
                 <ul>
                   <li>Data-Driven-Documents.</li>
                   <li>remendamente popular.</li>
                   <li>Referencia de facto para visualización.</li>
                 </ul>
               </li>
-              <li>API de bajo nivel le confiere potencia y flexibilidad.</li>
+              <li>▼ API de bajo nivel le confiere potencia y flexibilidad.</li>
               <ul>
                 <li>Es el secreto de su éxito.</li>
                 <li>NO galería de graficos pre-hechos / enlatados.</li>
               </ul>
-              <li>Declarativo, nos abstrae de cambios en DOM, se encarga por nosotros. ¿Nos suena verdad?</li>
-              <li>DATA JOINS: Concepto Clave. Uniones de datos y elementos.
+              <li>▼ Declarativo, nos abstrae de cambios en DOM, se encarga por nosotros. ¿Nos suena verdad?</li>
+              <li>▼ DATA JOINS: Concepto Clave. Uniones de datos y elementos.
                 <ul>
                   <li>Literalmente se vinculan los datos con los elementos que los representan.</li>
                 </ul>
@@ -374,6 +379,7 @@
                 <li>Que el gráfico sea reactivo, cambie en tiempo real a medida que lo hacen los datos.</li>
                 <li>Animaciones e interactividad.</li>
               </li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -518,13 +524,14 @@
               <li>Gracias a los DataJoins, hacemos el gráfico REACTIVO a los hipotéticos cambios en los datos.</li>
               <li>Si digo que los datos pueden cambiar en tiempo real y os pido un algoritmo para gestionarlo, me diríais:
                 <ul>
-                  <li>Si dato nuevo para el q no tenemos círculo, lo creamos.</li>
-                  <li>Si dato se actualiza, actualizamos círculo asociado.</li>
-                  <li>Si dato desaparece, eliminamos círculo <b>huérfano</b> del gráfico.</li>
+                  <li>▼ Si dato nuevo para el q no tenemos círculo, lo creamos.</li>
+                  <li>▼ Si dato se actualiza, actualizamos círculo asociado.</li>
+                  <li>▼ Si dato desaparece, eliminamos círculo <b>huérfano</b> del gráfico.</li>
                   <li><b>Esto es el patrón ENTER-UPDATE-EXIT.</b></li>
                 </ul>
               </li>
               <li><b>Esta es la manera de operar con D3. Implementando el patrón ENTER-UPDATE-EXIT.</b></li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -717,7 +724,7 @@
                   <li>Se aprecian las 3 posible situaciones a las que se refiere el patron ENTER-UPDATE-EXIT.</li>
                 </ul>
               </li>
-              <li>▶</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section >
@@ -730,9 +737,11 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Por si teníais curiosidad, aqui tenéis el ejemplo anterior implementado con D3 de verdad.</li>
-              <li>En este caso sólo se ha operado sobre el sub-grupo ENTER, es decir, sólo se añaden nuevos círculos con cada pais en la lista, ya que los datos son estáticos, no van a cambiar.</li>
+              <li>¿Curiosidad?, Ejemplo anterior de paises implementado con D3 de verdad.</li>
+              <li>Con que poco se genera un gráfico muy chulo, muy profesonal.</li>
+              <li>Solo se ha implementado patrón ENTER -&gt; tabla datos fuente es estática, mockeada, no cambian.</li>
               <li>No obstante si que se han añadido eventos para mostrar un popup animado, etc, para que veáis que D3 permite interacción con los elementos.</li>
+              <li>▶</li>
             </ul>
           </aside>
         </section>
@@ -786,8 +795,9 @@
                   <li>D3 con mutaciones directas optimizadas siguiendo patrón ENTER-UPDATE-EXIT.</li>
                 </ul>
               </li>
-              <li>Ambos controlan el DOM real.</li>
+              <li>▼ Ambos controlan el DOM real.</li>
               <li>¿Qué sucederá entonces si los ponemos a trabajar juntos?</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -800,7 +810,7 @@
             <ul>
               <li>Vale si, he dramatizado un poco.</li>
               <li>Igual no es tan violento.</li>
-              <li>Hagamos una prueba.</li>
+              <li>Hagamos una prueba ▼</li>
             </ul>
           </aside>
         </section>
@@ -811,7 +821,7 @@
           <div id="sample-collision" class="flex row center"></div>
 
           <aside class="notes">
-            <ul style="list-style-type:decimal;color:#006837">
+            <ul>
               <li>Para demostrarlo: app de react.</li>
               <li>Provocamos colisión intencionadamente.</li>
               <li>2 botones, 1 DIV con color y texto.</li>
@@ -821,18 +831,7 @@
               <li><b>La mutación de D3 corrompe el mecanismo de React.</b></li>
               <li>React exige que los cambios vaya siempre por su DOM virtual.</li>
               <li><b>COROLARIO: Nunca hagais que REACT y D3 colisionen, se solapen</b></li>
-            </ul>
-            <p>--------------------</p>
-            <ul>
-              <li>Veamos que sucede:
-                <ul>
-                  <li>Primero React, todo funciona como esperamos</li>
-                  <li>Ahora el turno de D3. Funciona también, hemos cambiado el color y texto del target como era esperable. Pero este cambio tiene consecuencias. Hemos mutado el DOM.</li>
-                  <li>¿Que pasará si clico de nuevo en React? Ha dejado de funcionar.</li>
-                  <li><b>Hemos perdido la sincronicidad entre DOM virtual y real</b></li>
-                  <li>El cambio ha podido propagarse hasta el DOM virtual pero al aplicar el DIFF se comparará con la versión anterior del DOM virtual y también con el propio DOM real, que sin embargo ha mutado. El nodo que React esperaba encontrarse en el DOM real ya no es el mismo</li>
-                </ul>
-              </li>
+              <li>▶</li>
             </ul>
           </aside>
         </section>
