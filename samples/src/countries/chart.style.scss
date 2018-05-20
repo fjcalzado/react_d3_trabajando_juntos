@@ -13,6 +13,7 @@ $oceaniaColor: rgb(231, 138, 195);
 }
 
 .container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;

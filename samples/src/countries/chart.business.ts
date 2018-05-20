@@ -1,16 +1,17 @@
 import { ChartSetup, setup } from './chart.setup';
 import { Country } from './data';
-import { select, event as d3Event } from "d3-selection";
+import { select, mouse } from "d3-selection";
 import { scaleLinear, scaleLog, scaleSqrt, scaleOrdinal } from "d3-scale";
 import { axisBottom, axisLeft } from "d3-axis";
 import { extent } from "d3-array";
 const d3 = { select, scaleLinear, scaleLog, scaleSqrt, scaleOrdinal,
-  axisBottom, axisLeft, extent };
+  axisBottom, axisLeft, extent, mouse };
 
 const style = require("./chart.style.scss");
 
 
 // Module global variables.
+let nodeRoot = null;
 let svg = null;
 let xScale = null;
 let yScale = null;
@@ -21,7 +22,8 @@ let infoPopup = null;
 
 export const createChart = (node: Element, data: Country[]) => {
   // Create SVG.
-  svg = d3.select(node)
+  nodeRoot = node;
+  svg = d3.select(nodeRoot)
     .append("svg")
       .attr("width", setup.width)
       .attr("height", setup.height);
@@ -34,7 +36,7 @@ export const createChart = (node: Element, data: Country[]) => {
   createScales(data);
   createAxis();
   createLabels();
-  createPopup(node);
+  createPopup(nodeRoot);
   createCountries(data);
 }
 
@@ -142,8 +144,8 @@ const createPopup = (node) => {
 
 const updatePositionInfoPopup = () => {
   infoPopup
-    .style("left", `${d3Event.pageX - (infoPopup.node().getBoundingClientRect().width / 2)}px`)
-    .style("top", `${d3Event.pageY - parseInt(infoPopup.style("height"), 0) - 5}px`);
+    .style("left", `${d3.mouse(nodeRoot)[0] - (infoPopup.node().getBoundingClientRect().width / 2)}px`)
+    .style("top", `${d3.mouse(nodeRoot)[1] - parseInt(infoPopup.style("height"), 0) - 5}px`);
 }
 
 const showInfoPopup = (d) => {

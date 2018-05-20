@@ -49,9 +49,14 @@
           <a target="_blank" class="bottom" href="https://fjcalzado.surge.sh">fjcalzado.surge.sh</a>
         </div>
 
-        <!-- Notas -->
         <aside class="notes">
-          Notas Aqui:
+          <ul>
+            <li>Comenzamos la charla.</li>
+            <li>Ante todo bienvenidos, gracias por asistir.</li>
+            <li>Me llamo Javier Calzado, soy compañero de Lemoncode.</li>
+            <li>Para quien no nos conozca, nos dedicamos fundamentalmente al mundo Front-End y desarrollo web.</li>
+            <li>Y en este ratito vamos a hablar de React y D3.js.</li>
+          </ul>
         </aside>
 
       </section>
@@ -72,9 +77,15 @@
           <object class="fragment" data-fragment-index="2" data-autoslide="2000"
             type="image/svg+xml" data="media/d3_logo.svg" height="180">React Logo</object>
 
-          <!-- Notas -->
           <aside class="notes">
-              Notas Aqui:
+            <ul>
+              <li>Objetivo:
+                <ul>
+                  <li>Hacer que estas dos grandes librerias se quieran un poquito.</li>
+                  <li>Que puedan trabajar juntas sin problemas.</li>
+                </ul>
+              </li>
+            </ul>
           </aside>
         </section>
 
@@ -88,9 +99,17 @@
             <li class="fragment">Soluciones y ejemplos</li>
           </ul>
 
-          <!-- Notas -->
           <aside class="notes">
-              Notas Aqui:
+            <ul>
+              <li>División en los siguientes puntos:
+                <ul>
+                  <li>Breve introducción a React. Foco en gestión del DOM.</li>
+                  <li>Idem para D3. Nos centramos en características clave: Data Joins.</li>
+                  <li>Problema de trabajar juntos.</li>
+                  <li>Soluciones, con ejemplos y un poco de código.</li>
+                </ul>
+              </li>
+            </ul>
           </aside>
         </section>
 
@@ -117,10 +136,20 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Librería tremendamente popular que nos permite construir interfaces de usuario.</li>
+              <li>Librería MUY popular que nos permite construir interfaces de usuario.</li>
               <li>Basado en componentes: pequeños elementos funcionales (un botón, un input, etc) que gracias a la composición forman componentes más complejos.</li>
-              <li>Declarativo, le decimos QUE queremos representar pero no COMO hacerlo, no hay que especificar cómo cambiar el DOM, React se encarga de eso por nosotros, nos abstrae de esa tarea.</li>
-              <li>Una de sus claves de éxito (inmutabilidad, one way, etc), la que nos interesa, es el manejo eficiente del DOM que realiza gracias al DOM VIRTUAL. Mutaciones eficientes en el DOM Real.</li>
+              <li>Declarativo, QUE queremos representar, NO COMO hacerlo.
+                <ul>
+                  <li>React nos abstrae de modificar el DOM, lo hace por nosotros.</li>
+                </ul>
+              </li>
+              <li>Caracteristica estrella: DOM VIRTUAL.
+                <ul>
+                  <li>Manejo eficiente del DOM REAL.</li>
+                  <li>Tiene otras (paradigma inmutable, one way data binding, etc).</li>
+                </ul>
+              </li>
+              <li>Veamos con más detalle.</li>
             </ul>
           </aside>
         </section>
@@ -146,21 +175,31 @@
             </div>
           </div>
 
-          <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>El DOM real esta ligado al navegador, es el documento que representa la página o aplicación que vemos en nuestro navegador.</li>
-              <li>Es una entidad pesada, con una API grande a su alrededor</li>
-              <li>Las actualizaciones del DOM son operaciones costosas para el navegador. Por tanto, mutar el DOM cada vez que el usuario interactúa con la UI puede ser ineficiente.</li>
-              <li>En cambio el DOM virtual es una representación en memoria del DOM real.</li>
-              <li>Es una entidad ligera y rápida</li>
-              <li>Y los cambio son por tanto mucho más baratos</li>
+              <li>DOM REAL es una abstracción del markup (HTML), de la página q vemos en navegador.</li>
+              <li>DOM VIRTUAL es una abstracción del DOM REAL.</li>
+              <li>Abstracción de una abstracción.</li>
+              <li>DOM real:
+                <ul>
+                  <li>Ligado al navegador.</li>
+                  <li>Entidad pesada con API grande. Jerarquía árbol, recorrerla es lento.</li>
+                  <li>Operaciones caras, costosas. Muchos cambios directos al DOM puede ser ineficiente.</li>
+                </ul>
+              </li>
+              <li>DOM virtual en cambio:
+                <ul>
+                  <li>Vive en memoria, no está atacheado a ningún sitio.</li>
+                  <li>Entidad ligera, DOM real adelgazado, a dieta.</li>
+                  <li>Operacione mucho más baratas, casi sin coste en performance.</li>
+                </ul>
+              </li>
             </ul>
           </aside>
         </section>
 
         <!-- Slide - Reconciliación -->
-        <section data-timing="120">
+        <section data-timing="180">
           <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
             viewbox="0 0 960 560.5" style="enable-background:new 0 0 960 560.5;" xml:space="preserve">
             <style type="text/css">
@@ -274,12 +313,16 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Todos los cambios que generan nuestros componentes react, ya sea por cambios de propiedades o de estado, van a parar al DOM Virtual</li>
-              <li>Los cambios se aglutinan en el DOM virtual, se consolidan allí ya que es rápido y barato. Pero no promocionan directamente al DOM real.</li>
-              <li>Es React quien determina cuando se debe actualizar el DOM Real y en un proceso llamado <b>reconciliación</b>, un algoritmo DIFF evalúa la diferencia entre el árbol virtual actual y una versión anterior, y también la compara con el DOM real.</li>
-              <li>De este modo, se genera una delta que determina con precisión qué debe modificarse en el DOM real, con una granularidad muy fina</li>
-              <li>Gracias a la reconciliación, los cambios se propagan al DOM real de manera eficiente, ya que se hacen en 'batch', con el mínimo número de operaciones posible.</li>
-              <li>Este proceso de reconciliación, por tanto, sirve como mecanismo de sincronización entre ambos mundos.</li>
+              <li>Como funciona? Como consigue ser eficiente?</li>
+              <li>Cambios UI a DOM Virtual, no promocionan a DOM Real.</li>
+              <li>Aglutinador de cambios | Buffer | Capa intermedia | Borrador.</li>
+              <li>DOM virtual es rápido y barato, acepta muchos cambios, no penaliza.</li>
+              <li>Ejemplo: renderizar nuevo elemento, nuevo nodo.</li>
+              <li>Proceso RECONCILIACIÓN. Algoritmo DIFF compara con versión anterior de DOM Virtual y con DOM Real.</li>
+              <li>Se genera la delta con el minimo numero de cambios.</li>
+              <li>Se comitea/aplica esta delta en el DOM Real.</li>
+              <li>Eficiente. Mínimo número de operaciones.</li>
+              <li>Reconciliacion: mecanismo de sincronización.</li>
               <li>En RESUMEN: <b>React gestiona los cambios en el DOM y lo mantiene actualizado por nosotros de forma eficiente</b></li>
             </ul>
           </aside>
@@ -309,17 +352,34 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>D3.js es un framework, o librería, para la visualización interactiva de datos. Data-Drive-Documents. Al igual que React, es tremendamente popular y se ha convertido en la referencia de facto en este terreno.</li>
-              <li>Está conformado por una API de bajo nivel lo que lo hace tremendamente potente y flexible. Es el secreto de su éxito. No es una librería de gráficos pre-hechos, enlatados. Aqui hay que picar, en cambio el límite es la creatividad de cada uno.</li>
-              <li>También es declarativo, nos abstrae del DOM. El se encargará de los cambios pertinentes, nosotros le indicamos QUE queremos representar. ¿Nos suena, verdad?</li>
-              <li>El mecanismo principal de D3, su core, son las uniones de datos o DATA JOINS. Nos permite establecer literalmente vinculos entre los datos que queremos representar y los elementos gráficos que van a representarlos.</li>
-              <li>Al estar datos y elementos vinculado, la visualización no tiene porque ser estática sino que puede responder a los cambios en los datos. Además, admite animaciones, interactividad, etc.</li>
+              <li>Framework/librería para visualización interactiva de datos.
+                <ul>
+                  <li>Data-Driven-Documents.</li>
+                  <li>remendamente popular.</li>
+                  <li>Referencia de facto para visualización.</li>
+                </ul>
+              </li>
+              <li>API de bajo nivel le confiere potencia y flexibilidad.</li>
+              <ul>
+                <li>Es el secreto de su éxito.</li>
+                <li>NO galería de graficos pre-hechos / enlatados.</li>
+              </ul>
+              <li>Declarativo, nos abstrae de cambios en DOM, se encarga por nosotros. ¿Nos suena verdad?</li>
+              <li>DATA JOINS: Concepto Clave. Uniones de datos y elementos.
+                <ul>
+                  <li>Literalmente se vinculan los datos con los elementos que los representan.</li>
+                </ul>
+              </li>
+              <li>Esta vinculación permite:
+                <li>Que el gráfico sea reactivo, cambie en tiempo real a medida que lo hacen los datos.</li>
+                <li>Animaciones e interactividad.</li>
+              </li>
             </ul>
           </aside>
         </section>
 
         <!-- Slide - Data Joins -->
-        <section data-timing="120">
+        <section data-timing="180">
           <h2><i>Data Joins</i></h2>
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            height="600" viewbox="0 0 960 700" style="enable-background:new 0 0 960 700;" xml:space="preserve">
@@ -444,39 +504,44 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Vamos a hacer un ejercicio mental muy sencillo para entender rápidamente las uniones de datos.</li>
-              <li>Imaginemos que tenemos una tabla de paises con datos como por ejemplo, número de habitantes, renta per cápita, esperanza de vida, etc.</li>
-              <li>Si quisieramos representar estos datos gráficamente, lo primero que pensaríamos sería: por cada fila, es decir por cada pais, voy a pintar un círculo por ejemplo.</li>
-              <li>El tamaño de ese círculo vendrá dado por el número de habitantes. El color, por el continente al que pertenece.</li>
-              <li>Finalmente su posición vendrá dada por su riqueza, los paises más ricos hacia la derecha, los más saludables (esperanza de vida) hacia arriba.</li>
-              <li>COROLARIO: Hemos asociado cada fila de la tabla, cada pais, a un círculo (que es el elemento que va a representarlo en el gráfico). Y hemos dado forma, color y posición a ese círculo según los datos.</li>
-              <li>
-                Esta es la forma en la que se trabaja en D3.js, y los 3 escenarios representados son intencionados ya que D3 distingue entre estas 3 circunstancias entro de un data join:
+              <li>¿Qué es? Literalmente vínculos entre datos y elementos.</li>
+              <li>En jerga D3: datos siempre array | Datum = item del array | Elemento = elemento gráfico que lo representa.</li>
+              <li>PROPONGO ejercicio mental para entender los DATA JOINS:
                 <ul>
-                  <li>Nuevos datos se vinculan a nuevos elementos. Se le conoce como sub-grupo ENTER.</li>
-                  <li>Cuando un dato se modifica, también lo hará el elemento asociado. Sub-grupo UPDATE.</li>
-                  <li>Datos eliminados generan elementos huérfanos, que por lo general acaban siendo borrados del gráfico. Sub-grupo EXIT.</li>
+                  <li>Os doy tabla de paises, cada fila pais, con datos como habitantes.</li>
+                  <li>Os pido que representeis gráficamente esos datos.</li>
+                  <li>Proponeis: circulo por cada pais, tamaño proporcional a habitantes.</li>
+                  <li>CADA FILA DE LA TABLA ASOCIADO A UN CÍRCULO</li>
+                  <li>Esta asociación es un Data Join y es justo lo que hace D3 por nosotros, almacena ese vínculo.</li>
                 </ul>
               </li>
-              <li>A esto se le conoce como patrón ENTER-UPDATE-EXIT.</li>
-
+              <li>Gracias a los DataJoins, hacemos el gráfico REACTIVO a los hipotéticos cambios en los datos.</li>
+              <li>Si digo que los datos pueden cambiar en tiempo real y os pido un algoritmo para gestionarlo, me diríais:
+                <ul>
+                  <li>Si dato nuevo para el q no tenemos círculo, lo creamos.</li>
+                  <li>Si dato se actualiza, actualizamos círculo asociado.</li>
+                  <li>Si dato desaparece, eliminamos círculo <b>huérfano</b> del gráfico.</li>
+                  <li><b>Esto es el patrón ENTER-UPDATE-EXIT.</b></li>
+                </ul>
+              </li>
+              <li><b>Esta es la manera de operar con D3. Implementando el patrón ENTER-UPDATE-EXIT.</b></li>
             </ul>
           </aside>
         </section>
 
         <!-- Slide - Selecciones -->
-        <section data-timing="120">
+        <section data-timing="180">
           <h2>Selecciones</h2>
             <pre><code class="code-area js" data-trim="true" data-noescape="true">
               const paises = [...];
-              const circulos = chart.selectAll("circle")
+              const circulos = svg.selectAll("circle")
                 .data(paises)
                 .enter()
                 .append("circle")
-                  .attr("cx", pais => xScale(pais.poderAdquisitivo))
-                  .attr("cy", pais => yScale(pais.esperanzaVida))
-                  .attr("r", pais => areaScale(pais.habitantes))
-                  .attr("fill", pais => color(pais.continente));
+                  .attr("cx", pais =&gt; xScale(pais.poderAdquisitivo))
+                  .attr("cy", pais =&gt; yScale(pais.esperanzaVida))
+                  .attr("r", pais =&gt; areaScale(pais.habitantes))
+                  .attr("fill", pais =&gt; color(pais.continente));
             </code></pre>
 
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="120"
@@ -495,6 +560,9 @@
                   .join {stroke-dasharray: 2, 2;}
                   .link .from-data {stroke: #ff55f7;}
                   .link .from-selection {stroke: #ff55f7;}
+                  .enter {fill: #006837;font-weight: bold;pointer-events: none;}
+                  .update {fill: black;font-weight: bold;pointer-events: none;}
+                  .exit {fill: #C1272D;font-weight: bold;pointer-events: none;}
                 </style>
               </defs>
               <g class="left" transform="translate(40,0)">
@@ -527,7 +595,7 @@
                   <g class="key" transform="translate(300,12)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
                     <path class="join" d="M32,0C60,0 60,48 88,48"></path>
-                    <text dy=".35em" x="6">A</text>
+                    <text class="update" dy=".35em" x="6">SP</text>
                   </g>
                   <g class="element" transform="translate(200,36)">
                     <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
@@ -535,7 +603,7 @@
                   </g>
                   <g class="key" transform="translate(300,36)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
-                    <text dy=".35em" x="6">B</text>
+                    <text class="exit" dy=".35em" x="6">UK</text>
                   </g>
                   <g class="element" transform="translate(200,60)">
                     <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
@@ -543,7 +611,7 @@
                   </g>
                   <g class="key" transform="translate(300,60)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
-                    <text dy=".35em" x="6">C</text>
+                    <text class="exit" dy=".35em" x="6">BE</text>
                   </g>
                   <g class="element" transform="translate(200,84)">
                     <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
@@ -551,7 +619,7 @@
                   </g>
                   <g class="key" transform="translate(300,84)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
-                    <text dy=".35em" x="6">D</text>
+                    <text class="exit" dy=".35em" x="6">NL</text>
                   </g>
                   <g class="element" transform="translate(200,108)">
                     <rect ry="6" rx="6" y="-10" height="20" width="47.576171875"></rect>
@@ -560,7 +628,7 @@
                   <g class="key" transform="translate(300,108)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32"></rect>
                     <path class="join" d="M32,0C60,0 60,-72 88,-72"></path>
-                    <text dy=".35em" x="6">E</text>
+                    <text class="update" dy=".35em" x="6">PT</text>
                   </g>
                 </g>
               </g>
@@ -589,43 +657,43 @@
                   </g>
                   <g class="datum" transform="translate(-200,12)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">Y</text>
+                    <text dy=".35em" x="-26">DE</text>
                   </g>
                   <g class="key" transform="translate(-300,12)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">Y</text>
+                    <text class="enter" dy=".35em" x="-26">DE</text>
                   </g>
                   <g class="datum" transform="translate(-200,36)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">E</text>
+                    <text dy=".35em" x="-26">PT</text>
                   </g>
                   <g class="key" transform="translate(-300,36)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">E</text>
+                    <text class="update" dy=".35em" x="-26">PT</text>
                   </g>
                   <g class="datum" transform="translate(-200,60)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">A</text>
+                    <text dy=".35em" x="-26">SP</text>
                   </g>
                   <g class="key" transform="translate(-300,60)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">A</text>
+                    <text class="update" dy=".35em" x="-26">SP</text>
                   </g>
                   <g class="datum" transform="translate(-200,84)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">O</text>
+                    <text dy=".35em" x="-26">FR</text>
                   </g>
                   <g class="key" transform="translate(-300,84)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">O</text>
+                    <text class="enter" dy=".35em" x="-26">FR</text>
                   </g>
                   <g class="datum" transform="translate(-200,108)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">I</text>
+                    <text dy=".35em" x="-26">IT</text>
                   </g>
                   <g class="key" transform="translate(-300,108)">
                     <rect ry="6" rx="6" y="-10" height="20" width="32" x="-32"></rect>
-                    <text dy=".35em" x="-26">I</text>
+                    <text class="enter" dy=".35em" x="-26">IT</text>
                   </g>
                 </g>
               </g>
@@ -634,13 +702,22 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>¿Cómo se expresan o aplican las uniones de datos en código? Mediantes las selecciones. El core de D3.js incorpora funcionalidad para seleccionar elementos del DOM, muy al estilo de JQuery.</li>
-              <li>En primer lugar, seleccionamos todos los elementos de tipo círculo. D3 es compatible con los selectores de css que conocemos.</li>
-              <li>A continuación establecemos el data join, vinculamos los datos a nuestros elementos seleccionados. Se hace con el método data(). Los datos siempre serán un array, cada item del array se vincula a un elemento mediante una función de mapeo que por defecto es el índice.</li>
-              <li>Por último operamos sobre el sub-grupo que nos interesa, enter, exit o update. En nuestro caso, añadimos (append) un elemento círculo por cada pais.</li>
-              <li>A la selección establecida vamos aplicando las propiedades para darle una posición, tamaño y color en función de los datos del pais.</li>
-              <li>COROLARIO: (gráfico bostock) Con este ejemplo lo que pretendía ilustrar es que D3 cuenta con un potente mecanismo, los data joins, para gestionar el DOM por nosotros. ¿nos suena verdad?</li>
-              <li>En el fondo, estas uniones entre datos y elementos sirven como algoritmo diff mediante el cual evaluar que parte del DOM hay que mutar, y gracias al patrón enter-update-exit, actuar de un modo u otro. Asi se puede ser mucho más preciso y eficiente.</li>
+              <li>Data joins y patrón ENTER-UPDATE-EXIT se implementa en código a través de las selecciones</li>
+              <li>Paises como array de datos.</li>
+              <li>Core de D3 como JQuery, permite hacer selecciones.</li>
+              <li>Seleccionamos todos los círculos | EStablecemos data join con método data().</li>
+              <li>Macheo entre círculos y datum se hace con el índice del array como clave. Customizable con callback en data().</li>
+              <li>Implementamos patrón ENTER. Añadimos un círculo por cada país que todavía no lo tenga.</li>
+              <li>Caracterizamos ese círculo en función de los datos del país. Color, tamaño y posición.</li>
+              <li>▼ Representación de la selección y la unión de datos en memoria:
+                <ul>
+                  <li>Izquda: Elementos gráficos (svg).</li>
+                  <li>Derecha: Datos, cada item del array.</li>
+                  <li>Clave de macheo: nombre del país.</li>
+                  <li>Se aprecian las 3 posible situaciones a las que se refiere el patron ENTER-UPDATE-EXIT.</li>
+                </ul>
+              </li>
+              <li>▶</li>
             </ul>
           </aside>
         </section >
@@ -668,7 +745,7 @@
       <section>
 
         <!-- Slide - Qué Sucederá -->
-        <section data-timing="120">
+        <section data-timing="30">
           <div class="flex row spaced">
             <object type="image/svg+xml" data="media/react_logo.svg" height="100">React Logo</object>
             <svg class="fragment" data-fragment-index="1" width="100" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 252 39.51">
@@ -702,9 +779,15 @@
           <!-- Notas -->
           <aside class="notes">
             <ul>
-              <li>Resumen de lo visto hasta ahora en 1 frase: Tanto React como D3 tienen en común la gestión eficiente del DOM. En el caso de React mediante el DOM virtual, y en el caso de D3 gracias a las selecciones, los data joins y el patrón enter-update-exit.</li>
-              <li>Pero ambos van a controlar el DOM real por nosotros.</li>
-              <li>¿Qué pensáis que sucederá entonces si los ponemos a trabajar juntos? ¿Lo adivináis? Ya os lo digo yo ...</li>
+              <li>Resumen en 1 frase:
+                <ul>
+                  <li>Tanto React como D3 gestionan eficientemente el DOM por nosotros</li>
+                  <li>React via DOM virtual y reconciliación.</li>
+                  <li>D3 con mutaciones directas optimizadas siguiendo patrón ENTER-UPDATE-EXIT.</li>
+                </ul>
+              </li>
+              <li>Ambos controlan el DOM real.</li>
+              <li>¿Qué sucederá entonces si los ponemos a trabajar juntos?</li>
             </ul>
           </aside>
         </section>
@@ -715,7 +798,9 @@
 
           <aside class="notes">
             <ul>
-              <li>Vale si, he dramatizado un poco. Igual no es tan violento. Pero desde luego vamos a tener problemas, y para ilustrarlo veamos el siguiente ejemplo.</li>
+              <li>Vale si, he dramatizado un poco.</li>
+              <li>Igual no es tan violento.</li>
+              <li>Hagamos una prueba.</li>
             </ul>
           </aside>
         </section>
@@ -726,12 +811,19 @@
           <div id="sample-collision" class="flex row center"></div>
 
           <aside class="notes">
+            <ul style="list-style-type:decimal;color:#006837">
+              <li>Para demostrarlo: app de react.</li>
+              <li>Provocamos colisión intencionadamente.</li>
+              <li>2 botones, 1 DIV con color y texto.</li>
+              <li>Click REACT, cambia DIV siguiendo flujo REACT.</li>
+              <li>Click D3, mutación directa del NODO.</li>
+              <li>Click REACT de nuevo, ha perdido sincronización.</li>
+              <li><b>La mutación de D3 corrompe el mecanismo de React.</b></li>
+              <li>React exige que los cambios vaya siempre por su DOM virtual.</li>
+              <li><b>COROLARIO: Nunca hagais que REACT y D3 colisionen, se solapen</b></li>
+            </ul>
+            <p>--------------------</p>
             <ul>
-              <li>Simple aplicación (real, no es un mock ni nada de eso) que reproduce el problema</li>
-              <li>Consiste en un contenedor de React con 3 componentes, 2 botones y un div</li>
-              <li>Cada botón modificará el DIV</li>
-              <li>El de la izquierda lo hará siguiendo el flujo habitual de React, via cambio de propiedades.</li>
-              <li>El de la derecha, sin embargo, instancia a D3 para que modifique el nodo target, mutando directamente el DOM.</li>
               <li>Veamos que sucede:
                 <ul>
                   <li>Primero React, todo funciona como esperamos</li>
@@ -767,7 +859,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section data-timing="120">
+        <section data-timing="30">
           <h3>DOM compartido</h3>
           <p>Juntos pero no revueltos</p>
 
@@ -1067,7 +1159,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section data-timing="120">
+        <section data-timing="30">
           <h3>React <i>renderiza</i>, D3 calcula</h3>
           <p>D3 al servicio de React</p>
 
@@ -1292,7 +1384,7 @@
       <section>
 
         <!-- Slide - Titulo Intro -->
-        <section data-timing="120">
+        <section data-timing="30">
           <h3><i>Faux</i> DOM</h3>
           <p>React y D3 totalmente separados</p>
 
