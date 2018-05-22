@@ -864,9 +864,10 @@
           <aside class="notes">
             <ul>
               <li>Primera solución, DOM compartido</li>
-              <li>Consiste compartir el DOM de modo que las 2 librerías tengan su espacio para trabajar pero sin solaparse, marcando la frontera clara entre una y otra.</li>
-              <li>Por eso lo he llamado Juntos pero no Revueltos. React renderizará la mayor parte de nuestra app excepto la visualización de datos o gráficos que será cosa de D3.js</li>
-              <li>¿Cómo conseguimos esto?</li>
+              <li>Comparten DOM real pero sin solaparse.</li>
+              <li>Clara frontera entre las dos, juntas pero no revueltas.</li>
+              <li>React renderizará la mayor parte, D3 el gráfico.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -952,12 +953,13 @@
 
           <aside class="notes">
             <ul>
-              <li>Mirad, este esquema nos suena de React, DOM Virtual vs DOM Real y la reconciliación para sincronizar cambios</li>
-              <li>La idea: Crear un componente en react que sirva de contenedor.</li>
-              <li>Como decía un compañero mío, su única misión es ser un cascarón en React, <b>un único nodo que sirva como punto de entrada a D3.js</b> para operar a sus anchas con el DOM.</li>
-              <li>Ese contenedor lo vemos representado en blanco y el secreto está en indicarle a React que a partir de ese nodo es territorio de D3</li>
-              <li>Para React, todo lo que hay desde ese nodo hacia adentro, no le incumbe. Es como una caja negra.</li>
-              <li>De esta forma mantenemos dos islas conectadas pero separadas, sin solapes ni interferencias</li>
+              <li>Conocemos esquema React, DOM Virtual + Reconciliación -&gt; DOM Real</li>
+              <li><b>CLAVE</b>: Un componente contenedor. Marca la frontera.</li>
+              <li>(Santi) Actúa como cascarón en React, <b>MISION: punto de entrada para D3</b>.</li>
+              <li>A partir de este nodo: territorio de D3 | caja negra xa React.</li>
+              <li>2 islas de trabajo, conectadas pero sin interferencias</li>
+              <li>¿Cómo se consigue?</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1000,18 +1002,18 @@
 
           <aside class="notes">
             <ul>
-              <li>Esta es la solución más sencilla de todas, pero muy efectiva, funciona.</li>
-              <li>Tan fácil como hacer un componente básico, donde alimentemos los datos para ser visualizados como propiedad, y como render() un simple div a modo de contenedor.</li>
-              <li>Esto nos va a proporcionar el nodo que necesitamos en el DOM.</li>
-              <li>Una vez el componente se monte, el nodo DIV se creará en el DOM.</li>
-              <li>Almacenaremos localmente la referencia de dicho nodo real para pasarsela a D3 y que empiece a construir su árbol de elementos.</li>
-              <li>Esto se hará justo después de que el componente se haya montado, ahi es el momento de invocar a D3 para que construya el gráfico.</li>
-              <li><b>El secreto: evitar que haya más actualizaciones, para lo cual ponemos shouldComponentUpdate a false</b></li>
-              <li>Bloqueamos cualquier intento de renderizado por parte de React, el DIV contenedor solo se renderizará por tanto una vez, al montarse.</li>
-              <li>Del resto se encarga D3.js</li>
-              <li>Ahora bien, un matiz importante, aqui la premisa es que los datos no van a cambiar, serán estáticos, de ahí el título </li>
-              <li>¿Por qué? Porque invocamos a D3 una sóla vez, al montarse el componente. Si los datos cambian, la propiedad data cambia, pero no se realiza ningún re-render ni se vuelve a invocar D3 en ningún momento.</li>
-              <li>Por tanto esta solución es adecuada para los casos más sencillos en donde sabemos que los datos no cambian, que no necesitamos real time.</li>
+              <li>Solución sencilla | efectiva | funciona.</li>
+              <li>Componente básico, DATOS como propiedad, RENDER mínimo: 1 DIV Contenedor.</li>
+              <li>OBJETIVO: NODO en DOM para punto de entrada D3.</li>
+              <li>REF: . Almacenamos referencia para D3.</li>
+              <li>MOUNT: al montarse tenemos nodo en DOM y REF válida. INVOCAMOS D3.</li>
+              <li>D3 construirá árbol de elementos para el gráfico enganchado al contenedor.</li>
+              <li><b>SECRETO: evitar RENDERS de React -&gt; shouldComponentUpdate=false</b></li>
+              <li>1 ÚNICO render al montarse. No necesitamos más. Resto D3 se encarga.</li>
+              <li>MATIZ | PREMISA: Los datos no cambian. Por eso versión estática.</li>
+              <li>Si cambiaran, no se reflejaría, D3 sólo en mount.</li>
+              <li>Solución para casos estáticos. NO REAL TIME.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1022,14 +1024,15 @@
 
           <aside class="notes">
             <ul>
-              <li>Ejemplo básico y sencillo implementado con esta solución</li>
-              <li>He generado un </b>vector de números random</b> que será inyectado en la propiedad DATA del componente React</li>
-              <li>Ese vector random determinará la altura de las barras</li>
-              <li>Cuando el componente se monta, D3.js entra en acción y genera los nodos SVG en función de los datos</li>
-              <li>Como hemos comentado antes, la premisa es que los datos no cambien, ya que si lo hicieran el gráfico no se enteraría porque se pinta ¡solo al montarse!</li>
-              <li>Eso si, puedo refrescar la página y que se genere un nuevo set de datos aleatorios, y al volver a montarse el componente, mi gráfico cambiaría.</li>
-              <li>Pero una de las características más potentes de D3 es trabajar con datos en tiempo real, que los datos cambien y el gráfico reaccione ante esos cambios ¿verdad?</li>
-              <li>No os preocupeis, tenémos la versión dinámica para eso. Veamos</li>
+              <li>Ejempo de esta solución</li>
+              <li>DATA es un <b>vector números random</b>.</li>
+              <li>Representa la altura de las barras.</li>
+              <li>Al montarse D3.js genera nodos SVG en función de los datos.</li>
+              <li>PREMISA: los datos no cambian.</li>
+              <li>Eso si, puedo implementar interactividad.</li>
+              <li>Pero QUEREMOS REAL TIME, REACCION ante CAMBIOS, nos da POTENCIA.</li>
+              <li>Veamos versión dinámica.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1077,23 +1080,20 @@
 
           <aside class="notes">
             <ul>
-              <li>Fijaos que es muy similar a la anterior:
+              <li>MUY PARECIDA a la anterior:
                 <ul>
-                  <li>Datos como propiedad</li>
-                  <li>Metodo render con un simple DIV</li>
-                  <li>Extraemos la referencia del nodo DIV en el DOM real y la almacenamos para pasarsela a D3</li>
+                  <li>Datos como propiedad DATA.</li>
+                  <li>RENDER con un simple DIV.</li>
+                  <li>REF del nodo DIV para pasarsela a D3.</li>
                 </ul>
               </li>
-              <li>Hasta ahí todo igual, la diferencia está en el ciclo de vida.</li>
-              <li>LLamamos a D3 una primera vez para crear el gráfico desde cero, ¿cuando? cuando el componente se monta, en el DidMount. Aqui se implementará el patrón ENTER de D3</li>
-              <li>Además, ya no bloqueamos todos los renders, sino que permitimos actualizaciones cuando los datos han cambiado.
-                <ul>
-                  <li>Fijaos que en este ejemplo donde sólo tenemos una propiedad  y se está haciendo una comparación shallow, se podría haber hecho esto con un PureComponente.</li>
-                  <li>He decidio hacerlo en el shouldComponentUpdate y no con un PureComponente, como alternativa, y porque podría ser que los datos cambien sin seguir el paradigma inmutable, en cuyo caso necesitaríamos una comparación en profundidad.</li>
-                </ul>
-              </li>
-              <li>Como permitimos un render cuando los datos cambian, controlamos eso en el siguiente punto del ciclo de vida, en el componentDidUpdate.</li>
-              <li>Aqui volvemos a llamar a D3 con los nuevos datos e implementamos el patron Update para que D3 realice las actualizaciones pertienentes según los nuevos datos.</li>
+              <li>DIFERENCIA: el ciclo de vida.</li>
+              <li>MOUNT: Primera llamada a D3, invocamos patrón ENTER. Crea gráfico por primera vez.</li>
+              <li>shouldComponentUpdate: ya no bloqueamos todo RENDER. Permitimos si DATA cambia.</li>
+              <li>Por tanto, siguiente punto ciclo de vida: componentDidUpdate ->&gt; llamamos a D3 con patrón update.</li>
+              <li>NOTA: Podriamos haber usado PureComponent ya que comparación es shallow.</li>
+              <li>Lo he hecho así por que sea más explicito y tener más control.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1104,10 +1104,15 @@
 
           <aside class="notes">
             <ul>
-              <li>Este nuevo ejemplo, basado en la versión estática, tiene la peculiaridad de que los datos se vuelven a randomizar en intervalos de 1 segundo.</li>
-              <li>Cada segundo un nuevo vector de datos aleatorios entra como propiedad del componente, que dispara una actualización que acaba llamando al patrón update de D3.js</li>
-              <li>En ese patrón he implementado además una transición para que el efecto quede mas chulo. D3.js es muy bueno haciendo este tipo de animaciones, y como estamos mutando el DOM directamente, se puede hacer sin interferencia con React.</li>
-              <li>Fijaos que aparente queda nuestro gráfico!</li>
+              <li>Ejemplo dinámico, basado en estático pero:
+                <ul>
+                  <li>Intervalos programados de 1s.</li>
+                  <li>Cada intervalo, nuevos datos Random.</li>
+                  <li>Nuevo render dispara patron UPDATE de D3.</li>
+                  <li>Transicion implementada en patrón UPDATE.</li>
+                </ul>
+              </li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1138,13 +1143,15 @@
 
           <aside class="notes">
             <ul>
-              <li>✓ La solución más sencilla, empezad siempre por aqui, es el caso base, después vais promocionando a otras soluciones</li>
-              <li>✓ Todo el API de D3 disponible, veremos en otras soluciones que nos restringimos a ciertas funciones de D3.</li>
-              <li>✓ El código que generamos es código 100% nativo de D3. Esto permite que consultemos la enorme cantidad de ejemplos disponbiles de D3. En D3 se desarrolla mucho a base de ejemplos, es la mejor manera de aprender.</li>
-              <li>✓ Transiciones soportadas pq mutamos el DOM directamente, no tenemos la problemática con las animaciones que hay en React.</li>
-              <li>✗ NO usamos el dom virtual / reconciliación que es un mecanismo muy eficiente de actualización del DOM. Nos salimos del paradigam de React</li>
-              <li>✗ Tenemos un trozo de nuestro DOM mutable, sin reglas, con total libertad. Esto no es un problema en si, mutar no es nada malo siempre que se sepa lo que estamos haciendo.</li>
-              <li>✗ No podemos generar markup de forma remota ya que D3 necesita mutar el DOM real de forma directa. D3 necesita estar en cliente mutando el DOM que el usuario ve.</li>
+              <li>▼ ✓ SENCILLA, empezad siempre por aqui, después vais promocionando a otras soluciones.</li>
+              <li>▼ ✓ Todo el API de D3 disponible, Otras soluciones = restringimos a ciertas funciones D3.</li>
+              <li>▼ ✓ Código 100% nativo D3. Consulta y copy/paste miles de ejemplos disponibles. Mejor forma de aprender D3.</li>
+              <li>▼ ✓ Transiciones soportadas | mutamos el DOM directamente | NO problemática como en React.</li>
+              <li>▼ ✗ NO DOM virtual / reconciliación | Perdemos mecanismo eficiente.</li>
+              <li>▼ ✗ ISLA de DOM mutable, sin reglas, con total libertad.</li>
+              <li>No es un problema en si, mutar no tiene pq ser malo, pero nos salimos del paradigam de React. PURISTAS BOOM</li>
+              <li>▼ ✗ NO SSR. No genración markup de forma remota. D3 debe estar en cliente con el DOM REAL PARA MUTARLO.</li>
+              <li>▶</li>
             </ul>
           </aside>
         </section>
@@ -1167,6 +1174,7 @@
               <li>Más protagonismo para REACT</li>
               <li>REACT tiene el peso del renderizado</li>
               <li>Por eso decimos D3 al servicio de React, como esclavo</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1271,6 +1279,7 @@
               <li>Dijimos: D3 API enorme, core para DOM pequeño, muchos helpers matemáticos.</li>
               <li>Usemos los helpers de D3 para apoyarnos y calcular tamaños, posiciones, escalas, etc.</li>
               <li>No obstante, los elementos SVG del gráfico serán siempre React.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1318,6 +1327,7 @@
               <li>Genera un contendor SVG y todos los elementos que componen el gráfico.</li>
               <li>Líneas en este caso, cuyas coordenadas son calculadas por D3.</li>
               <li>Como veis es un ejemplo muuuy sencillo, porque su complejidad crece rápidamente.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1332,6 +1342,7 @@
               <li>Un array donde cada datum representa un piloto y su posición en cada vuelta.</li>
               <li>Por sencillez el ejemplo es estático pero esta solución soporta real time, aunque a través de React y sus re-renders.</li>
               <li>Interactividad, tb posible dentro de React: hover, onclick, etc, etc.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1363,14 +1374,15 @@
 
           <aside class="notes">
             <ul>
-              <li>✓ Para los puristas, código 100% React.</li>
-              <li>✓ Performance y eficiencia de React.</li>
-              <li>✓ SSR es posible siguiendo los mecanismos que ya existen en React (Next.js)</li>
-              <li>✗ Gráficos sencillos, ok, gráficos complejos, código jodido.</li>
-              <li>✗ Acabamos duplicando código que ya existe en D3.js.</li>
-              <li>✗ Perdemos los miles de ejemplos de D3. El código nativo D3 no se va a parecer al código que necesitaremos en React para nuestro gráfico.</li>
-              <li>✗ Requiere dominio del API de D3</li>
-              <li>✗ 3rd party library para transiciones (animaciones con CSS si)</li>
+              <li>▼ ✓ Para los puristas, código 100% React.</li>
+              <li>▼ ✓ Performance y eficiencia de React.</li>
+              <li>▼ ✓ SSR es posible siguiendo los mecanismos que ya existen en React (Next.js)</li>
+              <li>▼ ✗ Gráficos sencillos, ok, gráficos complejos, código jodido.</li>
+              <li>▼ ✗ Acabamos duplicando código que ya existe en D3.js.</li>
+              <li>▼ ✗ Perdemos los miles de ejemplos de D3. El código nativo D3 no se va a parecer al código que necesitaremos en React para nuestro gráfico.</li>
+              <li>▼ ✗ Requiere dominio del API de D3</li>
+              <li>▼ ✗ 3rd party library para transiciones (animaciones con CSS si)</li>
+              <li>▶</li>
             </ul>
           </aside>
         </section>
@@ -1392,6 +1404,7 @@
               <li>Posible gracias a react-faux-dom por Oliver Caldwell.</li>
               <li>Recuerda a la aproximación primera, pero aqui la separación es TOTAL. Desconexión total.</li>
               <li>react-faux-dom hará de puente.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1512,9 +1525,9 @@
               <li>A D3 le proporcionamos un faux DOM, un DOM de mentira.</li>
               <li>A efectos prácticos es un DOM igual que el DOM real pero NO ATACHEADO.</li>
               <li>Cada librería trabaja en DOM independientes, solo que el gráfico de D3 no se ve en ningún sitio. ¿Como lo inyectamos?</li>
-              <li>Gracias a react-faux-dom, hace de intermediario: traduce el faux DOM a una salida que React entienda: ReactElements.</li>
+              <li>▼ Gracias a react-faux-dom, hace de intermediario: traduce el faux DOM a una salida que React entienda: ReactElements.</li>
               <li>Como si react-faux-dom escupiese JSX con cada cambio que se produzca en el fauxDOM, para inyectarlo en React.</li>
-              <li>De este modo acabará en el DOM virtual y propocionará al DOM real.</li>
+              <li>▼ De este modo acabará en el DOM virtual y propocionará al DOM real.</li>
               <li>SE INTUYE: solución con lo mejor de ambos mundos (ya que son 100% independientes) a costa de una nueva pieza en el puzle.</li>
             </ul>
           </aside>
@@ -1571,6 +1584,7 @@
                 </ul>
               </li>
               <li>Con cada cambio en fauxDOM -&gt; props.chart cambia -&gt; nuevo render</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1620,7 +1634,7 @@
               <li>Versión Dinámica prácticamente igual.</li>
               <li>Sólamente añadimos un psao en el ciclo de vida.</li>
               <li>Seguimos llamando a D3 al montarse, para crear el gráfico la primera vez (patron ENTER())</li>
-              <li>Y además, en componentDidUpdate, capturamos cambio en los datos.
+              <li>DIFERENCIA, en componentDidUpdate, capturamos cambio en los datos.
                 <ul>
                   <li>Volvemos a obeter el fauxDOM via connect. Hay que hacerlo asi. No vale guardarse la referencia.</li>
                   <li>LLamamos al patron update de D3 con los nuevos datos.</li>
@@ -1630,7 +1644,7 @@
                   <li>La animación real ocurre en fauxDOM, nosotros la simulamos en React haciendo muestreo.</li>
                 </ul>
               </li>
-
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1653,6 +1667,7 @@
               <li>Si desactivamos FauxDOM y cambiamos a solución 1, las transiciones son mas suaves ya que son reales, mutaciones en el DOM real via CSS.</li>
               <li>Podemos activar datos aletorios cada intervalo de 1s.</li>
               <li>Pincelada de color para Anémonas o Brocoli marciano.</li>
+              <li>▼</li>
             </ul>
           </aside>
         </section>
@@ -1686,21 +1701,22 @@
 
           <aside class="notes">
             <ul>
-              <li>✓ API D3 completa disponible.</li>
-              <li>✓ Miles de ejemplos, copy paste, código nativo.</li>
-              <li>✓ Lo mejor de React, todo dentro de DOM virtual.</li>
-              <li>✓ Soporta SSR.</li>
-              <li>✓ Soporta transiciones.</li>
-              <li>✗ Nueva pieza en el puzle, cada cambio pasa por un flujo más largo.</li>
-              <li>✗ Eso implica más penalización en rendimiento. Gráficos complejos sufrirían con esta solución.</li>
-              <li>✗ Transiciones creadas artificialmente con muestreo, no son nativas.</li>
-              <li>✗ Toda la responsabilidad recaes sobre esta pequeña librería.</li>
-              <li>✗ RIESGO: Está mantenida? Soportará futuras versiones React? Quedará obsoleta?</li>
+              <li>▼ ✓ API D3 completa disponible.</li>
+              <li>▼ ✓ Miles de ejemplos, copy paste, código nativo.</li>
+              <li>▼ ✓ Lo mejor de React, todo dentro de DOM virtual.</li>
+              <li>▼ ✓ Soporta SSR.</li>
+              <li>▼ ✓ Soporta transiciones.</li>
+              <li>▼ ✗ Nueva pieza en el puzle, cada cambio pasa por un flujo más largo.</li>
+              <li>▼ ✗ Eso implica más penalización en rendimiento. Gráficos complejos sufrirían con esta solución.</li>
+              <li>▼ ✗ Transiciones creadas artificialmente con muestreo, no son nativas.</li>
+              <li>▼ ✗ Toda la responsabilidad recaes sobre esta pequeña librería.</li>
+              <li>▼ ✗ RIESGO: Está mantenida? Soportará futuras versiones React? Quedará obsoleta?</li>
             </ul>
             <ul>CONSEJO
               <li>Comenzad siempre por la Solución 1.</li>
               <li>Id promocionando a otras soluciones o versiones a medida que lo necesitéis.</li>
             </ul>
+            <li>▶</li>
           </aside>
         </section>
 
