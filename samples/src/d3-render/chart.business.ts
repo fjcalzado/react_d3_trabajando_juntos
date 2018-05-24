@@ -8,58 +8,66 @@ const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
-// Module global variables.
-let svg = null;
-let bars = null;
-let x = null;
-let y = null;
 
-export const createChart = (node, data: number[]) => {
-  // Create SVG.
-  svg = d3.select(node)
-    .append("svg")
-      .attr("width", setup.width)
-      .attr("height", setup.height);
+export const CreateChartAPI = () => {
+  // Closure variables.
+  let svg = null;
+  let bars = null;
+  let x = null;
+  let y = null;
 
-  // Create effects definitions.
-  const defs = svg.append("defs");
-  createGradient(defs);
+  const createChart = (node, data: number[]) => {
+    // Create SVG.
+    svg = d3.select(node)
+      .append("svg")
+        .attr("width", setup.width)
+        .attr("height", setup.height);
 
-  y = d3.scaleLinear()
-    .domain([setup.dataRangeMin, setup.dataRangeMax])
-    .range([setup.height, 0]);
-  x = d3.scaleBand<Number>()
-    .domain(data.map((d,i) => i))
-    .rangeRound([0, setup.width])
-    .paddingInner(setup.barSeparation);
+    // Create effects definitions.
+    const defs = svg.append("defs");
+    createGradient(defs);
 
-  // Create bars. Enter().
-  bars = svg
-    .append("g")
-      .attr("class", style.bar);
+    y = d3.scaleLinear()
+      .domain([setup.dataRangeMin, setup.dataRangeMax])
+      .range([setup.height, 0]);
+    x = d3.scaleBand<Number>()
+      .domain(data.map((d,i) => i))
+      .rangeRound([0, setup.width])
+      .paddingInner(setup.barSeparation);
 
-  bars.selectAll("rect")
-    .data(data)
-    .enter().append("rect")
-      .attr("x", (d, i) => x(i))
-      .attr("y", d => y(d))
-      .attr("height", d => setup.height - y(d))
-      .attr("width", d => x.bandwidth())
-      .attr("fill", "url(#barGradient)")
-      .on("mouseover", handleMouseOver)
-      .on("mouseout", handleMouseOut);
-}
+    // Create bars. Enter().
+    bars = svg
+      .append("g")
+        .attr("class", style.bar);
 
-export const updateChart = (data: number[]) => {
-  // Rejoin data and update bars with transition.
-  bars.selectAll("rect")
-    .data(data).transition()
-      .duration(setup.transitionDelay)
-      .attr("x", (d, i) => x(i))
-      .attr("y", d => y(d))
-      .attr("height", d => setup.height - y(d))
-      .attr("width", d => x.bandwidth())
-      .attr("fill", "url(#barGradient)");
+    bars.selectAll("rect")
+      .data(data)
+      .enter().append("rect")
+        .attr("x", (d, i) => x(i))
+        .attr("y", d => y(d))
+        .attr("height", d => setup.height - y(d))
+        .attr("width", d => x.bandwidth())
+        .attr("fill", "url(#barGradient)")
+        .on("mouseover", handleMouseOver)
+        .on("mouseout", handleMouseOut);
+  }
+
+  const updateChart = (data: number[]) => {
+    // Rejoin data and update bars with transition.
+    bars.selectAll("rect")
+      .data(data).transition()
+        .duration(setup.transitionDelay)
+        .attr("x", (d, i) => x(i))
+        .attr("y", d => y(d))
+        .attr("height", d => setup.height - y(d))
+        .attr("width", d => x.bandwidth())
+        .attr("fill", "url(#barGradient)");
+  }
+
+  return {
+    createChart,
+    updateChart,
+  }
 }
 
 function handleMouseOver(d, i) {

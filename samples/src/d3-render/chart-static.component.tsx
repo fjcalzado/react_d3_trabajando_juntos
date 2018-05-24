@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createChart } from './chart.business';
+import { CreateChartAPI } from './chart.business';
+const chartAPI = CreateChartAPI();
 
 const style = require("./chart.style.scss");
 
@@ -20,7 +21,7 @@ export class ChartStaticComponent extends React.Component<ChartProps, {}> {
   }
 
   public componentDidMount() {
-    createChart(this.rootNodeRef, this.props.data);
+    chartAPI.createChart(this.rootNodeRef, this.props.data);
   }
 
   public shouldComponentUpdate() {
