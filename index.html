@@ -1803,6 +1803,9 @@
     // Detectamos si es master/client y extrae la clave (key/secret) mediante el parámetro K de la URL.
     const master = Boolean(Reveal.getQueryHash().k);
     const masterKey = master ? Reveal.getQueryHash().k : null;
+    if (master) console.log("Master Enabled");
+    const notes = Boolean(Reveal.getQueryHash().n);
+    if (notes) console.log("Notes Enabled");
 
     Reveal.initialize({
       width: 960,
@@ -1832,7 +1835,7 @@
         { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/search/search.js', async: true },
         { src: 'plugin/zoom-js/zoom.js', async: true },
-        { src: master ? 'plugin/notes/notes.js' : '', async: true } // Permitir notas de presentador sólo para el masterr.
+        { src: master || notes ? 'plugin/notes/notes.js' : '', async: true } // Permitir notas de presentador.
       ]
     });
   </script>
