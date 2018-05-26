@@ -1803,7 +1803,7 @@
 
       </section>
 
-
+      <div id="reveal-scale-node-id" />
     </div>
   </div>
 
@@ -1851,6 +1851,16 @@
         { src: master || notes ? 'plugin/notes/notes.js' : '', async: true } // Permitir notas de presentador.
       ]
     });
+
+    // Almacenamos escala de reveal para aplicar un fix en los ejemplos.
+    const revealScaleNode = document.getElementById("reveal-scale-node-id");
+    const setScale = () => {
+      console.log(Reveal.getScale())
+      revealScaleNode.setAttribute("data-reveal-scale", Reveal.getScale());
+    };
+    window.onload = setScale;
+    window.addEventListener("resize", setScale);
+
   </script>
 
   <!-- RECURSOS Para ejemplos empotrados React + D3.js -->

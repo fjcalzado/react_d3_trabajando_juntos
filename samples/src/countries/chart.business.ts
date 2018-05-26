@@ -143,9 +143,22 @@ const createPopup = (node) => {
 }
 
 const updatePositionInfoPopup = () => {
+  let mousePosX = 0;
+  let mousePosY = 0;
+
+  if (d3.select("section[class='present']")) {  // Under reveal.js presentation.
+    const revealScale = Number(document.getElementById("reveal-scale-node-id").getAttribute("data-reveal-scale"));
+    const slide = d3.select("section[class='present']").node() as HTMLElement;
+    mousePosX = (d3.mouse(slide)[0]) / revealScale;
+    mousePosY = (d3.mouse(slide)[1]) / revealScale;
+  } else {
+    mousePosX = d3.mouse(document.body)[0] + 25;
+    mousePosY = d3.mouse(document.body)[1] + 40;
+  }
+
   infoPopup
-    .style("left", `${d3.mouse(nodeRoot)[0] - (infoPopup.node().getBoundingClientRect().width / 2)}px`)
-    .style("top", `${d3.mouse(nodeRoot)[1] - parseInt(infoPopup.style("height"), 0) - 5}px`);
+    .style("left", `${mousePosX}px`)
+    .style("top", `${mousePosY}px`);
 }
 
 const showInfoPopup = (d) => {

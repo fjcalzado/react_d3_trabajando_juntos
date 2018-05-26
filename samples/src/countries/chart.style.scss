@@ -19,7 +19,7 @@ $oceaniaColor: rgb(231, 138, 195);
   justify-content: center;
 
   .info-popup {
-    position: absolute;
+    position: fixed;
     padding: 0.25rem;
     opacity: 0;
     pointer-events: none;
