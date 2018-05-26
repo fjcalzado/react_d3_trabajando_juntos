@@ -1394,7 +1394,7 @@
               <li>▼ ✗ Acabamos duplicando código que ya existe en D3.js.</li>
               <li>▼ ✗ Perdemos los miles de ejemplos de D3. El código nativo D3 no se va a parecer al código que necesitaremos en React para nuestro gráfico.</li>
               <li>▼ ✗ Requiere dominio del API de D3</li>
-              <li>▼ ✗ 3rd party library para transiciones (animaciones con CSS si)</li>
+              <li>▼ ✗ 3rd party library para transiciones IN-OUT. Animaciones SVG complejas no soportadas por React</li>
               <li>▶</li>
             </ul>
           </aside>
@@ -1816,6 +1816,9 @@
     // Detectamos si es master/client y extrae la clave (key/secret) mediante el parámetro K de la URL.
     const master = Boolean(Reveal.getQueryHash().k);
     const masterKey = master ? Reveal.getQueryHash().k : null;
+    if (master) console.log("Master Enabled");
+    const notes = Boolean(Reveal.getQueryHash().n);
+    if (notes) console.log("Notes Enabled");
 
     Reveal.initialize({
       width: 960,
@@ -1845,7 +1848,7 @@
         { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/search/search.js', async: true },
         { src: 'plugin/zoom-js/zoom.js', async: true },
-        { src: master ? 'plugin/notes/notes.js' : '', async: true } // Permitir notas de presentador sólo para el masterr.
+        { src: master || notes ? 'plugin/notes/notes.js' : '', async: true } // Permitir notas de presentador.
       ]
     });
   </script>
