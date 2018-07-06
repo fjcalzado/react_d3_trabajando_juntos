@@ -8,7 +8,6 @@ const style = require("./chart.style.scss");
 const styleDefs = require("../../../css/theme/source/fjcalzado-defs.scss");
 
 
-
 export const CreateChartAPI = () => {
   // Closure variables.
   let svg = null;
@@ -57,11 +56,8 @@ export const CreateChartAPI = () => {
     bars.selectAll("rect")
       .data(data).transition()
         .duration(setup.transitionDelay)
-        .attr("x", (d, i) => x(i))
         .attr("y", d => y(d))
-        .attr("height", d => setup.height - y(d))
-        .attr("width", d => x.bandwidth())
-        .attr("fill", "url(#barGradient)");
+        .attr("height", d => setup.height - y(d));
   }
 
   return {

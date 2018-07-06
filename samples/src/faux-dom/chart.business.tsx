@@ -51,7 +51,7 @@ export const createChart = (node: Element, data: Segment[], color: boolean) => {
     .y(point => point["1"]);
 
   // Create segments.
-  const segments = tree.selectAll("path")
+  tree.selectAll("path")
     .data(data).enter()
     .append("path")
       .attr("fill", "none")
